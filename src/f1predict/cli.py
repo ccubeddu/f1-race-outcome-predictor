@@ -734,6 +734,71 @@ def odds_compare(
     console.print("[dim]Forecast comparison only—not betting advice. Gamble responsibly.[/dim]")
 
 
+@odds_app.command("history")
+def odds_history(
+    manifest_csv: Annotated[
+        Path,
+        typer.Argument(
+            help="CSV with race, prediction_csv, odds_csv, and winner columns."
+        ),
+    ],
+    output: Annotated[
+        Path | None,
+        typer.Option(help="Optional path for the per-race scoring CSV."),
+    ] = None,
+) -> None:
+    """Score model and bookmaker winner probabilities over multiple races."""
+    from f1predict.bookmakers import score_history, summarize_history
+
+    try:
+        scores = score_history(manifest_csv)
+    except (FileNotFoundError, ValueError) as exc:
+        raise typer.BadParameter(str(exc)) from exc
+    summary = summarize_history(scores)
+
+    table = Table(title="Model vs bookmaker history")
+    table.add_column("Race")
+    table.add_column("Winner")
+    table.add_column("Model favorite")
+    table.add_column("Market favorite")
+    table.add_column("Model LL", justify="right")
+    table.add_column("Market LL", justify="right")
+    for row in scores.itertuples():
+        table.add_row(
+            str(row.race),
+            str(row.winner),
+            str(row.model_favorite),
+            str(row.market_favorite),
+            f"{row.model_log_loss:.3f}",
+            f"{row.market_log_loss:.3f}",
+        )
+    console.print(table)
+
+    totals = Table(title=f"Aggregate · {summary['races']} races")
+    totals.add_column("Forecast")
+    totals.add_column("Favorite accuracy", justify="right")
+    totals.add_column("Mean log loss", justify="right")
+    totals.add_column("Mean Brier", justify="right")
+    totals.add_row(
+        "Model",
+        f"{summary['model_favorite_accuracy']:.1%}",
+        f"{summary['model_mean_log_loss']:.3f}",
+        f"{summary['model_mean_brier']:.3f}",
+    )
+    totals.add_row(
+        "De-vigged market",
+        f"{summary['market_favorite_accuracy']:.1%}",
+        f"{summary['market_mean_log_loss']:.3f}",
+        f"{summary['market_mean_brier']:.3f}",
+    )
+    console.print(totals)
+    if output:
+        output.parent.mkdir(parents=True, exist_ok=True)
+        scores.to_csv(output, index=False)
+        console.print(f"[dim]History CSV: {output.resolve()}[/dim]")
+    console.print("[dim]Forecast comparison only—not betting advice. Gamble responsibly.[/dim]")
+
+
 def _prediction_table(predictions: pd.DataFrame) -> Table:
     table = Table(title="Predicted finishing order")
     table.add_column("Pos", justify="right", style="bold cyan")

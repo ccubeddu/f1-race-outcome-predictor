@@ -234,6 +234,18 @@ multiclass Brier score:
 f1predict odds compare model_prediction.csv bookmaker_odds.csv --winner antonelli
 ```
 
+For a multi-race scoreboard, provide a manifest with `race`, `prediction_csv`, `odds_csv`, and
+`winner` columns:
+
+```bash
+f1predict odds history outputs/bookmaker_comparison/history_post_quali.csv
+```
+
+The included four-race post-quali sample currently has 100% model favorite accuracy versus 50% for
+the bookmaker favorites, with mean winner log loss of 0.567 versus 1.569. This is promising but
+still a small sample; the archived BetMGM pages also lack exact capture timestamps, so it is not
+presented as a definitive closing-line benchmark.
+
 The repository includes a [Mexico prospective comparison](outputs/bookmaker_comparison/report.md)
 and an Austin completed-race checkpoint. Historical odds are not freely available as one clean
 dataset, so broad bookmaker claims are deliberately deferred until more same-cutoff snapshots have
@@ -286,6 +298,7 @@ f1predict model importance --mode pre_quali --top 15
 f1predict evaluate run --mode all --start-season 2024
 f1predict evaluate audit
 f1predict odds compare model_prediction.csv bookmaker_odds.csv
+f1predict odds history history_manifest.csv
 f1predict predict monza --season 2026 --driver verstappen
 f1predict stats driver-quali verstappen 2
 f1predict doctor

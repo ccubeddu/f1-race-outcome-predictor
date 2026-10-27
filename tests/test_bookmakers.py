@@ -10,7 +10,9 @@ from f1predict.bookmakers import (
     compare_winner_market,
     fractional_to_decimal,
     load_odds,
+    score_history,
     score_winner_market,
+    summarize_history,
 )
 
 
@@ -49,3 +51,26 @@ def test_compare_rejects_incomplete_grid(tmp_path: Path) -> None:
     )
     with pytest.raises(ValueError, match="missing odds"):
         compare_winner_market(predictions, odds)
+
+
+def test_score_history(tmp_path: Path) -> None:
+    pd.DataFrame(
+        {"driver_id": ["a", "b"], "driver_name": ["A", "B"], "p_win": [0.7, 0.3]}
+    ).to_csv(tmp_path / "prediction.csv", index=False)
+    pd.DataFrame(
+        {"driver_id": ["a", "b"], "decimal_odds": [2.0, 2.0]}
+    ).to_csv(tmp_path / "odds.csv", index=False)
+    pd.DataFrame(
+        {
+            "race": ["Test GP"],
+            "prediction_csv": ["prediction.csv"],
+            "odds_csv": ["odds.csv"],
+            "winner": ["a"],
+        }
+    ).to_csv(tmp_path / "manifest.csv", index=False)
+
+    scores = score_history(tmp_path / "manifest.csv")
+    summary = summarize_history(scores)
+    assert scores.loc[0, "model_favorite_correct"]
+    assert summary["races"] == 1
+    assert summary["model_better_log_loss_races"] == 1

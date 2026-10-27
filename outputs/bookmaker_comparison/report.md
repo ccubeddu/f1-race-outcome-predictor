@@ -3,6 +3,34 @@
 Winner odds are converted to implied probabilities and normalized across the complete 22-driver
 market. This removes the bookmaker overround with the standard multiplicative de-vig method.
 
+## Recent post-quali history
+
+The model forecasts are strict walk-forward predictions: every race was predicted by a model
+trained only on earlier races. The bookmaker side uses complete 22-driver BetMGM race-winner boards
+preserved by search indexing during each race week. Those archived pages do not expose an exact
+capture timestamp, so this four-race comparison is useful evidence, but not yet an audited study of
+official closing lines.
+
+| Race | Winner | Model favorite | Market favorite | Model P(winner) | Market P(winner) | Model LL | Market LL |
+|---|---|---|---|---:|---:|---:|---:|
+| Spain | Kimi Antonelli | Kimi Antonelli | Kimi Antonelli | 45.9% | 29.8% | **0.780** | 1.212 |
+| Bahrain in Malaysia | Max Verstappen | Max Verstappen | Kimi Antonelli | 80.7% | 10.3% | **0.214** | 2.269 |
+| Singapore | Max Verstappen | Max Verstappen | Max Verstappen | 41.5% | 25.0% | **0.879** | 1.386 |
+| Austin | Kimi Antonelli | Kimi Antonelli | Max Verstappen | 67.3% | 24.4% | **0.396** | 1.410 |
+
+| Forecast | Favorite accuracy | Mean log loss | Mean multiclass Brier |
+|---|---:|---:|---:|
+| Post-quali model | **4/4 (100%)** | **0.567** | **0.283** |
+| De-vigged market | 2/4 (50%) | 1.569 | 0.734 |
+
+Lower log loss and Brier scores are better. The model won the probability score on all four races,
+not merely the favorite-pick count. This is an encouraging result, but four races are still a small
+sample and the market capture-time caveat prevents calling it a definitive closing-line victory.
+
+Austin also demonstrates why the comparison cutoff matters. In the earlier pre-quali checkpoint
+below, the bookmaker forecast scored better. After qualifying, the model incorporated Antonelli's
+pole, made him a 67.3% favorite, and correctly switched ahead of the race-week BetMGM market.
+
 ## Mexico City 2026 — prospective pre-quali comparison
 
 Snapshot: Lucky Rebel race-winner prices on October 26, 2026. The model was trained through the
@@ -52,6 +80,10 @@ f1predict odds compare \
   outputs/bookmaker_comparison/austin_2026_pre_quali_walk_forward.csv \
   outputs/bookmaker_comparison/austin_2026_kambi.csv \
   --winner antonelli
+
+f1predict odds history \
+  outputs/bookmaker_comparison/history_post_quali.csv \
+  --output outputs/bookmaker_comparison/history_post_quali_scores.csv
 ```
 
 The input must contain every driver and exactly one of `decimal_odds`, `american_odds`, or

@@ -1,0 +1,5 @@
+race,prediction_csv,odds_csv,winner
+Spain 2026,spain_2026_post_quali_walk_forward.csv,spain_2026_betmgm.csv,antonelli
+Bahrain in Malaysia 2026,bahrain_2026_post_quali_walk_forward.csv,bahrain_2026_betmgm.csv,max_verstappen
+Singapore 2026,singapore_2026_post_quali_walk_forward.csv,singapore_2026_betmgm.csv,max_verstappen
+Austin 2026,austin_2026_post_quali_walk_forward.csv,austin_2026_betmgm.csv,antonelli

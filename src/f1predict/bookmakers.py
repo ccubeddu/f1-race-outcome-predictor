@@ -115,3 +115,63 @@ def score_winner_market(comparison: pd.DataFrame, winner: str) -> dict[str, floa
         "model_brier": float(np.square(model - target).sum()),
         "market_brier": float(np.square(market - target).sum()),
     }
+
+
+def score_history(manifest_path: Path) -> pd.DataFrame:
+    """Score multiple saved prediction/odds pairs listed in a CSV manifest."""
+    manifest = pd.read_csv(manifest_path)
+    required = {"race", "prediction_csv", "odds_csv", "winner"}
+    missing = sorted(required - set(manifest.columns))
+    if missing:
+        raise ValueError(f"History manifest is missing columns: {', '.join(missing)}")
+    base = manifest_path.resolve().parent
+    records = []
+    for row in manifest.itertuples(index=False):
+        prediction_path = (base / str(row.prediction_csv)).resolve()
+        odds_path = (base / str(row.odds_csv)).resolve()
+        predictions = pd.read_csv(prediction_path)
+        odds = load_odds(odds_path)
+        comparison = compare_winner_market(predictions, odds)
+        score = score_winner_market(comparison, str(row.winner))
+        model_favorite = comparison.loc[comparison["p_win"].idxmax()]
+        market_favorite = comparison.loc[comparison["market_probability"].idxmax()]
+        winner_row = comparison.loc[comparison["driver_name"].eq(score["winner"])].iloc[0]
+        records.append(
+            {
+                "race": str(row.race),
+                "winner": score["winner"],
+                "model_favorite": model_favorite["driver_name"],
+                "market_favorite": market_favorite["driver_name"],
+                "model_favorite_correct": model_favorite["driver_name"] == score["winner"],
+                "market_favorite_correct": market_favorite["driver_name"] == score["winner"],
+                "model_winner_probability": float(winner_row["p_win"]),
+                "market_winner_probability": float(winner_row["market_probability"]),
+                "model_log_loss": score["model_log_loss"],
+                "market_log_loss": score["market_log_loss"],
+                "model_brier": score["model_brier"],
+                "market_brier": score["market_brier"],
+                "bookmaker_margin": odds.attrs["margin"],
+            }
+        )
+    if not records:
+        raise ValueError("History manifest contains no races")
+    return pd.DataFrame.from_records(records)
+
+
+def summarize_history(scores: pd.DataFrame) -> dict[str, float | int]:
+    """Aggregate proper scores and favorite accuracy over bookmaker comparisons."""
+    return {
+        "races": len(scores),
+        "model_favorite_accuracy": float(scores["model_favorite_correct"].mean()),
+        "market_favorite_accuracy": float(scores["market_favorite_correct"].mean()),
+        "model_mean_log_loss": float(scores["model_log_loss"].mean()),
+        "market_mean_log_loss": float(scores["market_log_loss"].mean()),
+        "model_mean_brier": float(scores["model_brier"].mean()),
+        "market_mean_brier": float(scores["market_brier"].mean()),
+        "model_better_log_loss_races": int(
+            (scores["model_log_loss"] < scores["market_log_loss"]).sum()
+        ),
+        "market_better_log_loss_races": int(
+            (scores["market_log_loss"] < scores["model_log_loss"]).sum()
+        ),
+    }

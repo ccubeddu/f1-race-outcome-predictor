@@ -3,6 +3,46 @@
   "snapshots": [
     {
       "season": 2026,
+      "round": 14,
+      "race": "Spanish Grand Prix",
+      "market": "race winner",
+      "bookmaker": "BetMGM",
+      "observed_at": "race-week indexed snapshot; exact time unavailable",
+      "source": "https://www.betmgm.com/es-xl/sports/formula-1-6/apostar/mundo-6",
+      "prediction_cutoff": "post_quali walk-forward"
+    },
+    {
+      "season": 2026,
+      "round": 16,
+      "race": "Bahrain Grand Prix in Malaysia",
+      "market": "race winner",
+      "bookmaker": "BetMGM",
+      "observed_at": "race-week indexed snapshot; exact time unavailable",
+      "source": "https://www.betmgm.com/en/sports/events/gp-bahrain-race-specials-19973669",
+      "prediction_cutoff": "post_quali walk-forward"
+    },
+    {
+      "season": 2026,
+      "round": 17,
+      "race": "Singapore Grand Prix",
+      "market": "race winner",
+      "bookmaker": "BetMGM",
+      "observed_at": "race-week indexed snapshot; exact time unavailable",
+      "source": "https://www.betmgm.com/es-xl/sports/eventos/gp-de-singapur-carrera-19990588",
+      "prediction_cutoff": "post_quali walk-forward"
+    },
+    {
+      "season": 2026,
+      "round": 18,
+      "race": "United States Grand Prix",
+      "market": "race winner",
+      "bookmaker": "BetMGM",
+      "observed_at": "race-week indexed snapshot; exact time unavailable",
+      "source": "https://www.betmgm.com/en/sports/events/gp-usa-race-specials-20008735",
+      "prediction_cutoff": "post_quali walk-forward"
+    },
+    {
+      "season": 2026,
       "round": 18,
       "race": "United States Grand Prix",
       "market": "race winner",
