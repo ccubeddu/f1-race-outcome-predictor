@@ -24,13 +24,18 @@ def test_sprint_practice_after_qualifying_is_excluded() -> None:
             }
         ]
     )
-    eligible = _scheduled_pre_quali_sessions(schedule).set_index("session")["is_pre_quali"]
+    sessions = pd.DataFrame(
+        [{"season": 2021, "round": 10, "session": "FP1", "date_end": "2021-07-16T14:30:00Z"}]
+    )
+    eligible = _scheduled_pre_quali_sessions(schedule, sessions).set_index("session")[
+        "is_pre_quali"
+    ]
     assert bool(eligible["FP1"])
     assert not bool(eligible["FP2"])
     assert not bool(eligible["FP3"])
 
 
-def test_same_day_practice_is_allowed_when_legacy_schedule_omits_times() -> None:
+def test_same_day_practice_is_rejected_when_legacy_schedule_omits_times() -> None:
     schedule = pd.DataFrame(
         [
             {
@@ -48,7 +53,9 @@ def test_same_day_practice_is_allowed_when_legacy_schedule_omits_times() -> None
         ]
     )
     eligible = _scheduled_pre_quali_sessions(schedule).set_index("session")["is_pre_quali"]
-    assert eligible.all()
+    assert bool(eligible["FP1"])
+    assert bool(eligible["FP2"])
+    assert not bool(eligible["FP3"])
 
 
 def test_leakage_guard_rejects_post_quali_feature_in_pre_mode() -> None:

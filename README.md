@@ -74,10 +74,11 @@ Both sources are downloaded with one resumable command:
 f1predict data sync-practice --start 2018 --end 2026
 ```
 
-OpenF1's public API is rate limited. A full detailed backfill may take multiple runs; completed
-session partitions are skipped automatically. Use `--rounds 1,2` when only selected events are
-needed. F1DB classification coverage is downloaded in one compact release and is not affected by
-the OpenF1 rate limit.
+OpenF1's public API is rate limited. Requests are paced 2.1 seconds apart and transient transport
+failures are retried. Add `--bulk` for bounded season requests rather than five requests for each
+session; raw responses may include other session types, but only practice keys are normalized.
+Responses and completed partitions are cached for resuming. Use `--rounds 1,2` for selected events.
+F1DB classification coverage is downloaded in one compact release.
 
 ## Historical expansion in a staging dataset
 
@@ -96,9 +97,9 @@ resume cached requests; choose `--staging-dir` for a separate study or changed p
 
 The completed data stage contains **347 races and 7,307 driver-race rows**, versus 191 races and
 3,854 rows in production. It adds 10,272 practice classification rows with 97.9% timed-lap
-coverage. All 156 expected historical races are present. The audit flags 149 practice-driver
-substitutions and 156 same-day practice sessions without exact times; these require feature-stage
-handling before model promotion. The [approved roadmap](outputs/data_expansion/roadmap.md) tracks
+coverage. All 156 expected historical races are present. That audit flags 149 practice-driver
+substitutions and 156 same-day practice sessions without exact times. The feature-stage rules below
+handle these conservatively before model promotion. The [approved roadmap](outputs/data_expansion/roadmap.md) tracks
 the next practice, qualifying-model, rating and evaluation stages.
 
 The audit compares race coverage with the independent F1DB inventory and flags missing qualifying,
@@ -106,6 +107,39 @@ practice timing gaps, and reserve-driver/car-number mismatches. Pit-stop data fr
 in 2011, so 2010 has no observations from that source. Raw practice availability is not equivalent
 to verified pre-quali feature eligibility. Resolve these gaps in the next feature stage before
 comparing 2018+, 2014+ and 2010+ training windows.
+
+### Completed practice-feature checkpoint
+
+The [stage 2 report](outputs/practice_features/report.md) audits **347 races / 7,307 driver-race
+rows**, with 148 pre-quali and 158 post-quali features. The staged backfill contains 99,349 OpenF1
+lap records across 216 practice sessions. Driver-race detail availability rose from 4.2% to 100%
+for 2024 and 2025, and from 5.6% to 99.7% for 2026. This is a coverage result, not an accuracy gain.
+
+Practice joins now require unique driver-name/code evidence against event entrants. A shared car
+number never suffices: 144 eligible same-number/wrong-identity rows are excluded. Laps, stints and
+weather share one cutoff: a source session end strictly before qualifying, or (without end times)
+a strictly earlier calendar day. Legacy same-day sessions are excluded. Archive event timestamps
+do not prove historical publication or revision times.
+
+The new long-run proxy requires at least five filtered non-boundary laps in a stint and compares
+drivers on the same compound/session/five-lap tyre-age band, with at least three drivers in the
+comparison. Fuel loads, traffic and flag conditions are not controlled. Sparse comparisons stay
+missing, with an availability indicator; the old all-lap median is no longer called long-run pace.
+
+Reproduce the staged checkpoint without changing production data or training models:
+
+```bash
+f1predict data sync-practice --start 2010 --end 2026 --bulk \
+  --data-dir work/history_expansion/data
+f1predict features build --data-dir work/history_expansion/data
+f1predict features audit --data-dir work/history_expansion/data
+f1predict features practice-checkpoint
+```
+
+The feature recipe is versioned in the manifest and newly trained model metadata. Mixing a new
+matrix or newly computed live features with an old model fails explicitly; stored legacy
+historical replay still works. The current production artifacts remain frozen. Do not rebuild
+production features alone: retrain and validate matching models in staging before promotion.
 
 ## Data layout
 
@@ -139,16 +173,17 @@ The builder creates one row per race and driver in two explicit modes:
 
 - `pre_quali`: prior-race driver and constructor form, track history, teammate head-to-head,
   reliability, pit-stop history, championship context, and same-weekend practice information
-  scheduled before qualifying.
+  eligible before qualifying under the completed-session/date-only policy.
 - `post_quali`: every pre-qualifying feature plus the current qualifying classification, Q1/Q2/Q3
   gaps, grid position, advancement flags, and the current teammate qualifying delta.
 
 Historical rolling and expanding statistics always use `shift(1)`. Race outcomes are labels
-only. Practice eligibility is checked against the published event schedule; this excludes FP2
-held after qualifying on early Sprint weekends. The generated `manifest.json` records every
+only. Practice eligibility uses the shared completed-session cutoff; this excludes FP2
+held after qualifying on early Sprint weekends and unverified same-day legacy sessions.
+The generated `manifest.json` records every
 feature, its prediction cutoff, and the leakage policy used to build it.
 
-Current historical build (2018–2026 results available locally):
+Frozen legacy production build (2018–2026; the new staged recipe is not yet promoted):
 
 | Mode | Race-driver rows | Races | Features |
 |---|---:|---:|---:|
@@ -337,9 +372,11 @@ single-driver query also shows that driver's complete probability distribution o
 position. By default, the same complete result is saved as CSV and JSON under
 `outputs/predictions/`; use `--no-save` for terminal-only queries.
 
-For a future event, run the data sync immediately before predicting. The live roster comes from
-the target event's qualifying classification in post-quali mode, then pre-quali practice in
-pre-quali mode, with the latest completed race as a fallback. Post-quali currently treats the
+For a future event, run the data sync immediately before predicting, using matching trained
+feature/model recipes. The live roster comes from the target qualifying classification in
+post-quali mode. Pre-quali uses the latest completed race as an explicitly **provisional** roster:
+new entrants and substitutions require verification. Practice participation is not a race entry
+list and never substitutes a reserve into the grid automatically. Post-quali currently treats the
 qualifying order as the provisional starting grid, so grid penalties announced later are not yet
 applied automatically. Historical queries are convenient replays using the current fully trained
 model; the walk-forward artifacts—not replay output—are the unbiased measure of historical

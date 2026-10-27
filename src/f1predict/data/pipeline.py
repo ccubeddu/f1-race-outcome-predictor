@@ -130,20 +130,28 @@ def sync_openf1(
     *,
     rounds: set[int] | None = None,
     refresh: bool = False,
+    bulk: bool = False,
+    progress: Callable[[dict[str, Any]], None] | None = None,
 ) -> list[dict[str, Any]]:
     paths.create()
     races = read_partitioned_table(paths.processed_jolpica, "races")
     if races.empty:
         raise RuntimeError("Jolpica races are required first; run `f1predict data sync`.")
     source = OpenF1Source(paths.raw_openf1, paths.processed_openf1, refresh=refresh)
-    outcomes = source.sync(races, start, end, rounds=rounds)
+    outcomes = source.sync(races, start, end, rounds=rounds, bulk=bulk, progress=progress)
     catalog = _catalog(paths)
+    sessions = read_partitioned_table(paths.processed_openf1, "practice_sessions")
     catalog["sources"]["openf1"] = {
         "base_url": "https://api.openf1.org/v1",
         "refreshed_at": datetime.now(UTC).isoformat(),
-        "season_start": max(2023, start),
-        "season_end": end,
-        "rounds": sorted(rounds) if rounds else "all",
+        "season_start": int(sessions["season"].min()) if not sessions.empty else max(2023, start),
+        "season_end": int(sessions["season"].max()) if not sessions.empty else end,
+        "last_sync": {
+            "season_start": max(2023, start),
+            "season_end": end,
+            "rounds": sorted(rounds) if rounds else "all",
+            "bulk": bulk,
+        },
         "downloaded": sum(row["status"] == "downloaded" for row in outcomes),
         "cached": sum(row["status"] == "cached" for row in outcomes),
         "unavailable": sum(row["status"] == "unavailable" for row in outcomes),

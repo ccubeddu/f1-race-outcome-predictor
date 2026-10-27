@@ -244,6 +244,9 @@ def data_sync_practice(
         int,
         typer.Option(help="First season for detailed OpenF1 laps, tyres, and weather."),
     ] = 2023,
+    bulk: Annotated[
+        bool, typer.Option(help="Use bounded season requests for a full backfill.")
+    ] = False,
     rounds: Annotated[
         str | None,
         typer.Option(help="Optional OpenF1 round filter, e.g. 1,2. F1DB remains season-wide."),
@@ -274,6 +277,14 @@ def data_sync_practice(
             end,
             rounds=selected_rounds,
             refresh=refresh,
+            bulk=bulk,
+            progress=lambda row: progress.update(
+                task,
+                description=(
+                    f"OpenF1 {row['season']} {row.get('session', row.get('endpoint', ''))}: "
+                    f"{row['status']}"
+                ),
+            ),
         )
     counts = pd.Series([row["status"] for row in openf1_outcomes]).value_counts().to_dict()
     table = Table(title="Practice data sync complete")
@@ -416,6 +427,29 @@ def features_audit(
         f"grid position {coverage['post_grid_position']:.1%}."
     )
     console.print("[green]Leakage guards passed.[/green]")
+
+
+@features_app.command("practice-checkpoint")
+def features_practice_checkpoint(
+    staging_dir: Annotated[Path, typer.Option(help="Isolated history/feature study data.")] = Path(
+        "work/history_expansion/data"
+    ),
+    output: Annotated[Path, typer.Option(help="Audit report directory.")] = Path(
+        "outputs/practice_features"
+    ),
+    data_dir: Annotated[Path | None, typer.Option(help="Frozen production baseline.")] = None,
+) -> None:
+    """Compare staged practice coverage and verify production was not changed."""
+    from f1predict.features.study import practice_checkpoint
+
+    report = practice_checkpoint(
+        _paths(data_dir), DataPaths(staging_dir.resolve()), output.resolve()
+    )
+    console.print(
+        f"[green]Practice checkpoint passed:[/green] {report['rows']:,} driver-race rows, "
+        f"{report['races']} races. Production unchanged; no models trained."
+    )
+    console.print(f"Report: {output.resolve() / 'report.md'}")
 
 
 @stats_app.command("driver-quali")

@@ -8,7 +8,7 @@ import pandas as pd
 
 from f1predict.config import DataPaths
 from f1predict.data.io import atomic_json_write, atomic_parquet_write, read_partitioned_table
-from f1predict.features.practice import add_practice_features
+from f1predict.features.practice import PRACTICE_RECIPE, add_practice_features
 from f1predict.features.rolling import (
     prior_count,
     shifted_expanding_mean,
@@ -387,7 +387,8 @@ def build_feature_matrices(paths: DataPaths) -> dict[str, Any]:
     pre = data[[*output_columns, *pre_features]].copy()
     post = data[[*output_columns, *post_features]].copy()
     manifest: dict[str, Any] = {
-        "schema_version": 1,
+        "schema_version": 2,
+        "practice_recipe": PRACTICE_RECIPE,
         "generated_at": datetime.now(UTC).isoformat(),
         "rows": len(data),
         "races": int(data[["season", "round"]].drop_duplicates().shape[0]),
@@ -406,8 +407,10 @@ def build_feature_matrices(paths: DataPaths) -> dict[str, Any]:
         "leakage_policy": {
             "historical_results": "all rolling and expanding statistics use shift(1)",
             "practice": (
-                "same-event practice is allowed only when the published session schedule "
-                "places it before qualifying"
+                "source session end strictly before qualifying; without an end timestamp, "
+                "only a strictly earlier calendar day; same cutoff for laps, stints and weather; "
+                "identity match against event entrants, never car number alone. Event-time "
+                "eligibility does not reconstruct historical publication delays."
             ),
             "qualifying": "same-event qualifying and grid features are post_quali only",
             "outcomes": "target-race results are labels only",

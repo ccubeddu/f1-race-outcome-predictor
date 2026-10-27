@@ -165,6 +165,7 @@ def train_model(
         "schema_version": 1,
         "created_at": datetime.now(UTC).isoformat(),
         "mode": mode,
+        "practice_recipe": manifest.get("practice_recipe", "legacy_v1"),
         "training_rows": len(data),
         "training_races": int(data[["season", "round"]].drop_duplicates().shape[0]),
         "training_start": str(pd.to_datetime(data["race_date"]).min().date()),

@@ -14,7 +14,6 @@ from f1predict.features.builder import (
     _feature_columns,
     enrich_features,
 )
-from f1predict.features.practice import _scheduled_pre_quali_sessions
 
 
 @dataclass(frozen=True)
@@ -75,32 +74,6 @@ def qualifying_available(paths: DataPaths, event: RaceEvent) -> bool:
     return len(rows) >= 2 and rows["quali_position"].notna().mean() >= 0.5
 
 
-def _practice_roster(
-    paths: DataPaths,
-    schedule: pd.DataFrame,
-    event: RaceEvent,
-) -> pd.DataFrame:
-    practice = read_partitioned_table(paths.processed_f1db, "practice_results")
-    if practice.empty:
-        return practice
-    practice = practice.loc[
-        practice["season"].eq(event.season) & practice["round"].eq(event.round)
-    ].copy()
-    if practice.empty:
-        return practice
-    eligibility = _scheduled_pre_quali_sessions(schedule)
-    practice = practice.merge(
-        eligibility,
-        on=["season", "round", "session"],
-        how="left",
-        validate="many_to_one",
-    )
-    practice = practice.loc[practice["is_pre_quali"].fillna(False)].copy()
-    order = {"FP1": 1, "FP2": 2, "FP3": 3}
-    practice["_session_order"] = practice["session"].map(order)
-    return practice.sort_values("_session_order").drop_duplicates("driver_number", keep="last")
-
-
 def _target_rows(
     paths: DataPaths,
     historical: pd.DataFrame,
@@ -117,7 +90,6 @@ def _target_rows(
     qualifying = qualifying.loc[
         qualifying["season"].eq(event.season) & qualifying["round"].eq(event.round)
     ].copy()
-    practice = _practice_roster(paths, schedule, event)
     if mode == "post_quali":
         if qualifying.empty:
             raise ValueError(
@@ -125,15 +97,17 @@ def _target_rows(
             )
         roster = qualifying
         roster_source = "target qualifying classification; live grid defaults to qualifying order"
-    elif not practice.empty:
-        roster = practice
-        roster_source = "target pre-qualifying practice classification"
     else:
+        # A practice classification includes reserve drivers, not confirmed race entrants.
+        # Until a pre-Q entry-list source exists, explicitly expose this provisional roster.
         roster = latest_grid
-        roster_source = f"latest completed race ({latest_date.date()})"
+        roster_source = (
+            f"PROVISIONAL roster from latest completed race ({latest_date.date()}); "
+            "entry changes need verification; practice participants are not a race entry list"
+        )
 
-    latest_by_number = latest_grid.drop_duplicates("driver_number").set_index("driver_number")
-    latest_by_code = latest_grid.drop_duplicates("driver_code").set_index("driver_code")
+    latest_by_id = prior.sort_values("race_date").drop_duplicates("driver_id", keep="last")
+    latest_by_id = latest_by_id.set_index("driver_id")
     constructor_lookup = (
         prior.sort_values("race_date")
         .drop_duplicates("constructor_id", keep="last")
@@ -145,11 +119,9 @@ def _target_rows(
     rows: list[dict] = []
     for _, entrant in roster.iterrows():
         number = entrant.get("driver_number")
-        code = entrant.get("driver_code")
-        if number in latest_by_number.index:
-            row = latest_by_number.loc[number].to_dict()
-        elif code in latest_by_code.index:
-            row = latest_by_code.loc[code].to_dict()
+        driver_id = entrant.get("driver_id")
+        if driver_id in latest_by_id.index:
+            row = latest_by_id.loc[driver_id].to_dict()
         else:
             row = {column: np.nan for column in historical.columns}
         for column in roster.columns:
@@ -168,8 +140,8 @@ def _target_rows(
         row["race_date"] = event.race_date
         row["race_name"] = event.race_name
         row["driver_name"] = entrant.get("driver_name", row.get("driver_name"))
-        row["car_number"] = number
-        row["driver_number"] = number
+        row["car_number"] = entrant.get("car_number", number)
+        row["driver_number"] = row["car_number"]
         row["field_size"] = len(roster)
         row["season_round"] = event.round
         row["static_latitude"] = event_row["latitude"]

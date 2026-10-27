@@ -1,13 +1,13 @@
 # Approved improvement sequence
 
-## 1. Expand historical coverage — current data checkpoint
+## 1. Expand historical coverage — completed
 
 Backfill 2010–2017 results, qualifying, pit stops where available, and practice classifications.
 Keep a separate staging dataset, preserve the production artifacts, check duplicate/event keys,
 compare race and driver counts with F1DB, and document timing and identity gaps. See `report.md`
 and `audit.json` for the actual completed run. No improvement in model accuracy is claimed here.
 
-## 2. Improve practice features and chronology
+## 2. Improve practice features and chronology — completed feature checkpoint
 
 - Resolve driver identity before attributing a substitute's practice laps to a race driver. Keep
   car-level evidence separate from driver-level evidence.
@@ -19,7 +19,11 @@ and `audit.json` for the actual completed run. No improvement in model accuracy 
   qualifying-style runs from race simulations. Add availability indicators for sparse old data.
 - Normalize relative performance and evaluate recency weighting and regulation-era context.
 
-Checkpoint: coverage by season, leakage checks, identity-mismatch counts and feature ablations.
+Checkpoint: [coverage, cutoff and identity audit](../practice_features/report.md) completed.
+The staged matrices cover 347 races with 148/158 pre/post-quali features; production remains
+unchanged. Detailed practice coverage is now about 99–100% of modern driver-race rows. The new
+tyre/session/age proxy is not fuel/traffic/flag corrected. Feature ablations and prediction-metric
+comparisons remain pending model-stage approval; no accuracy gain or promotion is claimed.
 
 ## 3. Model qualifying uncertainty before race outcomes
 

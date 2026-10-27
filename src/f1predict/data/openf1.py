@@ -3,6 +3,7 @@ from __future__ import annotations
 import hashlib
 import json
 import time
+from collections.abc import Callable
 from concurrent.futures import ThreadPoolExecutor
 from datetime import UTC, datetime
 from pathlib import Path
@@ -27,7 +28,8 @@ class OpenF1Client:
         cache_dir: Path,
         *,
         refresh: bool = False,
-        minimum_interval_seconds: float = 0.15,
+        minimum_interval_seconds: float = 2.1,
+        transport: httpx.BaseTransport | None = None,
     ) -> None:
         self.base_url = "https://api.openf1.org/v1"
         self.cache_dir = cache_dir
@@ -39,6 +41,7 @@ class OpenF1Client:
         self._client = httpx.Client(
             timeout=90,
             follow_redirects=True,
+            transport=transport,
             headers={"User-Agent": f"F1Predict/{__version__} httpx/{httpx.__version__}"},
         )
 
@@ -64,7 +67,13 @@ class OpenF1Client:
                 if wait > 0:
                     time.sleep(wait)
                 self._last_request_at = time.monotonic()
-            response = self._client.get(url, params=params)
+            try:
+                response = self._client.get(url, params=params)
+            except httpx.TransportError:
+                if attempt == 4:
+                    raise
+                time.sleep(2**attempt)
+                continue
             if response.status_code == 429 or response.status_code >= 500:
                 if attempt == 4:
                     response.raise_for_status()
@@ -182,7 +191,12 @@ class OpenF1Source:
         self.refresh = refresh
         self.workers = workers
 
-    def _sync_session(self, client: OpenF1Client, context: Json) -> Json:
+    def _sync_session(
+        self,
+        client: OpenF1Client,
+        context: Json,
+        records: dict[str, list[Json]] | None = None,
+    ) -> Json:
         session_key = int(context["session_key"])
         season = int(context["season"])
         partition = (
@@ -200,7 +214,13 @@ class OpenF1Source:
         if all(path.exists() for path in targets.values()) and not self.refresh:
             return {**context, "status": "cached"}
         try:
-            drivers = pd.DataFrame(client.get("drivers", {"session_key": session_key}))
+
+            def fetch(endpoint: str) -> list[Json]:
+                if records is not None:
+                    return records[endpoint]
+                return client.get(endpoint, {"session_key": session_key})
+
+            drivers = pd.DataFrame(fetch("drivers"))
             request_context = {
                 key: context[key]
                 for key in (
@@ -209,33 +229,34 @@ class OpenF1Source:
                     "meeting_key",
                     "session_key",
                     "session",
+                    "date_start",
                     "date_end",
                 )
             }
             tables = {
                 "practice_results": _with_driver_details(
                     _frame(
-                        client.get("session_result", {"session_key": session_key}),
+                        fetch("session_result"),
                         request_context,
                     ),
                     drivers,
                 ),
                 "practice_laps": _with_driver_details(
                     _frame(
-                        client.get("laps", {"session_key": session_key}),
+                        fetch("laps"),
                         request_context,
                     ),
                     drivers,
                 ),
                 "practice_stints": _with_driver_details(
                     _frame(
-                        client.get("stints", {"session_key": session_key}),
+                        fetch("stints"),
                         request_context,
                     ),
                     drivers,
                 ),
                 "practice_weather": _frame(
-                    client.get("weather", {"session_key": session_key}),
+                    fetch("weather"),
                     request_context,
                 ),
             }
@@ -270,11 +291,15 @@ class OpenF1Source:
         end: int,
         *,
         rounds: set[int] | None = None,
+        progress: Callable[[Json], None] | None = None,
+        bulk: bool = False,
     ) -> list[Json]:
         outcomes: list[Json] = []
         with OpenF1Client(self.raw_dir, refresh=self.refresh) as client:
             for season in range(max(2023, start), end + 1):
                 sessions = normalize_sessions(client.get("sessions", {"year": season}), races)
+                if sessions.empty:
+                    continue
                 if rounds:
                     sessions = sessions.loc[sessions["round"].isin(rounds)]
                 if sessions.empty:
@@ -290,8 +315,40 @@ class OpenF1Source:
                     )
                 atomic_parquet_write(sessions, session_target)
                 contexts = requested_sessions.to_dict("records")
+                if bulk:
+                    # Five bounded season requests instead of five requests per session.
+                    # Raw responses can include Q/R, but ONLY the requested practice
+                    # session keys are ever normalized or exposed to feature engineering.
+                    params = {
+                        "session_key>": int(requested_sessions["session_key"].min()) - 1,
+                        "session_key<": int(requested_sessions["session_key"].max()) + 1,
+                    }
+                    selected_keys = set(requested_sessions["session_key"])
+                    grouped: dict[int, dict[str, list[Json]]] = {int(k): {} for k in selected_keys}
+                    for endpoint in ("drivers", "session_result", "laps", "stints", "weather"):
+                        for records in grouped.values():
+                            records[endpoint] = []
+                        for item in client.get(endpoint, params):
+                            key = item.get("session_key")
+                            if key in grouped:
+                                grouped[key][endpoint].append(item)
+                        if progress:
+                            progress(
+                                {"season": season, "status": "bulk_endpoint", "endpoint": endpoint}
+                            )
+                    for context in contexts:
+                        outcome = self._sync_session(
+                            client, context, grouped[int(context["session_key"])]
+                        )
+                        outcomes.append(outcome)
+                        if progress:
+                            progress(outcome)
+                    continue
                 with ThreadPoolExecutor(max_workers=self.workers) as executor:
-                    outcomes.extend(
-                        executor.map(lambda item: self._sync_session(client, item), contexts)
-                    )
+                    for outcome in executor.map(
+                        lambda item: self._sync_session(client, item), contexts
+                    ):
+                        outcomes.append(outcome)
+                        if progress:
+                            progress(outcome)
         return outcomes

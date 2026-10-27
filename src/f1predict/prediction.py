@@ -16,6 +16,7 @@ from f1predict.features.live import (
     qualifying_available,
     resolve_event,
 )
+from f1predict.features.practice import PRACTICE_RECIPE
 from f1predict.models.ensemble import POLE_WIN_FACTOR, apply_pole_win_boost, blend_simulations
 from f1predict.models.training import load_model
 from f1predict.simulation import simulate_race
@@ -35,6 +36,21 @@ class PredictionResult:
 
 def _slug(value: str) -> str:
     return re.sub(r"[^a-z0-9]+", "-", value.casefold()).strip("-")
+
+
+def validate_feature_recipe(paths: DataPaths, metadata: dict[str, Any], kind: str) -> None:
+    """Don't silently feed a newly engineered matrix into an old trained model."""
+    manifest = json.loads((paths.features / "manifest.json").read_text())
+    actual = (
+        PRACTICE_RECIPE if kind == "live_forecast" else manifest.get("practice_recipe", "legacy_v1")
+    )
+    expected = metadata.get("practice_recipe", "legacy_v1")
+    if expected != actual:
+        raise ValueError(
+            f"Feature recipe mismatch: model={expected}, inputs={actual}. "
+            "Build features and retrain matching models together in staging before promotion. "
+            "Stored legacy historical forecasts remain available."
+        )
 
 
 def select_mode(paths: DataPaths, event: RaceEvent, requested: str) -> str:
@@ -95,6 +111,7 @@ def predict_race(
     selected_mode = select_mode(paths, event, mode)
     features, roster_source, kind = load_race_features(paths, event, selected_mode)
     bundle = load_model(paths, selected_mode)
+    validate_feature_recipe(paths, bundle.metadata, kind)
     dnf = bundle.predict_dnf_probability(features)
     identifier_columns = [
         "driver_id",

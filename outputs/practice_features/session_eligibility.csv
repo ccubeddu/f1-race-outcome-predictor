@@ -1,0 +1,1057 @@
+season,round,session,cutoff,is_pre_quali,timing_evidence,verified_end
+2010,1,FP1,2010-03-13 00:00:00+00:00,True,earlier_calendar_day,
+2010,2,FP1,2010-03-27 00:00:00+00:00,True,earlier_calendar_day,
+2010,3,FP1,2010-04-03 00:00:00+00:00,True,earlier_calendar_day,
+2010,4,FP1,2010-04-17 00:00:00+00:00,True,earlier_calendar_day,
+2010,5,FP1,2010-05-08 00:00:00+00:00,True,earlier_calendar_day,
+2010,6,FP1,2010-05-15 00:00:00+00:00,True,earlier_calendar_day,
+2010,7,FP1,2010-05-29 00:00:00+00:00,True,earlier_calendar_day,
+2010,8,FP1,2010-06-12 00:00:00+00:00,True,earlier_calendar_day,
+2010,9,FP1,2010-06-26 00:00:00+00:00,True,earlier_calendar_day,
+2010,10,FP1,2010-07-10 00:00:00+00:00,True,earlier_calendar_day,
+2010,11,FP1,2010-07-24 00:00:00+00:00,True,earlier_calendar_day,
+2010,12,FP1,2010-07-31 00:00:00+00:00,True,earlier_calendar_day,
+2010,13,FP1,2010-08-28 00:00:00+00:00,True,earlier_calendar_day,
+2010,14,FP1,2010-09-11 00:00:00+00:00,True,earlier_calendar_day,
+2010,15,FP1,2010-09-25 00:00:00+00:00,True,earlier_calendar_day,
+2010,16,FP1,2010-10-09 00:00:00+00:00,True,earlier_calendar_day,
+2010,17,FP1,2010-10-23 00:00:00+00:00,True,earlier_calendar_day,
+2010,18,FP1,2010-11-06 00:00:00+00:00,True,earlier_calendar_day,
+2010,19,FP1,2010-11-13 00:00:00+00:00,True,earlier_calendar_day,
+2011,1,FP1,2011-03-26 00:00:00+00:00,True,earlier_calendar_day,
+2011,2,FP1,2011-04-09 00:00:00+00:00,True,earlier_calendar_day,
+2011,3,FP1,2011-04-16 00:00:00+00:00,True,earlier_calendar_day,
+2011,4,FP1,2011-05-07 00:00:00+00:00,True,earlier_calendar_day,
+2011,5,FP1,2011-05-21 00:00:00+00:00,True,earlier_calendar_day,
+2011,6,FP1,2011-05-28 00:00:00+00:00,True,earlier_calendar_day,
+2011,7,FP1,2011-06-11 00:00:00+00:00,True,earlier_calendar_day,
+2011,8,FP1,2011-06-25 00:00:00+00:00,True,earlier_calendar_day,
+2011,9,FP1,2011-07-09 00:00:00+00:00,True,earlier_calendar_day,
+2011,10,FP1,2011-07-23 00:00:00+00:00,True,earlier_calendar_day,
+2011,11,FP1,2011-07-30 00:00:00+00:00,True,earlier_calendar_day,
+2011,12,FP1,2011-08-27 00:00:00+00:00,True,earlier_calendar_day,
+2011,13,FP1,2011-09-10 00:00:00+00:00,True,earlier_calendar_day,
+2011,14,FP1,2011-09-24 00:00:00+00:00,True,earlier_calendar_day,
+2011,15,FP1,2011-10-08 00:00:00+00:00,True,earlier_calendar_day,
+2011,16,FP1,2011-10-15 00:00:00+00:00,True,earlier_calendar_day,
+2011,17,FP1,2011-10-29 00:00:00+00:00,True,earlier_calendar_day,
+2011,18,FP1,2011-11-12 00:00:00+00:00,True,earlier_calendar_day,
+2011,19,FP1,2011-11-26 00:00:00+00:00,True,earlier_calendar_day,
+2012,1,FP1,2012-03-17 00:00:00+00:00,True,earlier_calendar_day,
+2012,2,FP1,2012-03-24 00:00:00+00:00,True,earlier_calendar_day,
+2012,3,FP1,2012-04-14 00:00:00+00:00,True,earlier_calendar_day,
+2012,4,FP1,2012-04-21 00:00:00+00:00,True,earlier_calendar_day,
+2012,5,FP1,2012-05-12 00:00:00+00:00,True,earlier_calendar_day,
+2012,6,FP1,2012-05-26 00:00:00+00:00,True,earlier_calendar_day,
+2012,7,FP1,2012-06-09 00:00:00+00:00,True,earlier_calendar_day,
+2012,8,FP1,2012-06-23 00:00:00+00:00,True,earlier_calendar_day,
+2012,9,FP1,2012-07-07 00:00:00+00:00,True,earlier_calendar_day,
+2012,10,FP1,2012-07-21 00:00:00+00:00,True,earlier_calendar_day,
+2012,11,FP1,2012-07-28 00:00:00+00:00,True,earlier_calendar_day,
+2012,12,FP1,2012-09-01 00:00:00+00:00,True,earlier_calendar_day,
+2012,13,FP1,2012-09-08 00:00:00+00:00,True,earlier_calendar_day,
+2012,14,FP1,2012-09-22 00:00:00+00:00,True,earlier_calendar_day,
+2012,15,FP1,2012-10-06 00:00:00+00:00,True,earlier_calendar_day,
+2012,16,FP1,2012-10-13 00:00:00+00:00,True,earlier_calendar_day,
+2012,17,FP1,2012-10-27 00:00:00+00:00,True,earlier_calendar_day,
+2012,18,FP1,2012-11-03 00:00:00+00:00,True,earlier_calendar_day,
+2012,19,FP1,2012-11-17 00:00:00+00:00,True,earlier_calendar_day,
+2012,20,FP1,2012-11-24 00:00:00+00:00,True,earlier_calendar_day,
+2013,1,FP1,2013-03-16 00:00:00+00:00,True,earlier_calendar_day,
+2013,2,FP1,2013-03-23 00:00:00+00:00,True,earlier_calendar_day,
+2013,3,FP1,2013-04-13 00:00:00+00:00,True,earlier_calendar_day,
+2013,4,FP1,2013-04-20 00:00:00+00:00,True,earlier_calendar_day,
+2013,5,FP1,2013-05-11 00:00:00+00:00,True,earlier_calendar_day,
+2013,6,FP1,2013-05-25 00:00:00+00:00,True,earlier_calendar_day,
+2013,7,FP1,2013-06-08 00:00:00+00:00,True,earlier_calendar_day,
+2013,8,FP1,2013-06-29 00:00:00+00:00,True,earlier_calendar_day,
+2013,9,FP1,2013-07-06 00:00:00+00:00,True,earlier_calendar_day,
+2013,10,FP1,2013-07-27 00:00:00+00:00,True,earlier_calendar_day,
+2013,11,FP1,2013-08-24 00:00:00+00:00,True,earlier_calendar_day,
+2013,12,FP1,2013-09-07 00:00:00+00:00,True,earlier_calendar_day,
+2013,13,FP1,2013-09-21 00:00:00+00:00,True,earlier_calendar_day,
+2013,14,FP1,2013-10-05 00:00:00+00:00,True,earlier_calendar_day,
+2013,15,FP1,2013-10-12 00:00:00+00:00,True,earlier_calendar_day,
+2013,16,FP1,2013-10-26 00:00:00+00:00,True,earlier_calendar_day,
+2013,17,FP1,2013-11-02 00:00:00+00:00,True,earlier_calendar_day,
+2013,18,FP1,2013-11-16 00:00:00+00:00,True,earlier_calendar_day,
+2013,19,FP1,2013-11-23 00:00:00+00:00,True,earlier_calendar_day,
+2014,1,FP1,2014-03-15 00:00:00+00:00,True,earlier_calendar_day,
+2014,2,FP1,2014-03-29 00:00:00+00:00,True,earlier_calendar_day,
+2014,3,FP1,2014-04-05 00:00:00+00:00,True,earlier_calendar_day,
+2014,4,FP1,2014-04-19 00:00:00+00:00,True,earlier_calendar_day,
+2014,5,FP1,2014-05-10 00:00:00+00:00,True,earlier_calendar_day,
+2014,6,FP1,2014-05-24 00:00:00+00:00,True,earlier_calendar_day,
+2014,7,FP1,2014-06-07 00:00:00+00:00,True,earlier_calendar_day,
+2014,8,FP1,2014-06-21 00:00:00+00:00,True,earlier_calendar_day,
+2014,9,FP1,2014-07-05 00:00:00+00:00,True,earlier_calendar_day,
+2014,10,FP1,2014-07-19 00:00:00+00:00,True,earlier_calendar_day,
+2014,11,FP1,2014-07-26 00:00:00+00:00,True,earlier_calendar_day,
+2014,12,FP1,2014-08-23 00:00:00+00:00,True,earlier_calendar_day,
+2014,13,FP1,2014-09-06 00:00:00+00:00,True,earlier_calendar_day,
+2014,14,FP1,2014-09-20 00:00:00+00:00,True,earlier_calendar_day,
+2014,15,FP1,2014-10-04 00:00:00+00:00,True,earlier_calendar_day,
+2014,16,FP1,2014-10-11 00:00:00+00:00,True,earlier_calendar_day,
+2014,17,FP1,2014-11-01 00:00:00+00:00,True,earlier_calendar_day,
+2014,18,FP1,2014-11-08 00:00:00+00:00,True,earlier_calendar_day,
+2014,19,FP1,2014-11-22 00:00:00+00:00,True,earlier_calendar_day,
+2015,1,FP1,2015-03-14 00:00:00+00:00,True,earlier_calendar_day,
+2015,2,FP1,2015-03-28 00:00:00+00:00,True,earlier_calendar_day,
+2015,3,FP1,2015-04-11 00:00:00+00:00,True,earlier_calendar_day,
+2015,4,FP1,2015-04-18 00:00:00+00:00,True,earlier_calendar_day,
+2015,5,FP1,2015-05-09 00:00:00+00:00,True,earlier_calendar_day,
+2015,6,FP1,2015-05-23 00:00:00+00:00,True,earlier_calendar_day,
+2015,7,FP1,2015-06-06 00:00:00+00:00,True,earlier_calendar_day,
+2015,8,FP1,2015-06-20 00:00:00+00:00,True,earlier_calendar_day,
+2015,9,FP1,2015-07-04 00:00:00+00:00,True,earlier_calendar_day,
+2015,10,FP1,2015-07-25 00:00:00+00:00,True,earlier_calendar_day,
+2015,11,FP1,2015-08-22 00:00:00+00:00,True,earlier_calendar_day,
+2015,12,FP1,2015-09-05 00:00:00+00:00,True,earlier_calendar_day,
+2015,13,FP1,2015-09-19 00:00:00+00:00,True,earlier_calendar_day,
+2015,14,FP1,2015-09-26 00:00:00+00:00,True,earlier_calendar_day,
+2015,15,FP1,2015-10-10 00:00:00+00:00,True,earlier_calendar_day,
+2015,16,FP1,2015-10-24 00:00:00+00:00,True,earlier_calendar_day,
+2015,17,FP1,2015-10-31 00:00:00+00:00,True,earlier_calendar_day,
+2015,18,FP1,2015-11-14 00:00:00+00:00,True,earlier_calendar_day,
+2015,19,FP1,2015-11-28 00:00:00+00:00,True,earlier_calendar_day,
+2016,1,FP1,2016-03-19 00:00:00+00:00,True,earlier_calendar_day,
+2016,2,FP1,2016-04-02 00:00:00+00:00,True,earlier_calendar_day,
+2016,3,FP1,2016-04-16 00:00:00+00:00,True,earlier_calendar_day,
+2016,4,FP1,2016-04-30 00:00:00+00:00,True,earlier_calendar_day,
+2016,5,FP1,2016-05-14 00:00:00+00:00,True,earlier_calendar_day,
+2016,6,FP1,2016-05-28 00:00:00+00:00,True,earlier_calendar_day,
+2016,7,FP1,2016-06-11 00:00:00+00:00,True,earlier_calendar_day,
+2016,8,FP1,2016-06-18 00:00:00+00:00,True,earlier_calendar_day,
+2016,9,FP1,2016-07-02 00:00:00+00:00,True,earlier_calendar_day,
+2016,10,FP1,2016-07-09 00:00:00+00:00,True,earlier_calendar_day,
+2016,11,FP1,2016-07-23 00:00:00+00:00,True,earlier_calendar_day,
+2016,12,FP1,2016-07-30 00:00:00+00:00,True,earlier_calendar_day,
+2016,13,FP1,2016-08-27 00:00:00+00:00,True,earlier_calendar_day,
+2016,14,FP1,2016-09-03 00:00:00+00:00,True,earlier_calendar_day,
+2016,15,FP1,2016-09-17 00:00:00+00:00,True,earlier_calendar_day,
+2016,16,FP1,2016-10-01 00:00:00+00:00,True,earlier_calendar_day,
+2016,17,FP1,2016-10-08 00:00:00+00:00,True,earlier_calendar_day,
+2016,18,FP1,2016-10-22 00:00:00+00:00,True,earlier_calendar_day,
+2016,19,FP1,2016-10-29 00:00:00+00:00,True,earlier_calendar_day,
+2016,20,FP1,2016-11-12 00:00:00+00:00,True,earlier_calendar_day,
+2016,21,FP1,2016-11-26 00:00:00+00:00,True,earlier_calendar_day,
+2017,1,FP1,2017-03-25 00:00:00+00:00,True,earlier_calendar_day,
+2017,2,FP1,2017-04-08 00:00:00+00:00,True,earlier_calendar_day,
+2017,3,FP1,2017-04-15 00:00:00+00:00,True,earlier_calendar_day,
+2017,4,FP1,2017-04-29 00:00:00+00:00,True,earlier_calendar_day,
+2017,5,FP1,2017-05-13 00:00:00+00:00,True,earlier_calendar_day,
+2017,6,FP1,2017-05-27 00:00:00+00:00,True,earlier_calendar_day,
+2017,7,FP1,2017-06-10 00:00:00+00:00,True,earlier_calendar_day,
+2017,8,FP1,2017-06-24 00:00:00+00:00,True,earlier_calendar_day,
+2017,9,FP1,2017-07-08 00:00:00+00:00,True,earlier_calendar_day,
+2017,10,FP1,2017-07-15 00:00:00+00:00,True,earlier_calendar_day,
+2017,11,FP1,2017-07-29 00:00:00+00:00,True,earlier_calendar_day,
+2017,12,FP1,2017-08-26 00:00:00+00:00,True,earlier_calendar_day,
+2017,13,FP1,2017-09-02 00:00:00+00:00,True,earlier_calendar_day,
+2017,14,FP1,2017-09-16 00:00:00+00:00,True,earlier_calendar_day,
+2017,15,FP1,2017-09-30 00:00:00+00:00,True,earlier_calendar_day,
+2017,16,FP1,2017-10-07 00:00:00+00:00,True,earlier_calendar_day,
+2017,17,FP1,2017-10-21 00:00:00+00:00,True,earlier_calendar_day,
+2017,18,FP1,2017-10-28 00:00:00+00:00,True,earlier_calendar_day,
+2017,19,FP1,2017-11-11 00:00:00+00:00,True,earlier_calendar_day,
+2017,20,FP1,2017-11-25 00:00:00+00:00,True,earlier_calendar_day,
+2018,1,FP1,2018-03-24 00:00:00+00:00,True,earlier_calendar_day,
+2018,2,FP1,2018-04-07 00:00:00+00:00,True,earlier_calendar_day,
+2018,3,FP1,2018-04-14 00:00:00+00:00,True,earlier_calendar_day,
+2018,4,FP1,2018-04-28 00:00:00+00:00,True,earlier_calendar_day,
+2018,5,FP1,2018-05-12 00:00:00+00:00,True,earlier_calendar_day,
+2018,6,FP1,2018-05-26 00:00:00+00:00,True,earlier_calendar_day,
+2018,7,FP1,2018-06-09 00:00:00+00:00,True,earlier_calendar_day,
+2018,8,FP1,2018-06-23 00:00:00+00:00,True,earlier_calendar_day,
+2018,9,FP1,2018-06-30 00:00:00+00:00,True,earlier_calendar_day,
+2018,10,FP1,2018-07-07 00:00:00+00:00,True,earlier_calendar_day,
+2018,11,FP1,2018-07-21 00:00:00+00:00,True,earlier_calendar_day,
+2018,12,FP1,2018-07-28 00:00:00+00:00,True,earlier_calendar_day,
+2018,13,FP1,2018-08-25 00:00:00+00:00,True,earlier_calendar_day,
+2018,14,FP1,2018-09-01 00:00:00+00:00,True,earlier_calendar_day,
+2018,15,FP1,2018-09-15 00:00:00+00:00,True,earlier_calendar_day,
+2018,16,FP1,2018-09-29 00:00:00+00:00,True,earlier_calendar_day,
+2018,17,FP1,2018-10-06 00:00:00+00:00,True,earlier_calendar_day,
+2018,18,FP1,2018-10-20 00:00:00+00:00,True,earlier_calendar_day,
+2018,19,FP1,2018-10-27 00:00:00+00:00,True,earlier_calendar_day,
+2018,20,FP1,2018-11-10 00:00:00+00:00,True,earlier_calendar_day,
+2018,21,FP1,2018-11-24 00:00:00+00:00,True,earlier_calendar_day,
+2019,1,FP1,2019-03-16 00:00:00+00:00,True,earlier_calendar_day,
+2019,2,FP1,2019-03-30 00:00:00+00:00,True,earlier_calendar_day,
+2019,3,FP1,2019-04-13 00:00:00+00:00,True,earlier_calendar_day,
+2019,4,FP1,2019-04-27 00:00:00+00:00,True,earlier_calendar_day,
+2019,5,FP1,2019-05-11 00:00:00+00:00,True,earlier_calendar_day,
+2019,6,FP1,2019-05-25 00:00:00+00:00,True,earlier_calendar_day,
+2019,7,FP1,2019-06-08 00:00:00+00:00,True,earlier_calendar_day,
+2019,8,FP1,2019-06-22 00:00:00+00:00,True,earlier_calendar_day,
+2019,9,FP1,2019-06-29 00:00:00+00:00,True,earlier_calendar_day,
+2019,10,FP1,2019-07-13 00:00:00+00:00,True,earlier_calendar_day,
+2019,11,FP1,2019-07-27 00:00:00+00:00,True,earlier_calendar_day,
+2019,12,FP1,2019-08-03 00:00:00+00:00,True,earlier_calendar_day,
+2019,13,FP1,2019-08-31 00:00:00+00:00,True,earlier_calendar_day,
+2019,14,FP1,2019-09-07 00:00:00+00:00,True,earlier_calendar_day,
+2019,15,FP1,2019-09-21 00:00:00+00:00,True,earlier_calendar_day,
+2019,16,FP1,2019-09-28 00:00:00+00:00,True,earlier_calendar_day,
+2019,17,FP1,2019-10-12 00:00:00+00:00,True,earlier_calendar_day,
+2019,18,FP1,2019-10-26 00:00:00+00:00,True,earlier_calendar_day,
+2019,19,FP1,2019-11-02 00:00:00+00:00,True,earlier_calendar_day,
+2019,20,FP1,2019-11-16 00:00:00+00:00,True,earlier_calendar_day,
+2019,21,FP1,2019-11-30 00:00:00+00:00,True,earlier_calendar_day,
+2020,1,FP1,2020-07-04 00:00:00+00:00,True,earlier_calendar_day,
+2020,2,FP1,2020-07-11 00:00:00+00:00,True,earlier_calendar_day,
+2020,3,FP1,2020-07-18 00:00:00+00:00,True,earlier_calendar_day,
+2020,4,FP1,2020-08-01 00:00:00+00:00,True,earlier_calendar_day,
+2020,5,FP1,2020-08-08 00:00:00+00:00,True,earlier_calendar_day,
+2020,6,FP1,2020-08-15 00:00:00+00:00,True,earlier_calendar_day,
+2020,7,FP1,2020-08-29 00:00:00+00:00,True,earlier_calendar_day,
+2020,8,FP1,2020-09-05 00:00:00+00:00,True,earlier_calendar_day,
+2020,9,FP1,2020-09-12 00:00:00+00:00,True,earlier_calendar_day,
+2020,10,FP1,2020-09-26 00:00:00+00:00,True,earlier_calendar_day,
+2020,11,FP1,2020-10-10 00:00:00+00:00,True,earlier_calendar_day,
+2020,12,FP1,2020-10-24 00:00:00+00:00,True,earlier_calendar_day,
+2020,13,FP1,2020-10-31 00:00:00+00:00,True,earlier_calendar_day,
+2020,14,FP1,2020-11-14 00:00:00+00:00,True,earlier_calendar_day,
+2020,15,FP1,2020-11-28 00:00:00+00:00,True,earlier_calendar_day,
+2020,16,FP1,2020-12-05 00:00:00+00:00,True,earlier_calendar_day,
+2020,17,FP1,2020-12-12 00:00:00+00:00,True,earlier_calendar_day,
+2021,1,FP1,2021-03-27 00:00:00+00:00,True,earlier_calendar_day,
+2021,2,FP1,2021-04-17 00:00:00+00:00,True,earlier_calendar_day,
+2021,3,FP1,2021-05-01 00:00:00+00:00,True,earlier_calendar_day,
+2021,4,FP1,2021-05-08 00:00:00+00:00,True,earlier_calendar_day,
+2021,5,FP1,2021-05-22 00:00:00+00:00,True,earlier_calendar_day,
+2021,6,FP1,2021-06-05 00:00:00+00:00,True,earlier_calendar_day,
+2021,7,FP1,2021-06-19 00:00:00+00:00,True,earlier_calendar_day,
+2021,8,FP1,2021-06-26 00:00:00+00:00,True,earlier_calendar_day,
+2021,9,FP1,2021-07-03 00:00:00+00:00,True,earlier_calendar_day,
+2021,10,FP1,2021-07-16 00:00:00+00:00,False,unverified_or_after_cutoff,
+2021,11,FP1,2021-07-31 00:00:00+00:00,True,earlier_calendar_day,
+2021,12,FP1,2021-08-28 00:00:00+00:00,True,earlier_calendar_day,
+2021,13,FP1,2021-09-04 00:00:00+00:00,True,earlier_calendar_day,
+2021,14,FP1,2021-09-10 00:00:00+00:00,False,unverified_or_after_cutoff,
+2021,15,FP1,2021-09-25 00:00:00+00:00,True,earlier_calendar_day,
+2021,16,FP1,2021-10-09 00:00:00+00:00,True,earlier_calendar_day,
+2021,17,FP1,2021-10-23 00:00:00+00:00,True,earlier_calendar_day,
+2021,18,FP1,2021-11-06 00:00:00+00:00,True,earlier_calendar_day,
+2021,19,FP1,2021-11-12 00:00:00+00:00,False,unverified_or_after_cutoff,
+2021,20,FP1,2021-11-20 00:00:00+00:00,True,earlier_calendar_day,
+2021,21,FP1,2021-12-04 00:00:00+00:00,True,earlier_calendar_day,
+2021,22,FP1,2021-12-11 00:00:00+00:00,True,earlier_calendar_day,
+2022,1,FP1,2022-03-19 15:00:00+00:00,True,earlier_calendar_day,
+2022,2,FP1,2022-03-26 17:00:00+00:00,True,earlier_calendar_day,
+2022,3,FP1,2022-04-09 06:00:00+00:00,True,earlier_calendar_day,
+2022,4,FP1,2022-04-22 15:00:00+00:00,False,unverified_or_after_cutoff,
+2022,5,FP1,2022-05-07 20:00:00+00:00,True,earlier_calendar_day,
+2022,6,FP1,2022-05-21 14:00:00+00:00,True,earlier_calendar_day,
+2022,7,FP1,2022-05-28 14:00:00+00:00,True,earlier_calendar_day,
+2022,8,FP1,2022-06-11 14:00:00+00:00,True,earlier_calendar_day,
+2022,9,FP1,2022-06-18 20:00:00+00:00,True,earlier_calendar_day,
+2022,10,FP1,2022-07-02 14:00:00+00:00,True,earlier_calendar_day,
+2022,11,FP1,2022-07-08 15:00:00+00:00,False,unverified_or_after_cutoff,
+2022,12,FP1,2022-07-23 14:00:00+00:00,True,earlier_calendar_day,
+2022,13,FP1,2022-07-30 14:00:00+00:00,True,earlier_calendar_day,
+2022,14,FP1,2022-08-27 14:00:00+00:00,True,earlier_calendar_day,
+2022,15,FP1,2022-09-03 13:00:00+00:00,True,earlier_calendar_day,
+2022,16,FP1,2022-09-10 14:00:00+00:00,True,earlier_calendar_day,
+2022,17,FP1,2022-10-01 13:00:00+00:00,True,earlier_calendar_day,
+2022,18,FP1,2022-10-08 06:00:00+00:00,True,earlier_calendar_day,
+2022,19,FP1,2022-10-22 22:00:00+00:00,True,earlier_calendar_day,
+2022,20,FP1,2022-10-29 20:00:00+00:00,True,earlier_calendar_day,
+2022,21,FP1,2022-11-11 19:00:00+00:00,False,unverified_or_after_cutoff,
+2022,22,FP1,2022-11-19 14:00:00+00:00,True,earlier_calendar_day,
+2023,1,FP1,2023-03-04 15:00:00+00:00,True,source_session_end,2023-03-03 12:30:00+00:00
+2023,2,FP1,2023-03-18 17:00:00+00:00,True,source_session_end,2023-03-17 14:30:00+00:00
+2023,3,FP1,2023-04-01 05:00:00+00:00,True,source_session_end,2023-03-31 03:30:00+00:00
+2023,4,FP1,2023-04-28 13:00:00+00:00,True,source_session_end,2023-04-28 10:30:00+00:00
+2023,5,FP1,2023-05-06 20:00:00+00:00,True,source_session_end,2023-05-05 19:00:00+00:00
+2023,6,FP1,2023-05-27 14:00:00+00:00,True,source_session_end,2023-05-26 12:30:00+00:00
+2023,7,FP1,2023-06-03 14:00:00+00:00,True,source_session_end,2023-06-02 12:30:00+00:00
+2023,8,FP1,2023-06-17 20:00:00+00:00,True,source_session_end,2023-06-16 18:30:00+00:00
+2023,9,FP1,2023-06-30 15:00:00+00:00,True,source_session_end,2023-06-30 12:30:00+00:00
+2023,10,FP1,2023-07-08 14:00:00+00:00,True,source_session_end,2023-07-07 12:30:00+00:00
+2023,11,FP1,2023-07-22 14:00:00+00:00,True,source_session_end,2023-07-21 12:30:00+00:00
+2023,12,FP1,2023-07-28 15:00:00+00:00,True,source_session_end,2023-07-28 12:30:00+00:00
+2023,13,FP1,2023-08-26 13:00:00+00:00,True,source_session_end,2023-08-25 11:30:00+00:00
+2023,14,FP1,2023-09-02 14:00:00+00:00,True,source_session_end,2023-09-01 12:30:00+00:00
+2023,15,FP1,2023-09-16 13:00:00+00:00,True,source_session_end,2023-09-15 10:30:00+00:00
+2023,16,FP1,2023-09-23 06:00:00+00:00,True,source_session_end,2023-09-22 03:30:00+00:00
+2023,17,FP1,2023-10-06 17:00:00+00:00,True,source_session_end,2023-10-06 14:30:00+00:00
+2023,18,FP1,2023-10-20 21:00:00+00:00,True,source_session_end,2023-10-20 18:30:00+00:00
+2023,19,FP1,2023-10-28 21:00:00+00:00,True,source_session_end,2023-10-27 19:30:00+00:00
+2023,20,FP1,2023-11-03 18:00:00+00:00,True,source_session_end,2023-11-03 15:30:00+00:00
+2023,21,FP1,2023-11-17 08:00:00+00:00,True,source_session_end,2023-11-17 05:30:00+00:00
+2023,22,FP1,2023-11-25 14:00:00+00:00,True,source_session_end,2023-11-24 10:30:00+00:00
+2024,1,FP1,2024-03-01 16:00:00+00:00,True,source_session_end,2024-02-29 12:30:00+00:00
+2024,2,FP1,2024-03-08 17:00:00+00:00,True,source_session_end,2024-03-07 14:30:00+00:00
+2024,3,FP1,2024-03-23 05:00:00+00:00,True,source_session_end,2024-03-22 02:30:00+00:00
+2024,4,FP1,2024-04-06 06:00:00+00:00,True,source_session_end,2024-04-05 03:30:00+00:00
+2024,5,FP1,2024-04-20 07:00:00+00:00,True,source_session_end,2024-04-19 04:30:00+00:00
+2024,6,FP1,2024-05-04 20:00:00+00:00,True,source_session_end,2024-05-03 17:30:00+00:00
+2024,7,FP1,2024-05-18 14:00:00+00:00,True,source_session_end,2024-05-17 12:30:00+00:00
+2024,8,FP1,2024-05-25 14:00:00+00:00,True,source_session_end,2024-05-24 12:30:00+00:00
+2024,9,FP1,2024-06-08 20:00:00+00:00,True,source_session_end,2024-06-07 18:30:00+00:00
+2024,10,FP1,2024-06-22 14:00:00+00:00,True,source_session_end,2024-06-21 12:30:00+00:00
+2024,11,FP1,2024-06-29 14:00:00+00:00,True,source_session_end,2024-06-28 11:30:00+00:00
+2024,12,FP1,2024-07-06 14:00:00+00:00,True,source_session_end,2024-07-05 12:30:00+00:00
+2024,13,FP1,2024-07-20 14:00:00+00:00,True,source_session_end,2024-07-19 12:30:00+00:00
+2024,14,FP1,2024-07-27 14:00:00+00:00,True,source_session_end,2024-07-26 12:30:00+00:00
+2024,15,FP1,2024-08-24 13:00:00+00:00,True,source_session_end,2024-08-23 11:30:00+00:00
+2024,16,FP1,2024-08-31 14:00:00+00:00,True,source_session_end,2024-08-30 12:30:00+00:00
+2024,17,FP1,2024-09-14 12:00:00+00:00,True,source_session_end,2024-09-13 10:30:00+00:00
+2024,18,FP1,2024-09-21 13:00:00+00:00,True,source_session_end,2024-09-20 10:30:00+00:00
+2024,19,FP1,2024-10-19 22:00:00+00:00,True,source_session_end,2024-10-18 18:30:00+00:00
+2024,20,FP1,2024-10-26 21:00:00+00:00,True,source_session_end,2024-10-25 19:30:00+00:00
+2024,21,FP1,2024-11-02 18:00:00+00:00,True,source_session_end,2024-11-01 15:30:00+00:00
+2024,22,FP1,2024-11-22 06:00:00+00:00,True,source_session_end,2024-11-22 03:30:00+00:00
+2024,23,FP1,2024-11-30 18:00:00+00:00,True,source_session_end,2024-11-29 14:30:00+00:00
+2024,24,FP1,2024-12-07 14:00:00+00:00,True,source_session_end,2024-12-06 10:30:00+00:00
+2025,1,FP1,2025-03-15 05:00:00+00:00,True,source_session_end,2025-03-14 02:30:00+00:00
+2025,2,FP1,2025-03-22 07:00:00+00:00,True,source_session_end,2025-03-21 04:30:00+00:00
+2025,3,FP1,2025-04-05 06:00:00+00:00,True,source_session_end,2025-04-04 03:30:00+00:00
+2025,4,FP1,2025-04-12 16:00:00+00:00,True,source_session_end,2025-04-11 12:30:00+00:00
+2025,5,FP1,2025-04-19 17:00:00+00:00,True,source_session_end,2025-04-18 14:30:00+00:00
+2025,6,FP1,2025-05-03 20:00:00+00:00,True,source_session_end,2025-05-02 17:30:00+00:00
+2025,7,FP1,2025-05-17 14:00:00+00:00,True,source_session_end,2025-05-16 12:30:00+00:00
+2025,8,FP1,2025-05-24 14:00:00+00:00,True,source_session_end,2025-05-23 12:30:00+00:00
+2025,9,FP1,2025-05-31 14:00:00+00:00,True,source_session_end,2025-05-30 12:30:00+00:00
+2025,10,FP1,2025-06-14 20:00:00+00:00,True,source_session_end,2025-06-13 18:30:00+00:00
+2025,11,FP1,2025-06-28 14:00:00+00:00,True,source_session_end,2025-06-27 12:30:00+00:00
+2025,12,FP1,2025-07-05 14:00:00+00:00,True,source_session_end,2025-07-04 12:30:00+00:00
+2025,13,FP1,2025-07-26 14:00:00+00:00,True,source_session_end,2025-07-25 11:30:00+00:00
+2025,14,FP1,2025-08-02 14:00:00+00:00,True,source_session_end,2025-08-01 12:30:00+00:00
+2025,15,FP1,2025-08-30 13:00:00+00:00,True,source_session_end,2025-08-29 11:30:00+00:00
+2025,16,FP1,2025-09-06 14:00:00+00:00,True,source_session_end,2025-09-05 12:30:00+00:00
+2025,17,FP1,2025-09-20 12:00:00+00:00,True,source_session_end,2025-09-19 09:30:00+00:00
+2025,18,FP1,2025-10-04 13:00:00+00:00,True,source_session_end,2025-10-03 10:30:00+00:00
+2025,19,FP1,2025-10-18 21:00:00+00:00,True,source_session_end,2025-10-17 18:30:00+00:00
+2025,20,FP1,2025-10-25 21:00:00+00:00,True,source_session_end,2025-10-24 19:30:00+00:00
+2025,21,FP1,2025-11-08 18:00:00+00:00,True,source_session_end,2025-11-07 15:30:00+00:00
+2025,22,FP1,2025-11-22 04:00:00+00:00,True,source_session_end,2025-11-21 01:30:00+00:00
+2025,23,FP1,2025-11-29 18:00:00+00:00,True,source_session_end,2025-11-28 14:30:00+00:00
+2025,24,FP1,2025-12-06 14:00:00+00:00,True,source_session_end,2025-12-05 10:30:00+00:00
+2026,1,FP1,2026-03-07 05:00:00+00:00,True,source_session_end,2026-03-06 02:30:00+00:00
+2026,2,FP1,2026-03-14 07:00:00+00:00,True,source_session_end,2026-03-13 04:30:00+00:00
+2026,3,FP1,2026-03-28 06:00:00+00:00,True,source_session_end,2026-03-27 03:30:00+00:00
+2026,4,FP1,2026-05-02 20:00:00+00:00,True,source_session_end,2026-05-01 17:30:00+00:00
+2026,5,FP1,2026-05-23 20:00:00+00:00,True,source_session_end,2026-05-22 17:30:00+00:00
+2026,6,FP1,2026-06-06 14:00:00+00:00,True,source_session_end,2026-06-05 12:30:00+00:00
+2026,7,FP1,2026-06-13 14:00:00+00:00,True,source_session_end,2026-06-12 12:30:00+00:00
+2026,8,FP1,2026-06-27 14:00:00+00:00,True,source_session_end,2026-06-26 12:30:00+00:00
+2026,9,FP1,2026-07-04 15:00:00+00:00,True,source_session_end,2026-07-03 12:30:00+00:00
+2026,10,FP1,2026-07-18 14:00:00+00:00,True,source_session_end,2026-07-17 12:30:00+00:00
+2026,11,FP1,2026-07-25 14:00:00+00:00,True,source_session_end,2026-07-24 12:30:00+00:00
+2026,12,FP1,2026-08-22 14:00:00+00:00,True,source_session_end,2026-08-21 11:30:00+00:00
+2026,13,FP1,2026-09-05 14:00:00+00:00,True,source_session_end,2026-09-04 11:30:00+00:00
+2026,14,FP1,2026-09-12 14:00:00+00:00,True,source_session_end,2026-09-11 12:30:00+00:00
+2026,15,FP1,2026-09-25 12:00:00+00:00,True,source_session_end,2026-09-24 09:30:00+00:00
+2026,16,FP1,2026-10-03 08:00:00+00:00,True,source_session_end,2026-10-02 05:30:00+00:00
+2026,17,FP1,2026-10-10 13:00:00+00:00,True,source_session_end,2026-10-09 09:30:00+00:00
+2026,18,FP1,2026-10-24 21:00:00+00:00,True,source_session_end,2026-10-23 18:30:00+00:00
+2026,19,FP1,2026-10-27 23:47:07.971884+00:00,False,unverified_or_after_cutoff,
+2026,20,FP1,2026-10-27 23:47:07.971884+00:00,False,unverified_or_after_cutoff,
+2026,21,FP1,2026-10-27 23:47:07.971884+00:00,False,unverified_or_after_cutoff,
+2026,22,FP1,2026-10-27 23:47:07.971884+00:00,False,unverified_or_after_cutoff,
+2026,23,FP1,2026-10-27 23:47:07.971884+00:00,False,unverified_or_after_cutoff,
+2010,1,FP2,2010-03-13 00:00:00+00:00,True,earlier_calendar_day,
+2010,2,FP2,2010-03-27 00:00:00+00:00,True,earlier_calendar_day,
+2010,3,FP2,2010-04-03 00:00:00+00:00,True,earlier_calendar_day,
+2010,4,FP2,2010-04-17 00:00:00+00:00,True,earlier_calendar_day,
+2010,5,FP2,2010-05-08 00:00:00+00:00,True,earlier_calendar_day,
+2010,6,FP2,2010-05-15 00:00:00+00:00,True,earlier_calendar_day,
+2010,7,FP2,2010-05-29 00:00:00+00:00,True,earlier_calendar_day,
+2010,8,FP2,2010-06-12 00:00:00+00:00,True,earlier_calendar_day,
+2010,9,FP2,2010-06-26 00:00:00+00:00,True,earlier_calendar_day,
+2010,10,FP2,2010-07-10 00:00:00+00:00,True,earlier_calendar_day,
+2010,11,FP2,2010-07-24 00:00:00+00:00,True,earlier_calendar_day,
+2010,12,FP2,2010-07-31 00:00:00+00:00,True,earlier_calendar_day,
+2010,13,FP2,2010-08-28 00:00:00+00:00,True,earlier_calendar_day,
+2010,14,FP2,2010-09-11 00:00:00+00:00,True,earlier_calendar_day,
+2010,15,FP2,2010-09-25 00:00:00+00:00,True,earlier_calendar_day,
+2010,16,FP2,2010-10-09 00:00:00+00:00,True,earlier_calendar_day,
+2010,17,FP2,2010-10-23 00:00:00+00:00,True,earlier_calendar_day,
+2010,18,FP2,2010-11-06 00:00:00+00:00,True,earlier_calendar_day,
+2010,19,FP2,2010-11-13 00:00:00+00:00,True,earlier_calendar_day,
+2011,1,FP2,2011-03-26 00:00:00+00:00,True,earlier_calendar_day,
+2011,2,FP2,2011-04-09 00:00:00+00:00,True,earlier_calendar_day,
+2011,3,FP2,2011-04-16 00:00:00+00:00,True,earlier_calendar_day,
+2011,4,FP2,2011-05-07 00:00:00+00:00,True,earlier_calendar_day,
+2011,5,FP2,2011-05-21 00:00:00+00:00,True,earlier_calendar_day,
+2011,6,FP2,2011-05-28 00:00:00+00:00,True,earlier_calendar_day,
+2011,7,FP2,2011-06-11 00:00:00+00:00,True,earlier_calendar_day,
+2011,8,FP2,2011-06-25 00:00:00+00:00,True,earlier_calendar_day,
+2011,9,FP2,2011-07-09 00:00:00+00:00,True,earlier_calendar_day,
+2011,10,FP2,2011-07-23 00:00:00+00:00,True,earlier_calendar_day,
+2011,11,FP2,2011-07-30 00:00:00+00:00,True,earlier_calendar_day,
+2011,12,FP2,2011-08-27 00:00:00+00:00,True,earlier_calendar_day,
+2011,13,FP2,2011-09-10 00:00:00+00:00,True,earlier_calendar_day,
+2011,14,FP2,2011-09-24 00:00:00+00:00,True,earlier_calendar_day,
+2011,15,FP2,2011-10-08 00:00:00+00:00,True,earlier_calendar_day,
+2011,16,FP2,2011-10-15 00:00:00+00:00,True,earlier_calendar_day,
+2011,17,FP2,2011-10-29 00:00:00+00:00,True,earlier_calendar_day,
+2011,18,FP2,2011-11-12 00:00:00+00:00,True,earlier_calendar_day,
+2011,19,FP2,2011-11-26 00:00:00+00:00,True,earlier_calendar_day,
+2012,1,FP2,2012-03-17 00:00:00+00:00,True,earlier_calendar_day,
+2012,2,FP2,2012-03-24 00:00:00+00:00,True,earlier_calendar_day,
+2012,3,FP2,2012-04-14 00:00:00+00:00,True,earlier_calendar_day,
+2012,4,FP2,2012-04-21 00:00:00+00:00,True,earlier_calendar_day,
+2012,5,FP2,2012-05-12 00:00:00+00:00,True,earlier_calendar_day,
+2012,6,FP2,2012-05-26 00:00:00+00:00,True,earlier_calendar_day,
+2012,7,FP2,2012-06-09 00:00:00+00:00,True,earlier_calendar_day,
+2012,8,FP2,2012-06-23 00:00:00+00:00,True,earlier_calendar_day,
+2012,9,FP2,2012-07-07 00:00:00+00:00,True,earlier_calendar_day,
+2012,10,FP2,2012-07-21 00:00:00+00:00,True,earlier_calendar_day,
+2012,11,FP2,2012-07-28 00:00:00+00:00,True,earlier_calendar_day,
+2012,12,FP2,2012-09-01 00:00:00+00:00,True,earlier_calendar_day,
+2012,13,FP2,2012-09-08 00:00:00+00:00,True,earlier_calendar_day,
+2012,14,FP2,2012-09-22 00:00:00+00:00,True,earlier_calendar_day,
+2012,15,FP2,2012-10-06 00:00:00+00:00,True,earlier_calendar_day,
+2012,16,FP2,2012-10-13 00:00:00+00:00,True,earlier_calendar_day,
+2012,17,FP2,2012-10-27 00:00:00+00:00,True,earlier_calendar_day,
+2012,18,FP2,2012-11-03 00:00:00+00:00,True,earlier_calendar_day,
+2012,19,FP2,2012-11-17 00:00:00+00:00,True,earlier_calendar_day,
+2012,20,FP2,2012-11-24 00:00:00+00:00,True,earlier_calendar_day,
+2013,1,FP2,2013-03-16 00:00:00+00:00,True,earlier_calendar_day,
+2013,2,FP2,2013-03-23 00:00:00+00:00,True,earlier_calendar_day,
+2013,3,FP2,2013-04-13 00:00:00+00:00,True,earlier_calendar_day,
+2013,4,FP2,2013-04-20 00:00:00+00:00,True,earlier_calendar_day,
+2013,5,FP2,2013-05-11 00:00:00+00:00,True,earlier_calendar_day,
+2013,6,FP2,2013-05-25 00:00:00+00:00,True,earlier_calendar_day,
+2013,7,FP2,2013-06-08 00:00:00+00:00,True,earlier_calendar_day,
+2013,8,FP2,2013-06-29 00:00:00+00:00,True,earlier_calendar_day,
+2013,9,FP2,2013-07-06 00:00:00+00:00,True,earlier_calendar_day,
+2013,10,FP2,2013-07-27 00:00:00+00:00,True,earlier_calendar_day,
+2013,11,FP2,2013-08-24 00:00:00+00:00,True,earlier_calendar_day,
+2013,12,FP2,2013-09-07 00:00:00+00:00,True,earlier_calendar_day,
+2013,13,FP2,2013-09-21 00:00:00+00:00,True,earlier_calendar_day,
+2013,14,FP2,2013-10-05 00:00:00+00:00,True,earlier_calendar_day,
+2013,15,FP2,2013-10-12 00:00:00+00:00,True,earlier_calendar_day,
+2013,16,FP2,2013-10-26 00:00:00+00:00,True,earlier_calendar_day,
+2013,17,FP2,2013-11-02 00:00:00+00:00,True,earlier_calendar_day,
+2013,18,FP2,2013-11-16 00:00:00+00:00,True,earlier_calendar_day,
+2013,19,FP2,2013-11-23 00:00:00+00:00,True,earlier_calendar_day,
+2014,1,FP2,2014-03-15 00:00:00+00:00,True,earlier_calendar_day,
+2014,2,FP2,2014-03-29 00:00:00+00:00,True,earlier_calendar_day,
+2014,3,FP2,2014-04-05 00:00:00+00:00,True,earlier_calendar_day,
+2014,4,FP2,2014-04-19 00:00:00+00:00,True,earlier_calendar_day,
+2014,5,FP2,2014-05-10 00:00:00+00:00,True,earlier_calendar_day,
+2014,6,FP2,2014-05-24 00:00:00+00:00,True,earlier_calendar_day,
+2014,7,FP2,2014-06-07 00:00:00+00:00,True,earlier_calendar_day,
+2014,8,FP2,2014-06-21 00:00:00+00:00,True,earlier_calendar_day,
+2014,9,FP2,2014-07-05 00:00:00+00:00,True,earlier_calendar_day,
+2014,10,FP2,2014-07-19 00:00:00+00:00,True,earlier_calendar_day,
+2014,11,FP2,2014-07-26 00:00:00+00:00,True,earlier_calendar_day,
+2014,12,FP2,2014-08-23 00:00:00+00:00,True,earlier_calendar_day,
+2014,13,FP2,2014-09-06 00:00:00+00:00,True,earlier_calendar_day,
+2014,14,FP2,2014-09-20 00:00:00+00:00,True,earlier_calendar_day,
+2014,15,FP2,2014-10-04 00:00:00+00:00,True,earlier_calendar_day,
+2014,16,FP2,2014-10-11 00:00:00+00:00,True,earlier_calendar_day,
+2014,17,FP2,2014-11-01 00:00:00+00:00,True,earlier_calendar_day,
+2014,18,FP2,2014-11-08 00:00:00+00:00,True,earlier_calendar_day,
+2014,19,FP2,2014-11-22 00:00:00+00:00,True,earlier_calendar_day,
+2015,1,FP2,2015-03-14 00:00:00+00:00,True,earlier_calendar_day,
+2015,2,FP2,2015-03-28 00:00:00+00:00,True,earlier_calendar_day,
+2015,3,FP2,2015-04-11 00:00:00+00:00,True,earlier_calendar_day,
+2015,4,FP2,2015-04-18 00:00:00+00:00,True,earlier_calendar_day,
+2015,5,FP2,2015-05-09 00:00:00+00:00,True,earlier_calendar_day,
+2015,6,FP2,2015-05-23 00:00:00+00:00,True,earlier_calendar_day,
+2015,7,FP2,2015-06-06 00:00:00+00:00,True,earlier_calendar_day,
+2015,8,FP2,2015-06-20 00:00:00+00:00,True,earlier_calendar_day,
+2015,9,FP2,2015-07-04 00:00:00+00:00,True,earlier_calendar_day,
+2015,10,FP2,2015-07-25 00:00:00+00:00,True,earlier_calendar_day,
+2015,11,FP2,2015-08-22 00:00:00+00:00,True,earlier_calendar_day,
+2015,12,FP2,2015-09-05 00:00:00+00:00,True,earlier_calendar_day,
+2015,13,FP2,2015-09-19 00:00:00+00:00,True,earlier_calendar_day,
+2015,14,FP2,2015-09-26 00:00:00+00:00,True,earlier_calendar_day,
+2015,15,FP2,2015-10-10 00:00:00+00:00,True,earlier_calendar_day,
+2015,16,FP2,2015-10-24 00:00:00+00:00,True,earlier_calendar_day,
+2015,17,FP2,2015-10-31 00:00:00+00:00,True,earlier_calendar_day,
+2015,18,FP2,2015-11-14 00:00:00+00:00,True,earlier_calendar_day,
+2015,19,FP2,2015-11-28 00:00:00+00:00,True,earlier_calendar_day,
+2016,1,FP2,2016-03-19 00:00:00+00:00,True,earlier_calendar_day,
+2016,2,FP2,2016-04-02 00:00:00+00:00,True,earlier_calendar_day,
+2016,3,FP2,2016-04-16 00:00:00+00:00,True,earlier_calendar_day,
+2016,4,FP2,2016-04-30 00:00:00+00:00,True,earlier_calendar_day,
+2016,5,FP2,2016-05-14 00:00:00+00:00,True,earlier_calendar_day,
+2016,6,FP2,2016-05-28 00:00:00+00:00,True,earlier_calendar_day,
+2016,7,FP2,2016-06-11 00:00:00+00:00,True,earlier_calendar_day,
+2016,8,FP2,2016-06-18 00:00:00+00:00,True,earlier_calendar_day,
+2016,9,FP2,2016-07-02 00:00:00+00:00,True,earlier_calendar_day,
+2016,10,FP2,2016-07-09 00:00:00+00:00,True,earlier_calendar_day,
+2016,11,FP2,2016-07-23 00:00:00+00:00,True,earlier_calendar_day,
+2016,12,FP2,2016-07-30 00:00:00+00:00,True,earlier_calendar_day,
+2016,13,FP2,2016-08-27 00:00:00+00:00,True,earlier_calendar_day,
+2016,14,FP2,2016-09-03 00:00:00+00:00,True,earlier_calendar_day,
+2016,15,FP2,2016-09-17 00:00:00+00:00,True,earlier_calendar_day,
+2016,16,FP2,2016-10-01 00:00:00+00:00,True,earlier_calendar_day,
+2016,17,FP2,2016-10-08 00:00:00+00:00,True,earlier_calendar_day,
+2016,18,FP2,2016-10-22 00:00:00+00:00,True,earlier_calendar_day,
+2016,19,FP2,2016-10-29 00:00:00+00:00,True,earlier_calendar_day,
+2016,20,FP2,2016-11-12 00:00:00+00:00,True,earlier_calendar_day,
+2016,21,FP2,2016-11-26 00:00:00+00:00,True,earlier_calendar_day,
+2017,1,FP2,2017-03-25 00:00:00+00:00,True,earlier_calendar_day,
+2017,2,FP2,2017-04-08 00:00:00+00:00,True,earlier_calendar_day,
+2017,3,FP2,2017-04-15 00:00:00+00:00,True,earlier_calendar_day,
+2017,4,FP2,2017-04-29 00:00:00+00:00,True,earlier_calendar_day,
+2017,5,FP2,2017-05-13 00:00:00+00:00,True,earlier_calendar_day,
+2017,6,FP2,2017-05-27 00:00:00+00:00,True,earlier_calendar_day,
+2017,7,FP2,2017-06-10 00:00:00+00:00,True,earlier_calendar_day,
+2017,8,FP2,2017-06-24 00:00:00+00:00,True,earlier_calendar_day,
+2017,9,FP2,2017-07-08 00:00:00+00:00,True,earlier_calendar_day,
+2017,10,FP2,2017-07-15 00:00:00+00:00,True,earlier_calendar_day,
+2017,11,FP2,2017-07-29 00:00:00+00:00,True,earlier_calendar_day,
+2017,12,FP2,2017-08-26 00:00:00+00:00,True,earlier_calendar_day,
+2017,13,FP2,2017-09-02 00:00:00+00:00,True,earlier_calendar_day,
+2017,14,FP2,2017-09-16 00:00:00+00:00,True,earlier_calendar_day,
+2017,15,FP2,2017-09-30 00:00:00+00:00,True,earlier_calendar_day,
+2017,16,FP2,2017-10-07 00:00:00+00:00,True,earlier_calendar_day,
+2017,17,FP2,2017-10-21 00:00:00+00:00,True,earlier_calendar_day,
+2017,18,FP2,2017-10-28 00:00:00+00:00,True,earlier_calendar_day,
+2017,19,FP2,2017-11-11 00:00:00+00:00,True,earlier_calendar_day,
+2017,20,FP2,2017-11-25 00:00:00+00:00,True,earlier_calendar_day,
+2018,1,FP2,2018-03-24 00:00:00+00:00,True,earlier_calendar_day,
+2018,2,FP2,2018-04-07 00:00:00+00:00,True,earlier_calendar_day,
+2018,3,FP2,2018-04-14 00:00:00+00:00,True,earlier_calendar_day,
+2018,4,FP2,2018-04-28 00:00:00+00:00,True,earlier_calendar_day,
+2018,5,FP2,2018-05-12 00:00:00+00:00,True,earlier_calendar_day,
+2018,6,FP2,2018-05-26 00:00:00+00:00,True,earlier_calendar_day,
+2018,7,FP2,2018-06-09 00:00:00+00:00,True,earlier_calendar_day,
+2018,8,FP2,2018-06-23 00:00:00+00:00,True,earlier_calendar_day,
+2018,9,FP2,2018-06-30 00:00:00+00:00,True,earlier_calendar_day,
+2018,10,FP2,2018-07-07 00:00:00+00:00,True,earlier_calendar_day,
+2018,11,FP2,2018-07-21 00:00:00+00:00,True,earlier_calendar_day,
+2018,12,FP2,2018-07-28 00:00:00+00:00,True,earlier_calendar_day,
+2018,13,FP2,2018-08-25 00:00:00+00:00,True,earlier_calendar_day,
+2018,14,FP2,2018-09-01 00:00:00+00:00,True,earlier_calendar_day,
+2018,15,FP2,2018-09-15 00:00:00+00:00,True,earlier_calendar_day,
+2018,16,FP2,2018-09-29 00:00:00+00:00,True,earlier_calendar_day,
+2018,17,FP2,2018-10-06 00:00:00+00:00,True,earlier_calendar_day,
+2018,18,FP2,2018-10-20 00:00:00+00:00,True,earlier_calendar_day,
+2018,19,FP2,2018-10-27 00:00:00+00:00,True,earlier_calendar_day,
+2018,20,FP2,2018-11-10 00:00:00+00:00,True,earlier_calendar_day,
+2018,21,FP2,2018-11-24 00:00:00+00:00,True,earlier_calendar_day,
+2019,1,FP2,2019-03-16 00:00:00+00:00,True,earlier_calendar_day,
+2019,2,FP2,2019-03-30 00:00:00+00:00,True,earlier_calendar_day,
+2019,3,FP2,2019-04-13 00:00:00+00:00,True,earlier_calendar_day,
+2019,4,FP2,2019-04-27 00:00:00+00:00,True,earlier_calendar_day,
+2019,5,FP2,2019-05-11 00:00:00+00:00,True,earlier_calendar_day,
+2019,6,FP2,2019-05-25 00:00:00+00:00,True,earlier_calendar_day,
+2019,7,FP2,2019-06-08 00:00:00+00:00,True,earlier_calendar_day,
+2019,8,FP2,2019-06-22 00:00:00+00:00,True,earlier_calendar_day,
+2019,9,FP2,2019-06-29 00:00:00+00:00,True,earlier_calendar_day,
+2019,10,FP2,2019-07-13 00:00:00+00:00,True,earlier_calendar_day,
+2019,11,FP2,2019-07-27 00:00:00+00:00,True,earlier_calendar_day,
+2019,12,FP2,2019-08-03 00:00:00+00:00,True,earlier_calendar_day,
+2019,13,FP2,2019-08-31 00:00:00+00:00,True,earlier_calendar_day,
+2019,14,FP2,2019-09-07 00:00:00+00:00,True,earlier_calendar_day,
+2019,15,FP2,2019-09-21 00:00:00+00:00,True,earlier_calendar_day,
+2019,16,FP2,2019-09-28 00:00:00+00:00,True,earlier_calendar_day,
+2019,17,FP2,2019-10-12 00:00:00+00:00,True,earlier_calendar_day,
+2019,18,FP2,2019-10-26 00:00:00+00:00,True,earlier_calendar_day,
+2019,19,FP2,2019-11-02 00:00:00+00:00,True,earlier_calendar_day,
+2019,20,FP2,2019-11-16 00:00:00+00:00,True,earlier_calendar_day,
+2019,21,FP2,2019-11-30 00:00:00+00:00,True,earlier_calendar_day,
+2020,1,FP2,2020-07-04 00:00:00+00:00,True,earlier_calendar_day,
+2020,2,FP2,2020-07-11 00:00:00+00:00,True,earlier_calendar_day,
+2020,3,FP2,2020-07-18 00:00:00+00:00,True,earlier_calendar_day,
+2020,4,FP2,2020-08-01 00:00:00+00:00,True,earlier_calendar_day,
+2020,5,FP2,2020-08-08 00:00:00+00:00,True,earlier_calendar_day,
+2020,6,FP2,2020-08-15 00:00:00+00:00,True,earlier_calendar_day,
+2020,7,FP2,2020-08-29 00:00:00+00:00,True,earlier_calendar_day,
+2020,8,FP2,2020-09-05 00:00:00+00:00,True,earlier_calendar_day,
+2020,9,FP2,2020-09-12 00:00:00+00:00,True,earlier_calendar_day,
+2020,10,FP2,2020-09-26 00:00:00+00:00,True,earlier_calendar_day,
+2020,11,FP2,2020-10-10 00:00:00+00:00,True,earlier_calendar_day,
+2020,12,FP2,2020-10-24 00:00:00+00:00,True,earlier_calendar_day,
+2020,13,FP2,2020-10-31 00:00:00+00:00,True,earlier_calendar_day,
+2020,14,FP2,2020-11-14 00:00:00+00:00,True,earlier_calendar_day,
+2020,15,FP2,2020-11-28 00:00:00+00:00,True,earlier_calendar_day,
+2020,16,FP2,2020-12-05 00:00:00+00:00,True,earlier_calendar_day,
+2020,17,FP2,2020-12-12 00:00:00+00:00,True,earlier_calendar_day,
+2021,1,FP2,2021-03-27 00:00:00+00:00,True,earlier_calendar_day,
+2021,2,FP2,2021-04-17 00:00:00+00:00,True,earlier_calendar_day,
+2021,3,FP2,2021-05-01 00:00:00+00:00,True,earlier_calendar_day,
+2021,4,FP2,2021-05-08 00:00:00+00:00,True,earlier_calendar_day,
+2021,5,FP2,2021-05-22 00:00:00+00:00,True,earlier_calendar_day,
+2021,6,FP2,2021-06-05 00:00:00+00:00,True,earlier_calendar_day,
+2021,7,FP2,2021-06-19 00:00:00+00:00,True,earlier_calendar_day,
+2021,8,FP2,2021-06-26 00:00:00+00:00,True,earlier_calendar_day,
+2021,9,FP2,2021-07-03 00:00:00+00:00,True,earlier_calendar_day,
+2021,10,FP2,2021-07-16 00:00:00+00:00,False,unverified_or_after_cutoff,
+2021,11,FP2,2021-07-31 00:00:00+00:00,True,earlier_calendar_day,
+2021,12,FP2,2021-08-28 00:00:00+00:00,True,earlier_calendar_day,
+2021,13,FP2,2021-09-04 00:00:00+00:00,True,earlier_calendar_day,
+2021,14,FP2,2021-09-10 00:00:00+00:00,False,unverified_or_after_cutoff,
+2021,15,FP2,2021-09-25 00:00:00+00:00,True,earlier_calendar_day,
+2021,16,FP2,2021-10-09 00:00:00+00:00,True,earlier_calendar_day,
+2021,17,FP2,2021-10-23 00:00:00+00:00,True,earlier_calendar_day,
+2021,18,FP2,2021-11-06 00:00:00+00:00,True,earlier_calendar_day,
+2021,19,FP2,2021-11-12 00:00:00+00:00,False,unverified_or_after_cutoff,
+2021,20,FP2,2021-11-20 00:00:00+00:00,True,earlier_calendar_day,
+2021,21,FP2,2021-12-04 00:00:00+00:00,True,earlier_calendar_day,
+2021,22,FP2,2021-12-11 00:00:00+00:00,True,earlier_calendar_day,
+2022,1,FP2,2022-03-19 15:00:00+00:00,True,earlier_calendar_day,
+2022,2,FP2,2022-03-26 17:00:00+00:00,True,earlier_calendar_day,
+2022,3,FP2,2022-04-09 06:00:00+00:00,True,earlier_calendar_day,
+2022,4,FP2,2022-04-22 15:00:00+00:00,False,unverified_or_after_cutoff,
+2022,5,FP2,2022-05-07 20:00:00+00:00,True,earlier_calendar_day,
+2022,6,FP2,2022-05-21 14:00:00+00:00,True,earlier_calendar_day,
+2022,7,FP2,2022-05-28 14:00:00+00:00,True,earlier_calendar_day,
+2022,8,FP2,2022-06-11 14:00:00+00:00,True,earlier_calendar_day,
+2022,9,FP2,2022-06-18 20:00:00+00:00,True,earlier_calendar_day,
+2022,10,FP2,2022-07-02 14:00:00+00:00,True,earlier_calendar_day,
+2022,11,FP2,2022-07-08 15:00:00+00:00,False,unverified_or_after_cutoff,
+2022,12,FP2,2022-07-23 14:00:00+00:00,True,earlier_calendar_day,
+2022,13,FP2,2022-07-30 14:00:00+00:00,True,earlier_calendar_day,
+2022,14,FP2,2022-08-27 14:00:00+00:00,True,earlier_calendar_day,
+2022,15,FP2,2022-09-03 13:00:00+00:00,True,earlier_calendar_day,
+2022,16,FP2,2022-09-10 14:00:00+00:00,True,earlier_calendar_day,
+2022,17,FP2,2022-10-01 13:00:00+00:00,True,earlier_calendar_day,
+2022,18,FP2,2022-10-08 06:00:00+00:00,True,earlier_calendar_day,
+2022,19,FP2,2022-10-22 22:00:00+00:00,True,earlier_calendar_day,
+2022,20,FP2,2022-10-29 20:00:00+00:00,True,earlier_calendar_day,
+2022,21,FP2,2022-11-11 19:00:00+00:00,False,unverified_or_after_cutoff,
+2022,22,FP2,2022-11-19 14:00:00+00:00,True,earlier_calendar_day,
+2023,1,FP2,2023-03-04 15:00:00+00:00,True,source_session_end,2023-03-03 16:00:00+00:00
+2023,2,FP2,2023-03-18 17:00:00+00:00,True,source_session_end,2023-03-17 18:00:00+00:00
+2023,3,FP2,2023-04-01 05:00:00+00:00,True,source_session_end,2023-03-31 07:00:00+00:00
+2023,4,FP2,2023-04-28 13:00:00+00:00,False,unverified_or_after_cutoff,
+2023,5,FP2,2023-05-06 20:00:00+00:00,True,source_session_end,2023-05-05 22:30:00+00:00
+2023,6,FP2,2023-05-27 14:00:00+00:00,True,source_session_end,2023-05-26 16:00:00+00:00
+2023,7,FP2,2023-06-03 14:00:00+00:00,True,source_session_end,2023-06-02 16:00:00+00:00
+2023,8,FP2,2023-06-17 20:00:00+00:00,True,source_session_end,2023-06-16 22:00:00+00:00
+2023,9,FP2,2023-06-30 15:00:00+00:00,False,unverified_or_after_cutoff,
+2023,10,FP2,2023-07-08 14:00:00+00:00,True,source_session_end,2023-07-07 16:00:00+00:00
+2023,11,FP2,2023-07-22 14:00:00+00:00,True,source_session_end,2023-07-21 16:00:00+00:00
+2023,12,FP2,2023-07-28 15:00:00+00:00,False,unverified_or_after_cutoff,
+2023,13,FP2,2023-08-26 13:00:00+00:00,True,source_session_end,2023-08-25 15:00:00+00:00
+2023,14,FP2,2023-09-02 14:00:00+00:00,True,source_session_end,2023-09-01 16:00:00+00:00
+2023,15,FP2,2023-09-16 13:00:00+00:00,True,source_session_end,2023-09-15 14:00:00+00:00
+2023,16,FP2,2023-09-23 06:00:00+00:00,True,source_session_end,2023-09-22 07:00:00+00:00
+2023,17,FP2,2023-10-06 17:00:00+00:00,False,unverified_or_after_cutoff,
+2023,18,FP2,2023-10-20 21:00:00+00:00,False,unverified_or_after_cutoff,
+2023,19,FP2,2023-10-28 21:00:00+00:00,True,source_session_end,2023-10-27 23:00:00+00:00
+2023,20,FP2,2023-11-03 18:00:00+00:00,False,unverified_or_after_cutoff,
+2023,21,FP2,2023-11-17 08:00:00+00:00,False,source_session_end,2023-11-17 09:00:00+00:00
+2023,22,FP2,2023-11-25 14:00:00+00:00,True,source_session_end,2023-11-24 14:00:00+00:00
+2024,1,FP2,2024-03-01 16:00:00+00:00,True,source_session_end,2024-02-29 16:00:00+00:00
+2024,2,FP2,2024-03-08 17:00:00+00:00,True,source_session_end,2024-03-07 18:10:00+00:00
+2024,3,FP2,2024-03-23 05:00:00+00:00,True,source_session_end,2024-03-22 06:00:00+00:00
+2024,4,FP2,2024-04-06 06:00:00+00:00,True,source_session_end,2024-04-05 07:00:00+00:00
+2024,5,FP2,2024-04-20 07:00:00+00:00,False,unverified_or_after_cutoff,
+2024,6,FP2,2024-05-04 20:00:00+00:00,False,unverified_or_after_cutoff,
+2024,7,FP2,2024-05-18 14:00:00+00:00,True,source_session_end,2024-05-17 16:00:00+00:00
+2024,8,FP2,2024-05-25 14:00:00+00:00,True,source_session_end,2024-05-24 16:00:00+00:00
+2024,9,FP2,2024-06-08 20:00:00+00:00,True,source_session_end,2024-06-07 22:00:00+00:00
+2024,10,FP2,2024-06-22 14:00:00+00:00,True,source_session_end,2024-06-21 16:00:00+00:00
+2024,11,FP2,2024-06-29 14:00:00+00:00,False,unverified_or_after_cutoff,
+2024,12,FP2,2024-07-06 14:00:00+00:00,True,source_session_end,2024-07-05 16:00:00+00:00
+2024,13,FP2,2024-07-20 14:00:00+00:00,True,source_session_end,2024-07-19 16:00:00+00:00
+2024,14,FP2,2024-07-27 14:00:00+00:00,True,source_session_end,2024-07-26 16:00:00+00:00
+2024,15,FP2,2024-08-24 13:00:00+00:00,True,source_session_end,2024-08-23 15:00:00+00:00
+2024,16,FP2,2024-08-31 14:00:00+00:00,True,source_session_end,2024-08-30 16:00:00+00:00
+2024,17,FP2,2024-09-14 12:00:00+00:00,True,source_session_end,2024-09-13 14:00:00+00:00
+2024,18,FP2,2024-09-21 13:00:00+00:00,True,source_session_end,2024-09-20 14:00:00+00:00
+2024,19,FP2,2024-10-19 22:00:00+00:00,False,unverified_or_after_cutoff,
+2024,20,FP2,2024-10-26 21:00:00+00:00,True,source_session_end,2024-10-25 23:30:00+00:00
+2024,21,FP2,2024-11-02 18:00:00+00:00,False,unverified_or_after_cutoff,
+2024,22,FP2,2024-11-22 06:00:00+00:00,False,source_session_end,2024-11-22 07:00:00+00:00
+2024,23,FP2,2024-11-30 18:00:00+00:00,False,unverified_or_after_cutoff,
+2024,24,FP2,2024-12-07 14:00:00+00:00,True,source_session_end,2024-12-06 14:00:00+00:00
+2025,1,FP2,2025-03-15 05:00:00+00:00,True,source_session_end,2025-03-14 06:00:00+00:00
+2025,2,FP2,2025-03-22 07:00:00+00:00,False,unverified_or_after_cutoff,
+2025,3,FP2,2025-04-05 06:00:00+00:00,True,source_session_end,2025-04-04 07:00:00+00:00
+2025,4,FP2,2025-04-12 16:00:00+00:00,True,source_session_end,2025-04-11 16:00:00+00:00
+2025,5,FP2,2025-04-19 17:00:00+00:00,True,source_session_end,2025-04-18 18:00:00+00:00
+2025,6,FP2,2025-05-03 20:00:00+00:00,False,unverified_or_after_cutoff,
+2025,7,FP2,2025-05-17 14:00:00+00:00,True,source_session_end,2025-05-16 16:00:00+00:00
+2025,8,FP2,2025-05-24 14:00:00+00:00,True,source_session_end,2025-05-23 16:00:00+00:00
+2025,9,FP2,2025-05-31 14:00:00+00:00,True,source_session_end,2025-05-30 16:00:00+00:00
+2025,10,FP2,2025-06-14 20:00:00+00:00,True,source_session_end,2025-06-13 22:00:00+00:00
+2025,11,FP2,2025-06-28 14:00:00+00:00,True,source_session_end,2025-06-27 16:00:00+00:00
+2025,12,FP2,2025-07-05 14:00:00+00:00,True,source_session_end,2025-07-04 16:00:00+00:00
+2025,13,FP2,2025-07-26 14:00:00+00:00,False,unverified_or_after_cutoff,
+2025,14,FP2,2025-08-02 14:00:00+00:00,True,source_session_end,2025-08-01 16:00:00+00:00
+2025,15,FP2,2025-08-30 13:00:00+00:00,True,source_session_end,2025-08-29 15:00:00+00:00
+2025,16,FP2,2025-09-06 14:00:00+00:00,True,source_session_end,2025-09-05 16:00:00+00:00
+2025,17,FP2,2025-09-20 12:00:00+00:00,True,source_session_end,2025-09-19 13:00:00+00:00
+2025,18,FP2,2025-10-04 13:00:00+00:00,True,source_session_end,2025-10-03 14:00:00+00:00
+2025,19,FP2,2025-10-18 21:00:00+00:00,False,unverified_or_after_cutoff,
+2025,20,FP2,2025-10-25 21:00:00+00:00,True,source_session_end,2025-10-24 23:00:00+00:00
+2025,21,FP2,2025-11-08 18:00:00+00:00,False,unverified_or_after_cutoff,
+2025,22,FP2,2025-11-22 04:00:00+00:00,True,source_session_end,2025-11-21 05:00:00+00:00
+2025,23,FP2,2025-11-29 18:00:00+00:00,False,unverified_or_after_cutoff,
+2025,24,FP2,2025-12-06 14:00:00+00:00,True,source_session_end,2025-12-05 14:00:00+00:00
+2026,1,FP2,2026-03-07 05:00:00+00:00,True,source_session_end,2026-03-06 06:00:00+00:00
+2026,2,FP2,2026-03-14 07:00:00+00:00,False,unverified_or_after_cutoff,
+2026,3,FP2,2026-03-28 06:00:00+00:00,True,source_session_end,2026-03-27 07:00:00+00:00
+2026,4,FP2,2026-05-02 20:00:00+00:00,False,unverified_or_after_cutoff,
+2026,5,FP2,2026-05-23 20:00:00+00:00,False,unverified_or_after_cutoff,
+2026,6,FP2,2026-06-06 14:00:00+00:00,True,source_session_end,2026-06-05 16:00:00+00:00
+2026,7,FP2,2026-06-13 14:00:00+00:00,True,source_session_end,2026-06-12 16:00:00+00:00
+2026,8,FP2,2026-06-27 14:00:00+00:00,True,source_session_end,2026-06-26 16:00:00+00:00
+2026,9,FP2,2026-07-04 15:00:00+00:00,False,unverified_or_after_cutoff,
+2026,10,FP2,2026-07-18 14:00:00+00:00,True,source_session_end,2026-07-17 16:00:00+00:00
+2026,11,FP2,2026-07-25 14:00:00+00:00,True,source_session_end,2026-07-24 16:00:00+00:00
+2026,12,FP2,2026-08-22 14:00:00+00:00,False,unverified_or_after_cutoff,
+2026,13,FP2,2026-09-05 14:00:00+00:00,True,source_session_end,2026-09-04 15:00:00+00:00
+2026,14,FP2,2026-09-12 14:00:00+00:00,True,source_session_end,2026-09-11 16:00:00+00:00
+2026,15,FP2,2026-09-25 12:00:00+00:00,True,source_session_end,2026-09-24 13:00:00+00:00
+2026,16,FP2,2026-10-03 08:00:00+00:00,True,source_session_end,2026-10-02 09:00:00+00:00
+2026,17,FP2,2026-10-10 13:00:00+00:00,False,unverified_or_after_cutoff,
+2026,18,FP2,2026-10-24 21:00:00+00:00,True,source_session_end,2026-10-23 22:00:00+00:00
+2026,19,FP2,2026-10-27 23:47:07.982757+00:00,False,unverified_or_after_cutoff,
+2026,20,FP2,2026-10-27 23:47:07.982757+00:00,False,unverified_or_after_cutoff,
+2026,21,FP2,2026-10-27 23:47:07.982757+00:00,False,unverified_or_after_cutoff,
+2026,22,FP2,2026-10-27 23:47:07.982757+00:00,False,unverified_or_after_cutoff,
+2026,23,FP2,2026-10-27 23:47:07.982757+00:00,False,unverified_or_after_cutoff,
+2010,1,FP3,2010-03-13 00:00:00+00:00,False,unverified_or_after_cutoff,
+2010,2,FP3,2010-03-27 00:00:00+00:00,False,unverified_or_after_cutoff,
+2010,3,FP3,2010-04-03 00:00:00+00:00,False,unverified_or_after_cutoff,
+2010,4,FP3,2010-04-17 00:00:00+00:00,False,unverified_or_after_cutoff,
+2010,5,FP3,2010-05-08 00:00:00+00:00,False,unverified_or_after_cutoff,
+2010,6,FP3,2010-05-15 00:00:00+00:00,False,unverified_or_after_cutoff,
+2010,7,FP3,2010-05-29 00:00:00+00:00,False,unverified_or_after_cutoff,
+2010,8,FP3,2010-06-12 00:00:00+00:00,False,unverified_or_after_cutoff,
+2010,9,FP3,2010-06-26 00:00:00+00:00,False,unverified_or_after_cutoff,
+2010,10,FP3,2010-07-10 00:00:00+00:00,False,unverified_or_after_cutoff,
+2010,11,FP3,2010-07-24 00:00:00+00:00,False,unverified_or_after_cutoff,
+2010,12,FP3,2010-07-31 00:00:00+00:00,False,unverified_or_after_cutoff,
+2010,13,FP3,2010-08-28 00:00:00+00:00,False,unverified_or_after_cutoff,
+2010,14,FP3,2010-09-11 00:00:00+00:00,False,unverified_or_after_cutoff,
+2010,15,FP3,2010-09-25 00:00:00+00:00,False,unverified_or_after_cutoff,
+2010,16,FP3,2010-10-09 00:00:00+00:00,False,unverified_or_after_cutoff,
+2010,17,FP3,2010-10-23 00:00:00+00:00,False,unverified_or_after_cutoff,
+2010,18,FP3,2010-11-06 00:00:00+00:00,False,unverified_or_after_cutoff,
+2010,19,FP3,2010-11-13 00:00:00+00:00,False,unverified_or_after_cutoff,
+2011,1,FP3,2011-03-26 00:00:00+00:00,False,unverified_or_after_cutoff,
+2011,2,FP3,2011-04-09 00:00:00+00:00,False,unverified_or_after_cutoff,
+2011,3,FP3,2011-04-16 00:00:00+00:00,False,unverified_or_after_cutoff,
+2011,4,FP3,2011-05-07 00:00:00+00:00,False,unverified_or_after_cutoff,
+2011,5,FP3,2011-05-21 00:00:00+00:00,False,unverified_or_after_cutoff,
+2011,6,FP3,2011-05-28 00:00:00+00:00,False,unverified_or_after_cutoff,
+2011,7,FP3,2011-06-11 00:00:00+00:00,False,unverified_or_after_cutoff,
+2011,8,FP3,2011-06-25 00:00:00+00:00,False,unverified_or_after_cutoff,
+2011,9,FP3,2011-07-09 00:00:00+00:00,False,unverified_or_after_cutoff,
+2011,10,FP3,2011-07-23 00:00:00+00:00,False,unverified_or_after_cutoff,
+2011,11,FP3,2011-07-30 00:00:00+00:00,False,unverified_or_after_cutoff,
+2011,12,FP3,2011-08-27 00:00:00+00:00,False,unverified_or_after_cutoff,
+2011,13,FP3,2011-09-10 00:00:00+00:00,False,unverified_or_after_cutoff,
+2011,14,FP3,2011-09-24 00:00:00+00:00,False,unverified_or_after_cutoff,
+2011,15,FP3,2011-10-08 00:00:00+00:00,False,unverified_or_after_cutoff,
+2011,16,FP3,2011-10-15 00:00:00+00:00,False,unverified_or_after_cutoff,
+2011,17,FP3,2011-10-29 00:00:00+00:00,False,unverified_or_after_cutoff,
+2011,18,FP3,2011-11-12 00:00:00+00:00,False,unverified_or_after_cutoff,
+2011,19,FP3,2011-11-26 00:00:00+00:00,False,unverified_or_after_cutoff,
+2012,1,FP3,2012-03-17 00:00:00+00:00,False,unverified_or_after_cutoff,
+2012,2,FP3,2012-03-24 00:00:00+00:00,False,unverified_or_after_cutoff,
+2012,3,FP3,2012-04-14 00:00:00+00:00,False,unverified_or_after_cutoff,
+2012,4,FP3,2012-04-21 00:00:00+00:00,False,unverified_or_after_cutoff,
+2012,5,FP3,2012-05-12 00:00:00+00:00,False,unverified_or_after_cutoff,
+2012,6,FP3,2012-05-26 00:00:00+00:00,False,unverified_or_after_cutoff,
+2012,7,FP3,2012-06-09 00:00:00+00:00,False,unverified_or_after_cutoff,
+2012,8,FP3,2012-06-23 00:00:00+00:00,False,unverified_or_after_cutoff,
+2012,9,FP3,2012-07-07 00:00:00+00:00,False,unverified_or_after_cutoff,
+2012,10,FP3,2012-07-21 00:00:00+00:00,False,unverified_or_after_cutoff,
+2012,11,FP3,2012-07-28 00:00:00+00:00,False,unverified_or_after_cutoff,
+2012,12,FP3,2012-09-01 00:00:00+00:00,False,unverified_or_after_cutoff,
+2012,13,FP3,2012-09-08 00:00:00+00:00,False,unverified_or_after_cutoff,
+2012,14,FP3,2012-09-22 00:00:00+00:00,False,unverified_or_after_cutoff,
+2012,15,FP3,2012-10-06 00:00:00+00:00,False,unverified_or_after_cutoff,
+2012,16,FP3,2012-10-13 00:00:00+00:00,False,unverified_or_after_cutoff,
+2012,17,FP3,2012-10-27 00:00:00+00:00,False,unverified_or_after_cutoff,
+2012,18,FP3,2012-11-03 00:00:00+00:00,False,unverified_or_after_cutoff,
+2012,19,FP3,2012-11-17 00:00:00+00:00,False,unverified_or_after_cutoff,
+2012,20,FP3,2012-11-24 00:00:00+00:00,False,unverified_or_after_cutoff,
+2013,1,FP3,2013-03-16 00:00:00+00:00,False,unverified_or_after_cutoff,
+2013,2,FP3,2013-03-23 00:00:00+00:00,False,unverified_or_after_cutoff,
+2013,3,FP3,2013-04-13 00:00:00+00:00,False,unverified_or_after_cutoff,
+2013,4,FP3,2013-04-20 00:00:00+00:00,False,unverified_or_after_cutoff,
+2013,5,FP3,2013-05-11 00:00:00+00:00,False,unverified_or_after_cutoff,
+2013,6,FP3,2013-05-25 00:00:00+00:00,False,unverified_or_after_cutoff,
+2013,7,FP3,2013-06-08 00:00:00+00:00,False,unverified_or_after_cutoff,
+2013,8,FP3,2013-06-29 00:00:00+00:00,False,unverified_or_after_cutoff,
+2013,9,FP3,2013-07-06 00:00:00+00:00,False,unverified_or_after_cutoff,
+2013,10,FP3,2013-07-27 00:00:00+00:00,False,unverified_or_after_cutoff,
+2013,11,FP3,2013-08-24 00:00:00+00:00,False,unverified_or_after_cutoff,
+2013,12,FP3,2013-09-07 00:00:00+00:00,False,unverified_or_after_cutoff,
+2013,13,FP3,2013-09-21 00:00:00+00:00,False,unverified_or_after_cutoff,
+2013,14,FP3,2013-10-05 00:00:00+00:00,False,unverified_or_after_cutoff,
+2013,15,FP3,2013-10-12 00:00:00+00:00,False,unverified_or_after_cutoff,
+2013,16,FP3,2013-10-26 00:00:00+00:00,False,unverified_or_after_cutoff,
+2013,17,FP3,2013-11-02 00:00:00+00:00,False,unverified_or_after_cutoff,
+2013,18,FP3,2013-11-16 00:00:00+00:00,False,unverified_or_after_cutoff,
+2013,19,FP3,2013-11-23 00:00:00+00:00,False,unverified_or_after_cutoff,
+2014,1,FP3,2014-03-15 00:00:00+00:00,False,unverified_or_after_cutoff,
+2014,2,FP3,2014-03-29 00:00:00+00:00,False,unverified_or_after_cutoff,
+2014,3,FP3,2014-04-05 00:00:00+00:00,False,unverified_or_after_cutoff,
+2014,4,FP3,2014-04-19 00:00:00+00:00,False,unverified_or_after_cutoff,
+2014,5,FP3,2014-05-10 00:00:00+00:00,False,unverified_or_after_cutoff,
+2014,6,FP3,2014-05-24 00:00:00+00:00,False,unverified_or_after_cutoff,
+2014,7,FP3,2014-06-07 00:00:00+00:00,False,unverified_or_after_cutoff,
+2014,8,FP3,2014-06-21 00:00:00+00:00,False,unverified_or_after_cutoff,
+2014,9,FP3,2014-07-05 00:00:00+00:00,False,unverified_or_after_cutoff,
+2014,10,FP3,2014-07-19 00:00:00+00:00,False,unverified_or_after_cutoff,
+2014,11,FP3,2014-07-26 00:00:00+00:00,False,unverified_or_after_cutoff,
+2014,12,FP3,2014-08-23 00:00:00+00:00,False,unverified_or_after_cutoff,
+2014,13,FP3,2014-09-06 00:00:00+00:00,False,unverified_or_after_cutoff,
+2014,14,FP3,2014-09-20 00:00:00+00:00,False,unverified_or_after_cutoff,
+2014,15,FP3,2014-10-04 00:00:00+00:00,False,unverified_or_after_cutoff,
+2014,16,FP3,2014-10-11 00:00:00+00:00,False,unverified_or_after_cutoff,
+2014,17,FP3,2014-11-01 00:00:00+00:00,False,unverified_or_after_cutoff,
+2014,18,FP3,2014-11-08 00:00:00+00:00,False,unverified_or_after_cutoff,
+2014,19,FP3,2014-11-22 00:00:00+00:00,False,unverified_or_after_cutoff,
+2015,1,FP3,2015-03-14 00:00:00+00:00,False,unverified_or_after_cutoff,
+2015,2,FP3,2015-03-28 00:00:00+00:00,False,unverified_or_after_cutoff,
+2015,3,FP3,2015-04-11 00:00:00+00:00,False,unverified_or_after_cutoff,
+2015,4,FP3,2015-04-18 00:00:00+00:00,False,unverified_or_after_cutoff,
+2015,5,FP3,2015-05-09 00:00:00+00:00,False,unverified_or_after_cutoff,
+2015,6,FP3,2015-05-23 00:00:00+00:00,False,unverified_or_after_cutoff,
+2015,7,FP3,2015-06-06 00:00:00+00:00,False,unverified_or_after_cutoff,
+2015,8,FP3,2015-06-20 00:00:00+00:00,False,unverified_or_after_cutoff,
+2015,9,FP3,2015-07-04 00:00:00+00:00,False,unverified_or_after_cutoff,
+2015,10,FP3,2015-07-25 00:00:00+00:00,False,unverified_or_after_cutoff,
+2015,11,FP3,2015-08-22 00:00:00+00:00,False,unverified_or_after_cutoff,
+2015,12,FP3,2015-09-05 00:00:00+00:00,False,unverified_or_after_cutoff,
+2015,13,FP3,2015-09-19 00:00:00+00:00,False,unverified_or_after_cutoff,
+2015,14,FP3,2015-09-26 00:00:00+00:00,False,unverified_or_after_cutoff,
+2015,15,FP3,2015-10-10 00:00:00+00:00,False,unverified_or_after_cutoff,
+2015,16,FP3,2015-10-24 00:00:00+00:00,False,unverified_or_after_cutoff,
+2015,17,FP3,2015-10-31 00:00:00+00:00,False,unverified_or_after_cutoff,
+2015,18,FP3,2015-11-14 00:00:00+00:00,False,unverified_or_after_cutoff,
+2015,19,FP3,2015-11-28 00:00:00+00:00,False,unverified_or_after_cutoff,
+2016,1,FP3,2016-03-19 00:00:00+00:00,False,unverified_or_after_cutoff,
+2016,2,FP3,2016-04-02 00:00:00+00:00,False,unverified_or_after_cutoff,
+2016,3,FP3,2016-04-16 00:00:00+00:00,False,unverified_or_after_cutoff,
+2016,4,FP3,2016-04-30 00:00:00+00:00,False,unverified_or_after_cutoff,
+2016,5,FP3,2016-05-14 00:00:00+00:00,False,unverified_or_after_cutoff,
+2016,6,FP3,2016-05-28 00:00:00+00:00,False,unverified_or_after_cutoff,
+2016,7,FP3,2016-06-11 00:00:00+00:00,False,unverified_or_after_cutoff,
+2016,8,FP3,2016-06-18 00:00:00+00:00,False,unverified_or_after_cutoff,
+2016,9,FP3,2016-07-02 00:00:00+00:00,False,unverified_or_after_cutoff,
+2016,10,FP3,2016-07-09 00:00:00+00:00,False,unverified_or_after_cutoff,
+2016,11,FP3,2016-07-23 00:00:00+00:00,False,unverified_or_after_cutoff,
+2016,12,FP3,2016-07-30 00:00:00+00:00,False,unverified_or_after_cutoff,
+2016,13,FP3,2016-08-27 00:00:00+00:00,False,unverified_or_after_cutoff,
+2016,14,FP3,2016-09-03 00:00:00+00:00,False,unverified_or_after_cutoff,
+2016,15,FP3,2016-09-17 00:00:00+00:00,False,unverified_or_after_cutoff,
+2016,16,FP3,2016-10-01 00:00:00+00:00,False,unverified_or_after_cutoff,
+2016,17,FP3,2016-10-08 00:00:00+00:00,False,unverified_or_after_cutoff,
+2016,18,FP3,2016-10-22 00:00:00+00:00,False,unverified_or_after_cutoff,
+2016,19,FP3,2016-10-29 00:00:00+00:00,False,unverified_or_after_cutoff,
+2016,20,FP3,2016-11-12 00:00:00+00:00,False,unverified_or_after_cutoff,
+2016,21,FP3,2016-11-26 00:00:00+00:00,False,unverified_or_after_cutoff,
+2017,1,FP3,2017-03-25 00:00:00+00:00,False,unverified_or_after_cutoff,
+2017,2,FP3,2017-04-08 00:00:00+00:00,False,unverified_or_after_cutoff,
+2017,3,FP3,2017-04-15 00:00:00+00:00,False,unverified_or_after_cutoff,
+2017,4,FP3,2017-04-29 00:00:00+00:00,False,unverified_or_after_cutoff,
+2017,5,FP3,2017-05-13 00:00:00+00:00,False,unverified_or_after_cutoff,
+2017,6,FP3,2017-05-27 00:00:00+00:00,False,unverified_or_after_cutoff,
+2017,7,FP3,2017-06-10 00:00:00+00:00,False,unverified_or_after_cutoff,
+2017,8,FP3,2017-06-24 00:00:00+00:00,False,unverified_or_after_cutoff,
+2017,9,FP3,2017-07-08 00:00:00+00:00,False,unverified_or_after_cutoff,
+2017,10,FP3,2017-07-15 00:00:00+00:00,False,unverified_or_after_cutoff,
+2017,11,FP3,2017-07-29 00:00:00+00:00,False,unverified_or_after_cutoff,
+2017,12,FP3,2017-08-26 00:00:00+00:00,False,unverified_or_after_cutoff,
+2017,13,FP3,2017-09-02 00:00:00+00:00,False,unverified_or_after_cutoff,
+2017,14,FP3,2017-09-16 00:00:00+00:00,False,unverified_or_after_cutoff,
+2017,15,FP3,2017-09-30 00:00:00+00:00,False,unverified_or_after_cutoff,
+2017,16,FP3,2017-10-07 00:00:00+00:00,False,unverified_or_after_cutoff,
+2017,17,FP3,2017-10-21 00:00:00+00:00,False,unverified_or_after_cutoff,
+2017,18,FP3,2017-10-28 00:00:00+00:00,False,unverified_or_after_cutoff,
+2017,19,FP3,2017-11-11 00:00:00+00:00,False,unverified_or_after_cutoff,
+2017,20,FP3,2017-11-25 00:00:00+00:00,False,unverified_or_after_cutoff,
+2018,1,FP3,2018-03-24 00:00:00+00:00,False,unverified_or_after_cutoff,
+2018,2,FP3,2018-04-07 00:00:00+00:00,False,unverified_or_after_cutoff,
+2018,3,FP3,2018-04-14 00:00:00+00:00,False,unverified_or_after_cutoff,
+2018,4,FP3,2018-04-28 00:00:00+00:00,False,unverified_or_after_cutoff,
+2018,5,FP3,2018-05-12 00:00:00+00:00,False,unverified_or_after_cutoff,
+2018,6,FP3,2018-05-26 00:00:00+00:00,False,unverified_or_after_cutoff,
+2018,7,FP3,2018-06-09 00:00:00+00:00,False,unverified_or_after_cutoff,
+2018,8,FP3,2018-06-23 00:00:00+00:00,False,unverified_or_after_cutoff,
+2018,9,FP3,2018-06-30 00:00:00+00:00,False,unverified_or_after_cutoff,
+2018,10,FP3,2018-07-07 00:00:00+00:00,False,unverified_or_after_cutoff,
+2018,11,FP3,2018-07-21 00:00:00+00:00,False,unverified_or_after_cutoff,
+2018,12,FP3,2018-07-28 00:00:00+00:00,False,unverified_or_after_cutoff,
+2018,13,FP3,2018-08-25 00:00:00+00:00,False,unverified_or_after_cutoff,
+2018,14,FP3,2018-09-01 00:00:00+00:00,False,unverified_or_after_cutoff,
+2018,15,FP3,2018-09-15 00:00:00+00:00,False,unverified_or_after_cutoff,
+2018,16,FP3,2018-09-29 00:00:00+00:00,False,unverified_or_after_cutoff,
+2018,17,FP3,2018-10-06 00:00:00+00:00,False,unverified_or_after_cutoff,
+2018,18,FP3,2018-10-20 00:00:00+00:00,False,unverified_or_after_cutoff,
+2018,19,FP3,2018-10-27 00:00:00+00:00,False,unverified_or_after_cutoff,
+2018,20,FP3,2018-11-10 00:00:00+00:00,False,unverified_or_after_cutoff,
+2018,21,FP3,2018-11-24 00:00:00+00:00,False,unverified_or_after_cutoff,
+2019,1,FP3,2019-03-16 00:00:00+00:00,False,unverified_or_after_cutoff,
+2019,2,FP3,2019-03-30 00:00:00+00:00,False,unverified_or_after_cutoff,
+2019,3,FP3,2019-04-13 00:00:00+00:00,False,unverified_or_after_cutoff,
+2019,4,FP3,2019-04-27 00:00:00+00:00,False,unverified_or_after_cutoff,
+2019,5,FP3,2019-05-11 00:00:00+00:00,False,unverified_or_after_cutoff,
+2019,6,FP3,2019-05-25 00:00:00+00:00,False,unverified_or_after_cutoff,
+2019,7,FP3,2019-06-08 00:00:00+00:00,False,unverified_or_after_cutoff,
+2019,8,FP3,2019-06-22 00:00:00+00:00,False,unverified_or_after_cutoff,
+2019,9,FP3,2019-06-29 00:00:00+00:00,False,unverified_or_after_cutoff,
+2019,10,FP3,2019-07-13 00:00:00+00:00,False,unverified_or_after_cutoff,
+2019,11,FP3,2019-07-27 00:00:00+00:00,False,unverified_or_after_cutoff,
+2019,12,FP3,2019-08-03 00:00:00+00:00,False,unverified_or_after_cutoff,
+2019,13,FP3,2019-08-31 00:00:00+00:00,False,unverified_or_after_cutoff,
+2019,14,FP3,2019-09-07 00:00:00+00:00,False,unverified_or_after_cutoff,
+2019,15,FP3,2019-09-21 00:00:00+00:00,False,unverified_or_after_cutoff,
+2019,16,FP3,2019-09-28 00:00:00+00:00,False,unverified_or_after_cutoff,
+2019,17,FP3,2019-10-12 00:00:00+00:00,False,unverified_or_after_cutoff,
+2019,18,FP3,2019-10-26 00:00:00+00:00,False,unverified_or_after_cutoff,
+2019,19,FP3,2019-11-02 00:00:00+00:00,False,unverified_or_after_cutoff,
+2019,20,FP3,2019-11-16 00:00:00+00:00,False,unverified_or_after_cutoff,
+2019,21,FP3,2019-11-30 00:00:00+00:00,False,unverified_or_after_cutoff,
+2020,1,FP3,2020-07-04 00:00:00+00:00,False,unverified_or_after_cutoff,
+2020,2,FP3,2020-07-11 00:00:00+00:00,False,unverified_or_after_cutoff,
+2020,3,FP3,2020-07-18 00:00:00+00:00,False,unverified_or_after_cutoff,
+2020,4,FP3,2020-08-01 00:00:00+00:00,False,unverified_or_after_cutoff,
+2020,5,FP3,2020-08-08 00:00:00+00:00,False,unverified_or_after_cutoff,
+2020,6,FP3,2020-08-15 00:00:00+00:00,False,unverified_or_after_cutoff,
+2020,7,FP3,2020-08-29 00:00:00+00:00,False,unverified_or_after_cutoff,
+2020,8,FP3,2020-09-05 00:00:00+00:00,False,unverified_or_after_cutoff,
+2020,9,FP3,2020-09-12 00:00:00+00:00,False,unverified_or_after_cutoff,
+2020,10,FP3,2020-09-26 00:00:00+00:00,False,unverified_or_after_cutoff,
+2020,11,FP3,2020-10-10 00:00:00+00:00,False,unverified_or_after_cutoff,
+2020,12,FP3,2020-10-24 00:00:00+00:00,False,unverified_or_after_cutoff,
+2020,13,FP3,2020-10-31 00:00:00+00:00,False,unverified_or_after_cutoff,
+2020,14,FP3,2020-11-14 00:00:00+00:00,False,unverified_or_after_cutoff,
+2020,15,FP3,2020-11-28 00:00:00+00:00,False,unverified_or_after_cutoff,
+2020,16,FP3,2020-12-05 00:00:00+00:00,False,unverified_or_after_cutoff,
+2020,17,FP3,2020-12-12 00:00:00+00:00,False,unverified_or_after_cutoff,
+2021,1,FP3,2021-03-27 00:00:00+00:00,False,unverified_or_after_cutoff,
+2021,2,FP3,2021-04-17 00:00:00+00:00,False,unverified_or_after_cutoff,
+2021,3,FP3,2021-05-01 00:00:00+00:00,False,unverified_or_after_cutoff,
+2021,4,FP3,2021-05-08 00:00:00+00:00,False,unverified_or_after_cutoff,
+2021,5,FP3,2021-05-22 00:00:00+00:00,False,unverified_or_after_cutoff,
+2021,6,FP3,2021-06-05 00:00:00+00:00,False,unverified_or_after_cutoff,
+2021,7,FP3,2021-06-19 00:00:00+00:00,False,unverified_or_after_cutoff,
+2021,8,FP3,2021-06-26 00:00:00+00:00,False,unverified_or_after_cutoff,
+2021,9,FP3,2021-07-03 00:00:00+00:00,False,unverified_or_after_cutoff,
+2021,10,FP3,2021-07-16 00:00:00+00:00,False,unverified_or_after_cutoff,
+2021,11,FP3,2021-07-31 00:00:00+00:00,False,unverified_or_after_cutoff,
+2021,12,FP3,2021-08-28 00:00:00+00:00,False,unverified_or_after_cutoff,
+2021,13,FP3,2021-09-04 00:00:00+00:00,False,unverified_or_after_cutoff,
+2021,14,FP3,2021-09-10 00:00:00+00:00,False,unverified_or_after_cutoff,
+2021,15,FP3,2021-09-25 00:00:00+00:00,False,unverified_or_after_cutoff,
+2021,16,FP3,2021-10-09 00:00:00+00:00,False,unverified_or_after_cutoff,
+2021,17,FP3,2021-10-23 00:00:00+00:00,False,unverified_or_after_cutoff,
+2021,18,FP3,2021-11-06 00:00:00+00:00,False,unverified_or_after_cutoff,
+2021,19,FP3,2021-11-12 00:00:00+00:00,False,unverified_or_after_cutoff,
+2021,20,FP3,2021-11-20 00:00:00+00:00,False,unverified_or_after_cutoff,
+2021,21,FP3,2021-12-04 00:00:00+00:00,False,unverified_or_after_cutoff,
+2021,22,FP3,2021-12-11 00:00:00+00:00,False,unverified_or_after_cutoff,
+2022,1,FP3,2022-03-19 15:00:00+00:00,False,unverified_or_after_cutoff,
+2022,2,FP3,2022-03-26 17:00:00+00:00,False,unverified_or_after_cutoff,
+2022,3,FP3,2022-04-09 06:00:00+00:00,False,unverified_or_after_cutoff,
+2022,4,FP3,2022-04-22 15:00:00+00:00,False,unverified_or_after_cutoff,
+2022,5,FP3,2022-05-07 20:00:00+00:00,False,unverified_or_after_cutoff,
+2022,6,FP3,2022-05-21 14:00:00+00:00,False,unverified_or_after_cutoff,
+2022,7,FP3,2022-05-28 14:00:00+00:00,False,unverified_or_after_cutoff,
+2022,8,FP3,2022-06-11 14:00:00+00:00,False,unverified_or_after_cutoff,
+2022,9,FP3,2022-06-18 20:00:00+00:00,False,unverified_or_after_cutoff,
+2022,10,FP3,2022-07-02 14:00:00+00:00,False,unverified_or_after_cutoff,
+2022,11,FP3,2022-07-08 15:00:00+00:00,False,unverified_or_after_cutoff,
+2022,12,FP3,2022-07-23 14:00:00+00:00,False,unverified_or_after_cutoff,
+2022,13,FP3,2022-07-30 14:00:00+00:00,False,unverified_or_after_cutoff,
+2022,14,FP3,2022-08-27 14:00:00+00:00,False,unverified_or_after_cutoff,
+2022,15,FP3,2022-09-03 13:00:00+00:00,False,unverified_or_after_cutoff,
+2022,16,FP3,2022-09-10 14:00:00+00:00,False,unverified_or_after_cutoff,
+2022,17,FP3,2022-10-01 13:00:00+00:00,False,unverified_or_after_cutoff,
+2022,18,FP3,2022-10-08 06:00:00+00:00,False,unverified_or_after_cutoff,
+2022,19,FP3,2022-10-22 22:00:00+00:00,False,unverified_or_after_cutoff,
+2022,20,FP3,2022-10-29 20:00:00+00:00,False,unverified_or_after_cutoff,
+2022,21,FP3,2022-11-11 19:00:00+00:00,False,unverified_or_after_cutoff,
+2022,22,FP3,2022-11-19 14:00:00+00:00,False,unverified_or_after_cutoff,
+2023,1,FP3,2023-03-04 15:00:00+00:00,True,source_session_end,2023-03-04 12:30:00+00:00
+2023,2,FP3,2023-03-18 17:00:00+00:00,True,source_session_end,2023-03-18 14:30:00+00:00
+2023,3,FP3,2023-04-01 05:00:00+00:00,True,source_session_end,2023-04-01 03:30:00+00:00
+2023,4,FP3,2023-04-28 13:00:00+00:00,False,unverified_or_after_cutoff,
+2023,5,FP3,2023-05-06 20:00:00+00:00,True,source_session_end,2023-05-06 17:30:00+00:00
+2023,6,FP3,2023-05-27 14:00:00+00:00,True,source_session_end,2023-05-27 11:30:00+00:00
+2023,7,FP3,2023-06-03 14:00:00+00:00,True,source_session_end,2023-06-03 11:30:00+00:00
+2023,8,FP3,2023-06-17 20:00:00+00:00,True,source_session_end,2023-06-17 17:30:00+00:00
+2023,9,FP3,2023-06-30 15:00:00+00:00,False,unverified_or_after_cutoff,
+2023,10,FP3,2023-07-08 14:00:00+00:00,True,source_session_end,2023-07-08 11:30:00+00:00
+2023,11,FP3,2023-07-22 14:00:00+00:00,True,source_session_end,2023-07-22 11:30:00+00:00
+2023,12,FP3,2023-07-28 15:00:00+00:00,False,unverified_or_after_cutoff,
+2023,13,FP3,2023-08-26 13:00:00+00:00,True,source_session_end,2023-08-26 10:30:00+00:00
+2023,14,FP3,2023-09-02 14:00:00+00:00,True,source_session_end,2023-09-02 11:30:00+00:00
+2023,15,FP3,2023-09-16 13:00:00+00:00,True,source_session_end,2023-09-16 10:30:00+00:00
+2023,16,FP3,2023-09-23 06:00:00+00:00,True,source_session_end,2023-09-23 03:30:00+00:00
+2023,17,FP3,2023-10-06 17:00:00+00:00,False,unverified_or_after_cutoff,
+2023,18,FP3,2023-10-20 21:00:00+00:00,False,unverified_or_after_cutoff,
+2023,19,FP3,2023-10-28 21:00:00+00:00,True,source_session_end,2023-10-28 18:30:00+00:00
+2023,20,FP3,2023-11-03 18:00:00+00:00,False,unverified_or_after_cutoff,
+2023,21,FP3,2023-11-17 08:00:00+00:00,False,source_session_end,2023-11-18 05:30:00+00:00
+2023,22,FP3,2023-11-25 14:00:00+00:00,True,source_session_end,2023-11-25 11:30:00+00:00
+2024,1,FP3,2024-03-01 16:00:00+00:00,True,source_session_end,2024-03-01 13:30:00+00:00
+2024,2,FP3,2024-03-08 17:00:00+00:00,True,source_session_end,2024-03-08 14:30:00+00:00
+2024,3,FP3,2024-03-23 05:00:00+00:00,True,source_session_end,2024-03-23 02:30:00+00:00
+2024,4,FP3,2024-04-06 06:00:00+00:00,True,source_session_end,2024-04-06 03:30:00+00:00
+2024,5,FP3,2024-04-20 07:00:00+00:00,False,unverified_or_after_cutoff,
+2024,6,FP3,2024-05-04 20:00:00+00:00,False,unverified_or_after_cutoff,
+2024,7,FP3,2024-05-18 14:00:00+00:00,True,source_session_end,2024-05-18 11:30:00+00:00
+2024,8,FP3,2024-05-25 14:00:00+00:00,True,source_session_end,2024-05-25 11:30:00+00:00
+2024,9,FP3,2024-06-08 20:00:00+00:00,True,source_session_end,2024-06-08 17:30:00+00:00
+2024,10,FP3,2024-06-22 14:00:00+00:00,True,source_session_end,2024-06-22 11:30:00+00:00
+2024,11,FP3,2024-06-29 14:00:00+00:00,False,unverified_or_after_cutoff,
+2024,12,FP3,2024-07-06 14:00:00+00:00,True,source_session_end,2024-07-06 11:30:00+00:00
+2024,13,FP3,2024-07-20 14:00:00+00:00,True,source_session_end,2024-07-20 11:30:00+00:00
+2024,14,FP3,2024-07-27 14:00:00+00:00,True,source_session_end,2024-07-27 11:30:00+00:00
+2024,15,FP3,2024-08-24 13:00:00+00:00,True,source_session_end,2024-08-24 10:30:00+00:00
+2024,16,FP3,2024-08-31 14:00:00+00:00,True,source_session_end,2024-08-31 11:30:00+00:00
+2024,17,FP3,2024-09-14 12:00:00+00:00,True,source_session_end,2024-09-14 09:30:00+00:00
+2024,18,FP3,2024-09-21 13:00:00+00:00,True,source_session_end,2024-09-21 10:30:00+00:00
+2024,19,FP3,2024-10-19 22:00:00+00:00,False,unverified_or_after_cutoff,
+2024,20,FP3,2024-10-26 21:00:00+00:00,True,source_session_end,2024-10-26 18:30:00+00:00
+2024,21,FP3,2024-11-02 18:00:00+00:00,False,unverified_or_after_cutoff,
+2024,22,FP3,2024-11-22 06:00:00+00:00,False,source_session_end,2024-11-23 03:30:00+00:00
+2024,23,FP3,2024-11-30 18:00:00+00:00,False,unverified_or_after_cutoff,
+2024,24,FP3,2024-12-07 14:00:00+00:00,True,source_session_end,2024-12-07 11:30:00+00:00
+2025,1,FP3,2025-03-15 05:00:00+00:00,True,source_session_end,2025-03-15 02:30:00+00:00
+2025,2,FP3,2025-03-22 07:00:00+00:00,False,unverified_or_after_cutoff,
+2025,3,FP3,2025-04-05 06:00:00+00:00,True,source_session_end,2025-04-05 03:30:00+00:00
+2025,4,FP3,2025-04-12 16:00:00+00:00,True,source_session_end,2025-04-12 13:30:00+00:00
+2025,5,FP3,2025-04-19 17:00:00+00:00,True,source_session_end,2025-04-19 14:30:00+00:00
+2025,6,FP3,2025-05-03 20:00:00+00:00,False,unverified_or_after_cutoff,
+2025,7,FP3,2025-05-17 14:00:00+00:00,True,source_session_end,2025-05-17 11:30:00+00:00
+2025,8,FP3,2025-05-24 14:00:00+00:00,True,source_session_end,2025-05-24 11:30:00+00:00
+2025,9,FP3,2025-05-31 14:00:00+00:00,True,source_session_end,2025-05-31 11:30:00+00:00
+2025,10,FP3,2025-06-14 20:00:00+00:00,True,source_session_end,2025-06-14 17:30:00+00:00
+2025,11,FP3,2025-06-28 14:00:00+00:00,True,source_session_end,2025-06-28 11:30:00+00:00
+2025,12,FP3,2025-07-05 14:00:00+00:00,True,source_session_end,2025-07-05 11:30:00+00:00
+2025,13,FP3,2025-07-26 14:00:00+00:00,False,unverified_or_after_cutoff,
+2025,14,FP3,2025-08-02 14:00:00+00:00,True,source_session_end,2025-08-02 11:30:00+00:00
+2025,15,FP3,2025-08-30 13:00:00+00:00,True,source_session_end,2025-08-30 10:30:00+00:00
+2025,16,FP3,2025-09-06 14:00:00+00:00,True,source_session_end,2025-09-06 11:30:00+00:00
+2025,17,FP3,2025-09-20 12:00:00+00:00,True,source_session_end,2025-09-20 09:30:00+00:00
+2025,18,FP3,2025-10-04 13:00:00+00:00,True,source_session_end,2025-10-04 10:30:00+00:00
+2025,19,FP3,2025-10-18 21:00:00+00:00,False,unverified_or_after_cutoff,
+2025,20,FP3,2025-10-25 21:00:00+00:00,True,source_session_end,2025-10-25 18:30:00+00:00
+2025,21,FP3,2025-11-08 18:00:00+00:00,False,unverified_or_after_cutoff,
+2025,22,FP3,2025-11-22 04:00:00+00:00,True,source_session_end,2025-11-22 01:30:00+00:00
+2025,23,FP3,2025-11-29 18:00:00+00:00,False,unverified_or_after_cutoff,
+2025,24,FP3,2025-12-06 14:00:00+00:00,True,source_session_end,2025-12-06 11:30:00+00:00
+2026,1,FP3,2026-03-07 05:00:00+00:00,True,source_session_end,2026-03-07 02:30:00+00:00
+2026,2,FP3,2026-03-14 07:00:00+00:00,False,unverified_or_after_cutoff,
+2026,3,FP3,2026-03-28 06:00:00+00:00,True,source_session_end,2026-03-28 03:30:00+00:00
+2026,4,FP3,2026-05-02 20:00:00+00:00,False,unverified_or_after_cutoff,
+2026,5,FP3,2026-05-23 20:00:00+00:00,False,unverified_or_after_cutoff,
+2026,6,FP3,2026-06-06 14:00:00+00:00,True,source_session_end,2026-06-06 11:30:00+00:00
+2026,7,FP3,2026-06-13 14:00:00+00:00,True,source_session_end,2026-06-13 11:30:00+00:00
+2026,8,FP3,2026-06-27 14:00:00+00:00,True,source_session_end,2026-06-27 11:30:00+00:00
+2026,9,FP3,2026-07-04 15:00:00+00:00,False,unverified_or_after_cutoff,
+2026,10,FP3,2026-07-18 14:00:00+00:00,True,source_session_end,2026-07-18 11:30:00+00:00
+2026,11,FP3,2026-07-25 14:00:00+00:00,True,source_session_end,2026-07-25 11:30:00+00:00
+2026,12,FP3,2026-08-22 14:00:00+00:00,False,unverified_or_after_cutoff,
+2026,13,FP3,2026-09-05 14:00:00+00:00,True,source_session_end,2026-09-05 11:30:00+00:00
+2026,14,FP3,2026-09-12 14:00:00+00:00,True,source_session_end,2026-09-12 11:30:00+00:00
+2026,15,FP3,2026-09-25 12:00:00+00:00,True,source_session_end,2026-09-25 09:30:00+00:00
+2026,16,FP3,2026-10-03 08:00:00+00:00,True,source_session_end,2026-10-03 05:30:00+00:00
+2026,17,FP3,2026-10-10 13:00:00+00:00,False,unverified_or_after_cutoff,
+2026,18,FP3,2026-10-24 21:00:00+00:00,True,source_session_end,2026-10-24 18:30:00+00:00
+2026,19,FP3,2026-10-27 23:47:07.993207+00:00,False,unverified_or_after_cutoff,
+2026,20,FP3,2026-10-27 23:47:07.993207+00:00,False,unverified_or_after_cutoff,
+2026,21,FP3,2026-10-27 23:47:07.993207+00:00,False,unverified_or_after_cutoff,
+2026,22,FP3,2026-10-27 23:47:07.993207+00:00,False,unverified_or_after_cutoff,
+2026,23,FP3,2026-10-27 23:47:07.993207+00:00,False,unverified_or_after_cutoff,

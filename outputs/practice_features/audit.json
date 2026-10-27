@@ -1,0 +1,575 @@
+{
+  "coverage": [
+    {
+      "basic_or_detail_pct": 99.78070175438597,
+      "driver_rows": 456,
+      "legacy_detail_pct": null,
+      "races": 19,
+      "season": 2010,
+      "staged_detail_pct": 0.0,
+      "tyre_long_run_pct": 0.0
+    },
+    {
+      "basic_or_detail_pct": 100.0,
+      "driver_rows": 454,
+      "legacy_detail_pct": null,
+      "races": 19,
+      "season": 2011,
+      "staged_detail_pct": 0.0,
+      "tyre_long_run_pct": 0.0
+    },
+    {
+      "basic_or_detail_pct": 99.7907949790795,
+      "driver_rows": 478,
+      "legacy_detail_pct": null,
+      "races": 20,
+      "season": 2012,
+      "staged_detail_pct": 0.0,
+      "tyre_long_run_pct": 0.0
+    },
+    {
+      "basic_or_detail_pct": 100.0,
+      "driver_rows": 418,
+      "legacy_detail_pct": null,
+      "races": 19,
+      "season": 2013,
+      "staged_detail_pct": 0.0,
+      "tyre_long_run_pct": 0.0
+    },
+    {
+      "basic_or_detail_pct": 99.75429975429975,
+      "driver_rows": 407,
+      "legacy_detail_pct": null,
+      "races": 19,
+      "season": 2014,
+      "staged_detail_pct": 0.0,
+      "tyre_long_run_pct": 0.0
+    },
+    {
+      "basic_or_detail_pct": 98.14814814814815,
+      "driver_rows": 378,
+      "legacy_detail_pct": null,
+      "races": 19,
+      "season": 2015,
+      "staged_detail_pct": 0.0,
+      "tyre_long_run_pct": 0.0
+    },
+    {
+      "basic_or_detail_pct": 100.0,
+      "driver_rows": 462,
+      "legacy_detail_pct": null,
+      "races": 21,
+      "season": 2016,
+      "staged_detail_pct": 0.0,
+      "tyre_long_run_pct": 0.0
+    },
+    {
+      "basic_or_detail_pct": 99.5,
+      "driver_rows": 400,
+      "legacy_detail_pct": null,
+      "races": 20,
+      "season": 2017,
+      "staged_detail_pct": 0.0,
+      "tyre_long_run_pct": 0.0
+    },
+    {
+      "basic_or_detail_pct": 100.0,
+      "driver_rows": 420,
+      "legacy_detail_pct": 0.0,
+      "races": 21,
+      "season": 2018,
+      "staged_detail_pct": 0.0,
+      "tyre_long_run_pct": 0.0
+    },
+    {
+      "basic_or_detail_pct": 100.0,
+      "driver_rows": 420,
+      "legacy_detail_pct": 0.0,
+      "races": 21,
+      "season": 2019,
+      "staged_detail_pct": 0.0,
+      "tyre_long_run_pct": 0.0
+    },
+    {
+      "basic_or_detail_pct": 94.11764705882352,
+      "driver_rows": 340,
+      "legacy_detail_pct": 0.0,
+      "races": 17,
+      "season": 2020,
+      "staged_detail_pct": 0.0,
+      "tyre_long_run_pct": 0.0
+    },
+    {
+      "basic_or_detail_pct": 86.13636363636363,
+      "driver_rows": 440,
+      "legacy_detail_pct": 0.0,
+      "races": 22,
+      "season": 2021,
+      "staged_detail_pct": 0.0,
+      "tyre_long_run_pct": 0.0
+    },
+    {
+      "basic_or_detail_pct": 86.36363636363636,
+      "driver_rows": 440,
+      "legacy_detail_pct": 0.0,
+      "races": 22,
+      "season": 2022,
+      "staged_detail_pct": 0.0,
+      "tyre_long_run_pct": 0.0
+    },
+    {
+      "basic_or_detail_pct": 100.0,
+      "driver_rows": 440,
+      "legacy_detail_pct": 50.0,
+      "races": 22,
+      "season": 2023,
+      "staged_detail_pct": 99.0909090909091,
+      "tyre_long_run_pct": 84.31818181818181
+    },
+    {
+      "basic_or_detail_pct": 100.0,
+      "driver_rows": 479,
+      "legacy_detail_pct": 4.175365344467641,
+      "races": 24,
+      "season": 2024,
+      "staged_detail_pct": 100.0,
+      "tyre_long_run_pct": 89.77035490605428
+    },
+    {
+      "basic_or_detail_pct": 100.0,
+      "driver_rows": 479,
+      "legacy_detail_pct": 4.175365344467641,
+      "races": 24,
+      "season": 2025,
+      "staged_detail_pct": 100.0,
+      "tyre_long_run_pct": 88.51774530271399
+    },
+    {
+      "basic_or_detail_pct": 100.0,
+      "driver_rows": 396,
+      "legacy_detail_pct": 5.555555555555555,
+      "races": 18,
+      "season": 2026,
+      "staged_detail_pct": 99.74747474747475,
+      "tyre_long_run_pct": 85.60606060606061
+    }
+  ],
+  "created_at": "2026-10-27T23:47:10.794814+00:00",
+  "feature_audit": {
+    "coverage": {
+      "post_grid_position": 1.0,
+      "post_quali_position": 0.9958943478855892,
+      "practice_by_season": {
+        "2010": {
+          "openf1_detail_available": 0.0,
+          "practice_data_available": 0.9978
+        },
+        "2011": {
+          "openf1_detail_available": 0.0,
+          "practice_data_available": 1.0
+        },
+        "2012": {
+          "openf1_detail_available": 0.0,
+          "practice_data_available": 0.9979
+        },
+        "2013": {
+          "openf1_detail_available": 0.0,
+          "practice_data_available": 1.0
+        },
+        "2014": {
+          "openf1_detail_available": 0.0,
+          "practice_data_available": 0.9975
+        },
+        "2015": {
+          "openf1_detail_available": 0.0,
+          "practice_data_available": 0.9815
+        },
+        "2016": {
+          "openf1_detail_available": 0.0,
+          "practice_data_available": 1.0
+        },
+        "2017": {
+          "openf1_detail_available": 0.0,
+          "practice_data_available": 0.995
+        },
+        "2018": {
+          "openf1_detail_available": 0.0,
+          "practice_data_available": 1.0
+        },
+        "2019": {
+          "openf1_detail_available": 0.0,
+          "practice_data_available": 1.0
+        },
+        "2020": {
+          "openf1_detail_available": 0.0,
+          "practice_data_available": 0.9412
+        },
+        "2021": {
+          "openf1_detail_available": 0.0,
+          "practice_data_available": 0.8614
+        },
+        "2022": {
+          "openf1_detail_available": 0.0,
+          "practice_data_available": 0.8636
+        },
+        "2023": {
+          "openf1_detail_available": 0.9909,
+          "practice_data_available": 1.0
+        },
+        "2024": {
+          "openf1_detail_available": 1.0,
+          "practice_data_available": 1.0
+        },
+        "2025": {
+          "openf1_detail_available": 1.0,
+          "practice_data_available": 1.0
+        },
+        "2026": {
+          "openf1_detail_available": 0.9975,
+          "practice_data_available": 1.0
+        }
+      }
+    },
+    "leakage_checks": {
+      "duplicate_race_driver_keys": false,
+      "pre_quali_has_post_features": false,
+      "targets_exposed_as_features": false
+    },
+    "modes": {
+      "post_quali": {
+        "all_null_features": [],
+        "duplicate_keys": 0,
+        "families": {
+          "constructor": 18,
+          "driver_form": 30,
+          "openf1_detail": 67,
+          "post_quali": 10,
+          "practice": 17,
+          "static": 5,
+          "teammate": 4,
+          "track": 5
+        },
+        "features": 158,
+        "median_feature_coverage": 0.8877788422061037,
+        "races": 347,
+        "rows": 7307
+      },
+      "pre_quali": {
+        "all_null_features": [],
+        "duplicate_keys": 0,
+        "families": {
+          "constructor": 18,
+          "driver_form": 30,
+          "openf1_detail": 67,
+          "post_quali": 0,
+          "practice": 17,
+          "static": 5,
+          "teammate": 4,
+          "track": 5
+        },
+        "features": 148,
+        "median_feature_coverage": 0.7346380183385794,
+        "races": 347,
+        "rows": 7307
+      }
+    },
+    "policy": {
+      "historical_results": "all rolling and expanding statistics use shift(1)",
+      "outcomes": "target-race results are labels only",
+      "practice": "source session end strictly before qualifying; without an end timestamp, only a strictly earlier calendar day; same cutoff for laps, stints and weather; identity match against event entrants, never car number alone. Event-time eligibility does not reconstruct historical publication delays.",
+      "qualifying": "same-event qualifying and grid features are post_quali only"
+    },
+    "status": "ok"
+  },
+  "limitations": [
+    "Coverage is not predictive accuracy. No model was retrained or promoted.",
+    "Before/after coverage changes both acquisition and eligibility/identity rules.",
+    "Event-time cutoffs do not reconstruct historical publication/revision timestamps.",
+    "Without end timestamps, same-day legacy practice is excluded, including FP3.",
+    "Long-run pace is a compound/age/session-relative proxy; fuel, traffic and flags are not controlled.",
+    "A live pre-quali roster defaults provisionally to the previous race; practice is not an entry list.",
+    "2026 remains reused retrospective validation, not an untouched holdout."
+  ],
+  "model_accuracy_improvement_claimed": false,
+  "models_trained": false,
+  "openf1_tables": {
+    "practice_laps": {
+      "eligible_rows": 97433,
+      "excluded_rows": 1916,
+      "raw_processed_rows": 99349,
+      "sessions": 216
+    },
+    "practice_stints": {
+      "eligible_rows": 17966,
+      "excluded_rows": 308,
+      "raw_processed_rows": 18274,
+      "sessions": 216
+    },
+    "practice_weather": {
+      "eligible_rows": 17623,
+      "excluded_rows": 414,
+      "raw_processed_rows": 18037,
+      "sessions": 216
+    }
+  },
+  "post_features": 158,
+  "practice_classifications": {
+    "examples": [
+      {
+        "driver_id_race": "sutil",
+        "driver_name": "Paul di Resta",
+        "driver_number": 14,
+        "round": 2,
+        "season": 2010,
+        "session": "FP1"
+      },
+      {
+        "driver_id_race": "liuzzi",
+        "driver_name": "Paul di Resta",
+        "driver_number": 15,
+        "round": 3,
+        "season": 2010,
+        "session": "FP1"
+      },
+      {
+        "driver_id_race": "kovalainen",
+        "driver_name": "Mohamed Fairuz Fauzy",
+        "driver_number": 19,
+        "round": 3,
+        "season": 2010,
+        "session": "FP1"
+      },
+      {
+        "driver_id_race": "liuzzi",
+        "driver_name": "Paul di Resta",
+        "driver_number": 15,
+        "round": 4,
+        "season": 2010,
+        "session": "FP1"
+      },
+      {
+        "driver_id_race": "sutil",
+        "driver_name": "Paul di Resta",
+        "driver_number": 14,
+        "round": 5,
+        "season": 2010,
+        "session": "FP1"
+      },
+      {
+        "driver_id_race": "chandhok",
+        "driver_name": "Christian Klien",
+        "driver_number": 20,
+        "round": 5,
+        "season": 2010,
+        "session": "FP1"
+      },
+      {
+        "driver_id_race": "bruno_senna",
+        "driver_name": "Sakon Yamamoto",
+        "driver_number": 21,
+        "round": 7,
+        "season": 2010,
+        "session": "FP1"
+      },
+      {
+        "driver_id_race": "sutil",
+        "driver_name": "Paul di Resta",
+        "driver_number": 14,
+        "round": 9,
+        "season": 2010,
+        "session": "FP1"
+      },
+      {
+        "driver_id_race": "chandhok",
+        "driver_name": "Christian Klien",
+        "driver_number": 20,
+        "round": 9,
+        "season": 2010,
+        "session": "FP1"
+      },
+      {
+        "driver_id_race": "liuzzi",
+        "driver_name": "Paul di Resta",
+        "driver_number": 15,
+        "round": 10,
+        "season": 2010,
+        "session": "FP1"
+      },
+      {
+        "driver_id_race": "trulli",
+        "driver_name": "Mohamed Fairuz Fauzy",
+        "driver_number": 18,
+        "round": 10,
+        "season": 2010,
+        "session": "FP1"
+      },
+      {
+        "driver_id_race": "kovalainen",
+        "driver_name": "Mohamed Fairuz Fauzy",
+        "driver_number": 19,
+        "round": 11,
+        "season": 2010,
+        "session": "FP1"
+      },
+      {
+        "driver_id_race": "liuzzi",
+        "driver_name": "Paul di Resta",
+        "driver_number": 15,
+        "round": 12,
+        "season": 2010,
+        "session": "FP1"
+      },
+      {
+        "driver_id_race": "sutil",
+        "driver_name": "Paul di Resta",
+        "driver_number": 14,
+        "round": 14,
+        "season": 2010,
+        "session": "FP1"
+      },
+      {
+        "driver_id_race": "grassi",
+        "driver_name": "J\u00e9r\u00f4me d'Ambrosio",
+        "driver_number": 25,
+        "round": 15,
+        "season": 2010,
+        "session": "FP1"
+      },
+      {
+        "driver_id_race": "trulli",
+        "driver_name": "Mohamed Fairuz Fauzy",
+        "driver_number": 18,
+        "round": 15,
+        "season": 2010,
+        "session": "FP1"
+      },
+      {
+        "driver_id_race": "grassi",
+        "driver_name": "J\u00e9r\u00f4me d'Ambrosio",
+        "driver_number": 25,
+        "round": 16,
+        "season": 2010,
+        "session": "FP1"
+      },
+      {
+        "driver_id_race": "grassi",
+        "driver_name": "J\u00e9r\u00f4me d'Ambrosio",
+        "driver_number": 25,
+        "round": 17,
+        "season": 2010,
+        "session": "FP1"
+      },
+      {
+        "driver_id_race": "grassi",
+        "driver_name": "J\u00e9r\u00f4me d'Ambrosio",
+        "driver_number": 25,
+        "round": 18,
+        "season": 2010,
+        "session": "FP1"
+      },
+      {
+        "driver_id_race": "kovalainen",
+        "driver_name": "Mohamed Fairuz Fauzy",
+        "driver_number": 19,
+        "round": 19,
+        "season": 2010,
+        "session": "FP1"
+      },
+      {
+        "driver_id_race": "alguersuari",
+        "driver_name": "Daniel Joseph Ricciardo",
+        "driver_number": 19,
+        "round": 1,
+        "season": 2011,
+        "session": "FP1"
+      },
+      {
+        "driver_id_race": "resta",
+        "driver_name": "Nicolas H\u00fclkenberg",
+        "driver_number": 15,
+        "round": 1,
+        "season": 2011,
+        "session": "FP1"
+      },
+      {
+        "driver_id_race": "trulli",
+        "driver_name": "Karun Chandhok",
+        "driver_number": 21,
+        "round": 1,
+        "season": 2011,
+        "session": "FP1"
+      },
+      {
+        "driver_id_race": "resta",
+        "driver_name": "Nicolas H\u00fclkenberg",
+        "driver_number": 15,
+        "round": 2,
+        "season": 2011,
+        "session": "FP1"
+      },
+      {
+        "driver_id_race": "buemi",
+        "driver_name": "Daniel Joseph Ricciardo",
+        "driver_number": 18,
+        "round": 2,
+        "season": 2011,
+        "session": "FP1"
+      },
+      {
+        "driver_id_race": "kovalainen",
+        "driver_name": "Davide Valsecchi",
+        "driver_number": 20,
+        "round": 2,
+        "season": 2011,
+        "session": "FP1"
+      },
+      {
+        "driver_id_race": "sutil",
+        "driver_name": "Nicolas H\u00fclkenberg",
+        "driver_number": 14,
+        "round": 3,
+        "season": 2011,
+        "session": "FP1"
+      },
+      {
+        "driver_id_race": "alguersuari",
+        "driver_name": "Daniel Joseph Ricciardo",
+        "driver_number": 19,
+        "round": 3,
+        "season": 2011,
+        "session": "FP1"
+      },
+      {
+        "driver_id_race": "trulli",
+        "driver_name": "Luiz Tadeu Razia Filho",
+        "driver_number": 21,
+        "round": 3,
+        "season": 2011,
+        "session": "FP1"
+      },
+      {
+        "driver_id_race": "alguersuari",
+        "driver_name": "Daniel Joseph Ricciardo",
+        "driver_number": 19,
+        "round": 4,
+        "season": 2011,
+        "session": "FP1"
+      }
+    ],
+    "identity_matched_rows": 14493,
+    "identity_unmatched_rows_excluded": 429,
+    "raw_rows": 20552,
+    "same_number_wrong_identity_rows_excluded": 144,
+    "time_eligible_rows": 14922
+  },
+  "pre_features": 148,
+  "production_unchanged": true,
+  "races": 347,
+  "recipe": "identity_completed_session_v2",
+  "rows": 7307,
+  "session_timing": {
+    "eligible": 718,
+    "excluded_or_missing": 338,
+    "source_end_timestamp_rows": 216
+  }
+}
