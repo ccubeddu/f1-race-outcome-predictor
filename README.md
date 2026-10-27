@@ -5,6 +5,30 @@ A leakage-safe Formula 1 outcome predictor with pre-qualifying and post-qualifyi
 The project provides reproducible data ingestion, explicit pre/post-qualifying feature matrices,
 calibrated joint race simulation, walk-forward evaluation, and a simple prediction CLI.
 
+## Austin example
+
+For the 2026 United States Grand Prix, the post-qualifying walk-forward model was trained only
+through October 11—before the Austin race—and correctly predicted Andrea Kimi Antonelli to win.
+It identified all three podium drivers and all ten points finishers.
+
+| Pred. | Driver | Expected | P(win) | P(podium) | P(points) | Actual |
+|---:|---|---:|---:|---:|---:|---:|
+| 1 | Andrea Kimi Antonelli | 2.70 | 67.3% | 91.6% | 92.5% | 1 |
+| 2 | Max Verstappen | 4.22 | 22.1% | 83.1% | 87.6% | 3 |
+| 3 | Charles Leclerc | 4.96 | 4.5% | 50.5% | 91.0% | 2 |
+| 4 | Isack Hadjar | 6.15 | 3.4% | 36.1% | 87.2% | 6 |
+| 5 | Lewis Hamilton | 6.20 | 1.0% | 15.4% | 91.4% | 4 |
+| 6 | Lando Norris | 7.31 | 0.8% | 10.8% | 88.0% | 5 |
+| 7 | George Russell | 7.52 | 0.6% | 7.3% | 86.4% | 8 |
+| 8 | Oscar Piastri | 8.73 | 0.2% | 2.5% | 82.6% | 7 |
+| 9 | Liam Lawson | 11.36 | 0.0% | 0.6% | 55.6% | 9 |
+| 10 | Pierre Gasly | 12.31 | 0.0% | 0.3% | 39.5% | 10 |
+
+Race metrics: **0.916 Spearman**, **1.73-position MAE**, and **2.136 position log loss**.
+See the [full 22-driver forecast](outputs/examples/austin_2026/report.md),
+[CSV](outputs/examples/austin_2026/post_quali_walk_forward.csv), or
+[JSON](outputs/examples/austin_2026/post_quali_walk_forward.json).
+
 ## Quick start
 
 ```bash
