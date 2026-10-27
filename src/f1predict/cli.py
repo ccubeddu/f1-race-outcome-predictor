@@ -1,5 +1,6 @@
 from __future__ import annotations
 
+import hashlib
 import json
 import math
 import os
@@ -695,7 +696,7 @@ def odds_compare(
     except (FileNotFoundError, ValueError) as exc:
         raise typer.BadParameter(str(exc)) from exc
 
-    table = Table(title="Model vs de-vigged winner market")
+    table = Table(title="Model vs normalized winner market")
     table.add_column("Driver")
     table.add_column("Model", justify="right")
     table.add_column("Market", justify="right")
@@ -714,8 +715,8 @@ def odds_compare(
         )
     console.print(table)
     console.print(
-        f"Bookmaker overround: {odds.attrs['overround']:.1%} "
-        f"(margin above 100%: {odds.attrs['margin']:.1%})."
+        f"Raw implied-probability sum: {odds.attrs['overround']:.1%}. "
+        "Comparison normalizes across the supplied driver field."
     )
     if score:
         scoring = Table(title=f"Winner scoring · {score['winner']}")
@@ -738,14 +739,16 @@ def odds_compare(
 def odds_history(
     manifest_csv: Annotated[
         Path,
-        typer.Argument(
-            help="CSV with race, prediction_csv, odds_csv, and winner columns."
-        ),
+        typer.Argument(help="CSV with race, prediction_csv, odds_csv, and winner columns."),
     ],
     output: Annotated[
         Path | None,
         typer.Option(help="Optional path for the per-race scoring CSV."),
     ] = None,
+    include_unverified: Annotated[
+        bool,
+        typer.Option("--include-unverified", help="Show an explicitly exploratory aggregate."),
+    ] = False,
 ) -> None:
     """Score model and bookmaker winner probabilities over multiple races."""
     from f1predict.bookmakers import score_history, summarize_history
@@ -754,15 +757,16 @@ def odds_history(
         scores = score_history(manifest_csv)
     except (FileNotFoundError, ValueError) as exc:
         raise typer.BadParameter(str(exc)) from exc
-    summary = summarize_history(scores)
+    summary = summarize_history(scores, include_unverified=include_unverified)
 
-    table = Table(title="Model vs bookmaker history")
+    table = Table(title="Model vs market history")
     table.add_column("Race")
     table.add_column("Winner")
     table.add_column("Model favorite")
     table.add_column("Market favorite")
     table.add_column("Model LL", justify="right")
     table.add_column("Market LL", justify="right")
+    table.add_column("Timing")
     for row in scores.itertuples():
         table.add_row(
             str(row.race),
@@ -771,32 +775,129 @@ def odds_history(
             str(row.market_favorite),
             f"{row.model_log_loss:.3f}",
             f"{row.market_log_loss:.3f}",
+            "aligned" if row.timing_eligible else "unverified",
         )
     console.print(table)
 
-    totals = Table(title=f"Aggregate · {summary['races']} races")
+    label = "Exploratory aggregate" if include_unverified else "Timing-aligned aggregate"
+    totals = Table(title=f"{label} · {summary['races']} races")
     totals.add_column("Forecast")
     totals.add_column("Favorite accuracy", justify="right")
     totals.add_column("Mean log loss", justify="right")
     totals.add_column("Mean Brier", justify="right")
-    totals.add_row(
-        "Model",
-        f"{summary['model_favorite_accuracy']:.1%}",
-        f"{summary['model_mean_log_loss']:.3f}",
-        f"{summary['model_mean_brier']:.3f}",
-    )
-    totals.add_row(
-        "De-vigged market",
-        f"{summary['market_favorite_accuracy']:.1%}",
-        f"{summary['market_mean_log_loss']:.3f}",
-        f"{summary['market_mean_brier']:.3f}",
-    )
-    console.print(totals)
+    if summary["races"]:
+        for key, name in (("model", "Model"), ("market", "Normalized market")):
+            totals.add_row(
+                name,
+                f"{summary[f'{key}_favorite_accuracy']:.1%}",
+                f"{summary[f'{key}_mean_log_loss']:.3f}",
+                f"{summary[f'{key}_mean_brier']:.3f}",
+            )
+        console.print(totals)
+    else:
+        console.print(
+            "No races have verified timing metadata. "
+            "Use --include-unverified to inspect an exploratory aggregate."
+        )
+    for row in scores.loc[~scores["timing_eligible"]].itertuples():
+        console.print(f"[dim]{row.race}: {row.alignment_note}[/dim]")
     if output:
         output.parent.mkdir(parents=True, exist_ok=True)
         scores.to_csv(output, index=False)
         console.print(f"[dim]History CSV: {output.resolve()}[/dim]")
     console.print("[dim]Forecast comparison only—not betting advice. Gamble responsibly.[/dim]")
+
+
+@odds_app.command("import-betfair")
+def odds_import_betfair(
+    stream: Annotated[Path, typer.Argument(help="Extracted Betfair NDJSON or .bz2 stream.")],
+    driver_map: Annotated[
+        Path, typer.Argument(help="JSON object mapping selection IDs to canonical driver IDs.")
+    ],
+    market_id: Annotated[str, typer.Option(help="Explicit race-winner market ID, e.g. 1.12345.")],
+    market_type: Annotated[
+        str, typer.Option(help="Exact source winner code: WIN, WINNER, or OUTRIGHT_WINNER.")
+    ],
+    cutoff: Annotated[str, typer.Option(help="Exact comparison cutoff with UTC offset.")],
+    output: Annotated[Path, typer.Option(help="Destination odds CSV; metadata saved beside it.")],
+    max_age_seconds: Annotated[
+        int, typer.Option(help="Maximum runner price publication age at cutoff.")
+    ] = 300,
+) -> None:
+    """Import timestamped Betfair archive prices using only messages before a cutoff."""
+    from f1predict.data.betfair import import_betfair_snapshot
+    from f1predict.data.io import atomic_json_write
+
+    try:
+        mapping = json.loads(driver_map.read_text(encoding="utf-8"))
+        if not isinstance(mapping, dict):
+            raise ValueError("Driver map must be a JSON object")
+        quotes, metadata = import_betfair_snapshot(
+            stream,
+            mapping,
+            market_id,
+            cutoff,
+            max_age_seconds=max_age_seconds,
+            expected_market_type=market_type,
+        )
+    except (OSError, ValueError) as exc:
+        raise typer.BadParameter(str(exc)) from exc
+    output.parent.mkdir(parents=True, exist_ok=True)
+    quotes.to_csv(output, index=False)
+    atomic_json_write(output.with_suffix(".metadata.json"), metadata)
+    console.print(f"Imported {len(quotes)} drivers at {metadata['cutoff']}: {output.resolve()}")
+    console.print(str(metadata["caveat"]))
+
+
+@odds_app.command("fetch-polymarket")
+def odds_fetch_polymarket(
+    event_slug: Annotated[str, typer.Argument(help="Exact Polymarket race-winner event slug.")],
+    driver_map: Annotated[
+        Path, typer.Argument(help="JSON object mapping canonical driver IDs to exact market slugs.")
+    ],
+    prediction_csv: Annotated[
+        Path, typer.Option(help="Model CSV specifying the full actual grid.")
+    ],
+    cutoff: Annotated[str, typer.Option(help="Exact pre-race comparison cutoff with UTC offset.")],
+    output: Annotated[Path, typer.Option(help="Destination quotes CSV and provenance sidecars.")],
+    max_age_seconds: Annotated[int, typer.Option(help="Maximum recorded price age.")] = 300,
+) -> None:
+    """Download a public historical prediction-market snapshot with timestamps."""
+    import httpx
+
+    from f1predict.data.io import atomic_json_write
+    from f1predict.data.polymarket import PolymarketClient
+
+    try:
+        mapping = json.loads(driver_map.read_text(encoding="utf-8"))
+        if not isinstance(mapping, dict):
+            raise ValueError("Driver map must be a JSON object")
+        predictions = pd.read_csv(prediction_csv)
+        if "driver_id" not in predictions:
+            raise ValueError("Prediction CSV needs driver_id")
+        with PolymarketClient() as client:
+            snapshot = client.fetch_snapshot(
+                event_slug,
+                driver_markets=mapping,
+                expected_driver_ids=predictions["driver_id"].tolist(),
+                cutoff=cutoff,
+                max_age_seconds=max_age_seconds,
+            )
+    except (OSError, ValueError, httpx.HTTPError) as exc:
+        raise typer.BadParameter(str(exc)) from exc
+    output.parent.mkdir(parents=True, exist_ok=True)
+    snapshot.quotes.to_csv(output, index=False)
+    raw_path = output.with_suffix(".raw.json")
+    atomic_json_write(raw_path, snapshot.raw)
+    snapshot.metadata["raw_sha256"] = hashlib.sha256(raw_path.read_bytes()).hexdigest()
+    snapshot.metadata["prediction_sha256"] = hashlib.sha256(prediction_csv.read_bytes()).hexdigest()
+    atomic_json_write(output.with_suffix(".metadata.json"), snapshot.metadata)
+    console.print(f"Saved {len(snapshot.quotes)} driver histories at {cutoff}: {output.resolve()}")
+    console.print(
+        f"Unmapped observed mass: {snapshot.metadata['unmatched_observed_probability_sum']:.2%}; "
+        f"unmapped histories missing: {snapshot.metadata['unmatched_missing_histories']}."
+    )
+    console.print("Review unmatched outcomes in the metadata before scoring a normalized field.")
 
 
 def _prediction_table(predictions: pd.DataFrame) -> Table:

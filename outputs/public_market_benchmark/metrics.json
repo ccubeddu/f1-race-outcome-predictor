@@ -1,0 +1,52 @@
+{
+  "analysis_kind": "retrospective, conditional on the actual entrant grid",
+  "cutoff_policy": {
+    "post_quali": "scheduled race start minus 2 hours",
+    "pre_quali": "scheduled qualifying start minus 15 minutes"
+  },
+  "exclusions": [
+    {
+      "error": "Stale quote for max_verstappen: 578s before cutoff",
+      "event": "f1-united-states-grand-prix-winner-2026-10-25",
+      "event_id": "1123927",
+      "mode": "pre_quali",
+      "status": "rejected"
+    }
+  ],
+  "max_quote_age_seconds": 300,
+  "modes": {
+    "post_quali": {
+      "market_correct": 3,
+      "market_mean_brier": 0.30732407295060093,
+      "market_mean_log_loss": 0.6295749118636116,
+      "model_better_log_loss_races": 3,
+      "model_correct": 4,
+      "model_mean_brier": 0.18979195094399304,
+      "model_mean_log_loss": 0.4540490581014343,
+      "model_minus_market_mean_log_loss": -0.17552585376217728,
+      "paired_bootstrap_95_interval": [
+        -0.5053288151463563,
+        0.2142578233085598
+      ],
+      "races": 4,
+      "timing_eligible_races": 0
+    },
+    "pre_quali": {
+      "market_correct": 1,
+      "market_mean_brier": 0.5898296613903932,
+      "market_mean_log_loss": 1.1742146040784907,
+      "model_better_log_loss_races": 0,
+      "model_correct": 0,
+      "model_mean_brier": 0.8690987407407408,
+      "model_mean_log_loss": 1.8179091686093853,
+      "model_minus_market_mean_log_loss": 0.6436945645308946,
+      "paired_bootstrap_95_interval": [
+        0.29664967419569166,
+        1.0857069580525565
+      ],
+      "races": 3,
+      "timing_eligible_races": 0
+    }
+  },
+  "source": "Polymarket prediction market, separate from bookmaker comparison"
+}

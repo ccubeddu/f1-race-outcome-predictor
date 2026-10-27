@@ -3,13 +3,28 @@
 Winner odds are converted to implied probabilities and normalized across the complete 22-driver
 market. This removes the bookmaker overround with the standard multiplicative de-vig method.
 
-## Recent post-quali history
+## Audit correction — previous edge claim withdrawn
+
+The previous 4/4 model versus 2/4 bookmaker headline compares different, unverified information
+cutoffs. A search index's crawl date does not establish when the bookmaker offered a price.
+The model includes qualifying and final starting-grid features; the bookmaker boards could predate
+those inputs. Consequently these four races are excluded from the timing-eligible scoreboard.
+Their arithmetic remains below as exploratory analysis for reproducibility.
+
+The Austin pre-quali checkpoint has a similar mismatch: October 19 odds predate practice, while
+the stored pre-quali model uses same-weekend practice. The direction of that particular score does
+not make the comparison fair. Neither historical result establishes which forecaster is better.
+
+The default CLI now reports **0 timing-eligible races** for the existing bookmaker manifest.
+Both model and odds need exact timestamps and a documented common information cutoff.
+Also, 2026 has been reused during model selection, so the model backtests are retrospective
+validation rather than an untouched confirmatory holdout.
+
+## Original post-quali arithmetic — timing unverified
 
 The model forecasts are strict walk-forward predictions: every race was predicted by a model
 trained only on earlier races. The bookmaker side uses complete 22-driver BetMGM race-winner boards
-preserved by search indexing during each race week. Those archived pages do not expose an exact
-capture timestamp, so this four-race comparison is useful evidence, but not yet an audited study of
-official closing lines.
+preserved by search indexing. Those pages do not expose an exact price-capture timestamp.
 
 | Race | Winner | Model favorite | Market favorite | Model P(winner) | Market P(winner) | Model LL | Market LL |
 |---|---|---|---|---:|---:|---:|---:|
@@ -23,13 +38,12 @@ official closing lines.
 | Post-quali model | **4/4 (100%)** | **0.567** | **0.283** |
 | De-vigged market | 2/4 (50%) | 1.569 | 0.734 |
 
-Lower log loss and Brier scores are better. The model won the probability score on all four races,
-not merely the favorite-pick count. This is an encouraging result, but four races are still a small
-sample and the market capture-time caveat prevents calling it a definitive closing-line victory.
+Lower log loss and Brier scores are better. The arithmetic favors the model on all four races,
+but the unknown information cutoff prevents attributing that difference to model quality.
 
-Austin also demonstrates why the comparison cutoff matters. In the earlier pre-quali checkpoint
-below, the bookmaker forecast scored better. After qualifying, the model incorporated Antonelli's
-pole, made him a 67.3% favorite, and correctly switched ahead of the race-week BetMGM market.
+Austin demonstrates sensitivity to the information set: the model's winner probability changed
+after qualifying. Without a post-quali timestamp for the odds, that change cannot be called a win
+over the bookmaker.
 
 ## Mexico City 2026 — prospective pre-quali comparison
 
@@ -54,7 +68,7 @@ implied probabilities total 120.7%, a 20.7% overround before normalization.
 
 This is a prospective snapshot, not an accuracy result. It should be scored only after the race.
 
-## Austin 2026 — completed-race checkpoint
+## Austin 2026 — illustrative arithmetic, cutoffs differ
 
 This uses the leakage-safe pre-quali walk-forward prediction trained only through October 11 and
 Kambi race-winner prices observed October 19. Andrea Kimi Antonelli won.
@@ -64,10 +78,9 @@ Kambi race-winner prices observed October 19. Andrea Kimi Antonelli won.
 | Model | Max Verstappen | 17.7% | 1.732 | 0.907 |
 | De-vigged market | Max Verstappen | 22.9% | **1.475** | **0.794** |
 
-Both forecasts chose the wrong favorite, but the market assigned more probability to Antonelli and
-therefore scored better on both proper scoring rules. One race is not enough to claim that either
-forecast is generally superior. A meaningful comparison needs the same pre-quali or post-quali
-snapshot for many races.
+Both forecasts chose the wrong favorite. The market assigned more probability to Antonelli and
+scores better arithmetically, but the October 19 board and practice-enriched forecast have different
+information cutoffs. Treat the result as illustrative only.
 
 ## Reproduce
 
@@ -84,6 +97,9 @@ f1predict odds compare \
 f1predict odds history \
   outputs/bookmaker_comparison/history_post_quali.csv \
   --output outputs/bookmaker_comparison/history_post_quali_scores.csv
+
+# Explicitly opt into the original, unverified aggregate
+f1predict odds history outputs/bookmaker_comparison/history_post_quali.csv --include-unverified
 ```
 
 The input must contain every driver and exactly one of `decimal_odds`, `american_odds`, or

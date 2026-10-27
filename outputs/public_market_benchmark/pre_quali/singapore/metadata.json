@@ -1,0 +1,98 @@
+{
+  "analysis_kind": "retrospective; normalized conditional on supplied actual entrants",
+  "backtest_profile": "stored reduced training profile; differs from full production fit",
+  "backtest_source_sha256": "af2fb773848a9c010c3dff27dd6112ef6f9451cb45cf5577af1e9e0a6ade38b1",
+  "cutoff_at": "2026-10-10T12:45:00+00:00",
+  "event_id": "1123912",
+  "event_slug": "f1-singapore-grand-prix-winner-2026-10-11",
+  "event_title": "Singapore Grand Prix: Driver Winner",
+  "feature_publication_times_verified": false,
+  "grid_size": 22,
+  "mapping_coverage": 1.0,
+  "matched_probability_sum": 0.9765,
+  "max_age_seconds": 300,
+  "model_candidate": "anchored_ensemble",
+  "model_selection_untouched": false,
+  "model_training_end": [
+    "2026-10-04 00:00:00"
+  ],
+  "prediction_sha256": "daa23c7a65033c37fa26fc287dba4baa84234c61f45ba3605f6fc52747030b16",
+  "price_type": "historical CLOB price; executable bid/ask not available from this endpoint",
+  "probabilities_normalized": false,
+  "qualifying_start_at": "2026-10-10T13:00:00Z",
+  "race_start_at": "2026-10-11T12:00:00Z",
+  "race_start_source": "local Jolpica race schedule; scheduled start time",
+  "raw_sha256": "3d990ccaffa3b7c67dfbcf24da38bf7154ea2f94ab1cec66c72499f3b80d22a6",
+  "retrieved_at": "2026-10-27T21:12:22.097894+00:00",
+  "source": "polymarket",
+  "source_kind": "prediction_market",
+  "source_url": "https://polymarket.com/event/f1-singapore-grand-prix-winner-2026-10-11",
+  "unmatched_markets": [
+    {
+      "fresh": true,
+      "label": "Yuki Tsunoda",
+      "market_slug": "f1-singapore-grand-prix-winner-tsunoda-2026-10-11",
+      "probability": 0.0005,
+      "quote_age_seconds": 277.0,
+      "quote_at": "2026-10-10T12:40:23+00:00",
+      "token_id": "80737513999194638178280916250352918609409177325807266190011527655594912137851"
+    },
+    {
+      "fresh": false,
+      "label": "Other",
+      "market_slug": "f1-singapore-grand-prix-driver-winner-other-2026-10-11",
+      "probability": null,
+      "quote_age_seconds": null,
+      "quote_at": null,
+      "token_id": "17650706379867978874400044760878412223487544499855352735760316647697960051704"
+    },
+    {
+      "fresh": false,
+      "label": "Driver A",
+      "market_slug": "f1-singapore-grand-prix-driver-winner-a-2026-10-11",
+      "probability": null,
+      "quote_age_seconds": null,
+      "quote_at": null,
+      "token_id": "57995453088140829868081302242367072171943790857662637996215502128296105570482"
+    },
+    {
+      "fresh": false,
+      "label": "Driver B",
+      "market_slug": "f1-singapore-grand-prix-driver-winner-b-2026-10-11",
+      "probability": null,
+      "quote_age_seconds": null,
+      "quote_at": null,
+      "token_id": "41624964208452144383406538483541766672066620354450113768712150670510674242894"
+    },
+    {
+      "fresh": false,
+      "label": "Driver C",
+      "market_slug": "f1-singapore-grand-prix-driver-winner-c-2026-10-11",
+      "probability": null,
+      "quote_age_seconds": null,
+      "quote_at": null,
+      "token_id": "88273630401473901047948921019485370802519703697287897754214217511458853133674"
+    },
+    {
+      "fresh": false,
+      "label": "Driver D",
+      "market_slug": "f1-singapore-grand-prix-driver-winner-d-2026-10-11",
+      "probability": null,
+      "quote_age_seconds": null,
+      "quote_at": null,
+      "token_id": "88781380972508222664110729406449838172550790708400291731272881308321044419787"
+    },
+    {
+      "fresh": false,
+      "label": "Driver E",
+      "market_slug": "f1-singapore-grand-prix-driver-winner-e-2026-10-11",
+      "probability": null,
+      "quote_age_seconds": null,
+      "quote_at": null,
+      "token_id": "84245299075234216808867178466264377550495284567675651054328108154916080416845"
+    }
+  ],
+  "unmatched_missing_histories": 6,
+  "unmatched_observed_probability_sum": 0.0005,
+  "unmatched_stale_histories": 0
+}

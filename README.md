@@ -241,15 +241,48 @@ For a multi-race scoreboard, provide a manifest with `race`, `prediction_csv`, `
 f1predict odds history outputs/bookmaker_comparison/history_post_quali.csv
 ```
 
-The included four-race post-quali sample currently has 100% model favorite accuracy versus 50% for
-the bookmaker favorites, with mean winner log loss of 0.567 versus 1.569. This is promising but
-still a small sample; the archived BetMGM pages also lack exact capture timestamps, so it is not
-presented as a definitive closing-line benchmark.
+The previous four-race comparison has unverified odds timestamps. It cannot establish an advantage
+over bookmakers because the post-quali model may have had information the odds did not include.
+The default history command now excludes these races from aggregate scores. Use
+`--include-unverified` to inspect the original arithmetic as an exploratory result.
+
+Timing-eligible history rows require `season`, `round`, `mode`, `model_cutoff_at`,
+`features_available_at`, `odds_snapshot_at`, `qualifying_start_at`, `qualifying_end_at`,
+`race_start_at`, `source_url`, `source_market_id`, and `timing_evidence`. All times must have explicit
+timezones. Prediction files must include matching season/round/mode and an earlier `training_end`;
+odds files must include every runner's `quote_at`. The odds snapshot must be within five minutes
+before the model cutoff, every quote must be within five minutes before the snapshot, and the
+model's inputs must already be available by that snapshot. Post-quali odds must follow qualifying.
+
+These checks assess the timing metadata supplied by the data collector. Independent source
+verification and a frozen model configuration are still necessary for a confirmatory test. The
+2026 data has been reused to compare upgrades, so treat those model scores as retrospective
+validation; future races with the configuration frozen provide the next untouched test.
 
 The repository includes a [Mexico prospective comparison](outputs/bookmaker_comparison/report.md)
-and an Austin completed-race checkpoint. Historical odds are not freely available as one clean
-dataset, so broad bookmaker claims are deliberately deferred until more same-cutoff snapshots have
-been collected. Forecast comparison only—not betting advice.
+and an Austin illustrative checkpoint. Austin's October 19 odds predate practice, while the stored
+pre-quali model includes practice, so that checkpoint also compares different information cutoffs.
+
+The [new timestamped market study](outputs/public_market_benchmark/report.md) retrieves public
+Polymarket histories for four recent races, with separate pre-quali and post-quali comparisons,
+raw responses, explicit mappings, hashes, and a fixed freshness rule. This is a prediction-market
+benchmark. The pre-quali model trails the market in the three usable snapshots; post-quali leads
+in three of four. Feature publication times and repeated model selection remain limitations.
+
+Two data-source commands are available:
+
+```bash
+f1predict odds fetch-polymarket --help
+f1predict odds import-betfair --help
+
+# Replay the checked-in public snapshots without making network requests
+python scripts/export_public_market_benchmark.py
+```
+
+Betfair BASIC archives must first be acquired through its account/download workflow. The importer
+accepts downloaded NDJSON or `.bz2` files and uses only updates before an explicit cutoff. BASIC
+last-traded prices are not executable back/lay quotes. No real Betfair F1 archive has been tested
+yet; importer verification currently uses stream fixtures.
 
 ## Predict a race
 

@@ -1,0 +1,98 @@
+{
+  "analysis_kind": "retrospective; normalized conditional on supplied actual entrants",
+  "backtest_profile": "stored reduced training profile; differs from full production fit",
+  "backtest_source_sha256": "1672262cce41de51eb43a836c907d112d2ddea843e95a22a7d1d6968aab36320",
+  "cutoff_at": "2026-10-25T18:00:00+00:00",
+  "event_id": "1123927",
+  "event_slug": "f1-united-states-grand-prix-winner-2026-10-25",
+  "event_title": "United States Grand Prix: Driver Winner",
+  "feature_publication_times_verified": false,
+  "grid_size": 22,
+  "mapping_coverage": 1.0,
+  "matched_probability_sum": 1.0495,
+  "max_age_seconds": 300,
+  "model_candidate": "pole_aware_ensemble",
+  "model_selection_untouched": false,
+  "model_training_end": [
+    "2026-10-11 00:00:00"
+  ],
+  "prediction_sha256": "b8420072c2fa6c1b3871b907be32aca8fd03e24024cd9cf95d3c56be1f1328d7",
+  "price_type": "historical CLOB price; executable bid/ask not available from this endpoint",
+  "probabilities_normalized": false,
+  "qualifying_start_at": "2026-10-24T21:00:00Z",
+  "race_start_at": "2026-10-25T20:00:00Z",
+  "race_start_source": "local Jolpica race schedule; scheduled start time",
+  "raw_sha256": "e1f1e50c297607333603c7283199f6976ea3fcb630411e7f2d5f8ea45d9f6a69",
+  "retrieved_at": "2026-10-27T21:11:13.043868+00:00",
+  "source": "polymarket",
+  "source_kind": "prediction_market",
+  "source_url": "https://polymarket.com/event/f1-united-states-grand-prix-winner-2026-10-25",
+  "unmatched_markets": [
+    {
+      "fresh": true,
+      "label": "Yuki Tsunoda",
+      "market_slug": "f1-united-states-grand-prix-winner-tsunoda-2026-10-25",
+      "probability": 0.0005,
+      "quote_age_seconds": 285.0,
+      "quote_at": "2026-10-25T17:55:15+00:00",
+      "token_id": "38714155703790998890322099668291090103659057141485563099763592486304881092411"
+    },
+    {
+      "fresh": false,
+      "label": "Other",
+      "market_slug": "f1-united-states-grand-prix-driver-winner-other-2026-10-25",
+      "probability": null,
+      "quote_age_seconds": null,
+      "quote_at": null,
+      "token_id": "50984908066190602824217710421213858960743750939268433344256960826353810251476"
+    },
+    {
+      "fresh": false,
+      "label": "Driver A",
+      "market_slug": "f1-united-states-grand-prix-driver-winner-a-2026-10-25",
+      "probability": null,
+      "quote_age_seconds": null,
+      "quote_at": null,
+      "token_id": "84425895293451762054152739964291044206163078809173899571193436895002009491967"
+    },
+    {
+      "fresh": false,
+      "label": "Driver B",
+      "market_slug": "f1-united-states-grand-prix-driver-winner-b-2026-10-25",
+      "probability": null,
+      "quote_age_seconds": null,
+      "quote_at": null,
+      "token_id": "95417582649689896870225107250242961982190912188870012105653324670728686629402"
+    },
+    {
+      "fresh": false,
+      "label": "Driver C",
+      "market_slug": "f1-united-states-grand-prix-driver-winner-c-2026-10-25",
+      "probability": null,
+      "quote_age_seconds": null,
+      "quote_at": null,
+      "token_id": "1742296616837867627980412594967339521181406422989185276641856998845719327501"
+    },
+    {
+      "fresh": false,
+      "label": "Driver D",
+      "market_slug": "f1-united-states-grand-prix-driver-winner-d-2026-10-25",
+      "probability": null,
+      "quote_age_seconds": null,
+      "quote_at": null,
+      "token_id": "75998666079328400569733327025322049970232687327508463661825408461611303495170"
+    },
+    {
+      "fresh": false,
+      "label": "Driver E",
+      "market_slug": "f1-united-states-grand-prix-driver-winner-e-2026-10-25",
+      "probability": null,
+      "quote_age_seconds": null,
+      "quote_at": null,
+      "token_id": "50141930023701281204262956840346852823563728641488880786843281569352548970652"
+    }
+  ],
+  "unmatched_missing_histories": 6,
+  "unmatched_observed_probability_sum": 0.0005,
+  "unmatched_stale_histories": 0
+}
