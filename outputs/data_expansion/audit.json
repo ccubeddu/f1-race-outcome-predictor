@@ -1,0 +1,3135 @@
+{
+  "added_driver_rows": 3453,
+  "added_races": 156,
+  "baseline_driver_rows": 3854,
+  "baseline_races": 191,
+  "candidate_driver_rows": 7307,
+  "candidate_races": 347,
+  "created_at": "2026-10-27T22:05:52.667750+00:00",
+  "data_audit": {
+    "coverage": {
+      "non_finished_status_examples": {
+        "+1 Lap": 1342,
+        "+2 Laps": 314,
+        "+3 Laps": 67,
+        "Accident": 122,
+        "Brakes": 53,
+        "Collision": 215,
+        "Engine": 90,
+        "Gearbox": 63,
+        "Lapped": 414,
+        "Retired": 282
+      },
+      "qualifying_match_rate": 0.9958943478855892,
+      "result_grid_size": {
+        "maximum": 24,
+        "median": 20.0,
+        "minimum": 18
+      },
+      "scheduled_races_with_results": 347,
+      "scheduled_races_without_results": 5
+    },
+    "f1db": {
+      "duplicate_keys": 0,
+      "practice_rows": 20552,
+      "season_max": 2026,
+      "season_min": 2010,
+      "sessions": {
+        "FP1": 7277,
+        "FP2": 6662,
+        "FP3": 6613
+      },
+      "timed_lap_rate": 0.9818022576878163
+    },
+    "fastf1": {
+      "laps": {
+        "partitions": 0,
+        "rows": 0
+      },
+      "session_results": {
+        "partitions": 0,
+        "rows": 0
+      },
+      "weather": {
+        "partitions": 0,
+        "rows": 0
+      }
+    },
+    "openf1": {
+      "practice_laps": {
+        "drivers": 717,
+        "partitions": 36,
+        "rows": 16073,
+        "sessions": 36,
+        "timed_laps": 15354
+      },
+      "practice_results": {
+        "partitions": 36,
+        "rows": 717
+      },
+      "practice_sessions": {
+        "partitions": 4,
+        "rows": 63
+      },
+      "practice_stints": {
+        "partitions": 36,
+        "rows": 2845
+      },
+      "practice_weather": {
+        "partitions": 36,
+        "rows": 2923
+      }
+    },
+    "prediction_cutoffs": {
+      "post_quali": "after target qualifying classification and known grid penalties",
+      "pre_quali": "strictly before target qualifying start",
+      "same_race_outcomes": "labels only; prohibited from target-race features"
+    },
+    "tables": {
+      "pit_stops": {
+        "columns": 17,
+        "duplicate_keys": 0,
+        "required_nulls": {},
+        "rows": 12913,
+        "season_max": 2026,
+        "season_min": 2011,
+        "status": "ok"
+      },
+      "qualifying": {
+        "columns": 29,
+        "duplicate_keys": 0,
+        "required_nulls": {},
+        "rows": 7282,
+        "season_max": 2026,
+        "season_min": 2010,
+        "status": "ok"
+      },
+      "races": {
+        "columns": 23,
+        "duplicate_keys": 0,
+        "required_nulls": {},
+        "rows": 352,
+        "season_max": 2026,
+        "season_min": 2010,
+        "status": "ok"
+      },
+      "results": {
+        "columns": 34,
+        "duplicate_keys": 0,
+        "required_nulls": {},
+        "rows": 7307,
+        "season_max": 2026,
+        "season_min": 2010,
+        "status": "ok"
+      },
+      "sprints": {
+        "columns": 34,
+        "duplicate_keys": 0,
+        "required_nulls": {},
+        "rows": 612,
+        "season_max": 2026,
+        "season_min": 2021,
+        "status": "ok"
+      }
+    },
+    "warnings": []
+  },
+  "errors": [],
+  "independent_driver_count_differences": [
+    {
+      "f1db_rows": 24,
+      "jolpica_rows": 22,
+      "round": 1,
+      "season": 2012
+    },
+    {
+      "f1db_rows": 20,
+      "jolpica_rows": 18,
+      "round": 1,
+      "season": 2015
+    }
+  ],
+  "independent_expected_backfilled_races": 156,
+  "independent_missing_entry_details": [
+    {
+      "driver_id": "pedro-de-la-rosa",
+      "driver_name": "Pedro Mart\u00ednez de la Rosa",
+      "non_race_entry": true,
+      "round": 1,
+      "season": 2012,
+      "source_position_text": "DNQ"
+    },
+    {
+      "driver_id": "narain-karthikeyan",
+      "driver_name": "Kumar Ram Narain Karthikeyan",
+      "non_race_entry": true,
+      "round": 1,
+      "season": 2012,
+      "source_position_text": "DNQ"
+    },
+    {
+      "driver_id": "will-stevens",
+      "driver_name": "William Jonathan Richard Stevens",
+      "non_race_entry": true,
+      "round": 1,
+      "season": 2015,
+      "source_position_text": "DNP"
+    },
+    {
+      "driver_id": "roberto-merhi",
+      "driver_name": "Roberto Merhi Muntan",
+      "non_race_entry": true,
+      "round": 1,
+      "season": 2015,
+      "source_position_text": "DNP"
+    }
+  ],
+  "missing_race_keys": [],
+  "next_stage": "Resolve practice timing and driver substitutions before feature promotion",
+  "practice": {
+    "backfilled_rows": 10272,
+    "practice_only_rows": 106,
+    "same_number_different_driver_rows": 149,
+    "session_timing_audit": [
+      {
+        "round": 1,
+        "season": 2010,
+        "session": "FP1",
+        "timing_status": "before_qualifying_calendar_day"
+      },
+      {
+        "round": 1,
+        "season": 2010,
+        "session": "FP2",
+        "timing_status": "before_qualifying_calendar_day"
+      },
+      {
+        "round": 1,
+        "season": 2010,
+        "session": "FP3",
+        "timing_status": "same_day_without_exact_times"
+      },
+      {
+        "round": 2,
+        "season": 2010,
+        "session": "FP1",
+        "timing_status": "before_qualifying_calendar_day"
+      },
+      {
+        "round": 2,
+        "season": 2010,
+        "session": "FP2",
+        "timing_status": "before_qualifying_calendar_day"
+      },
+      {
+        "round": 2,
+        "season": 2010,
+        "session": "FP3",
+        "timing_status": "same_day_without_exact_times"
+      },
+      {
+        "round": 3,
+        "season": 2010,
+        "session": "FP1",
+        "timing_status": "before_qualifying_calendar_day"
+      },
+      {
+        "round": 3,
+        "season": 2010,
+        "session": "FP2",
+        "timing_status": "before_qualifying_calendar_day"
+      },
+      {
+        "round": 3,
+        "season": 2010,
+        "session": "FP3",
+        "timing_status": "same_day_without_exact_times"
+      },
+      {
+        "round": 4,
+        "season": 2010,
+        "session": "FP1",
+        "timing_status": "before_qualifying_calendar_day"
+      },
+      {
+        "round": 4,
+        "season": 2010,
+        "session": "FP2",
+        "timing_status": "before_qualifying_calendar_day"
+      },
+      {
+        "round": 4,
+        "season": 2010,
+        "session": "FP3",
+        "timing_status": "same_day_without_exact_times"
+      },
+      {
+        "round": 5,
+        "season": 2010,
+        "session": "FP1",
+        "timing_status": "before_qualifying_calendar_day"
+      },
+      {
+        "round": 5,
+        "season": 2010,
+        "session": "FP2",
+        "timing_status": "before_qualifying_calendar_day"
+      },
+      {
+        "round": 5,
+        "season": 2010,
+        "session": "FP3",
+        "timing_status": "same_day_without_exact_times"
+      },
+      {
+        "round": 6,
+        "season": 2010,
+        "session": "FP1",
+        "timing_status": "before_qualifying_calendar_day"
+      },
+      {
+        "round": 6,
+        "season": 2010,
+        "session": "FP2",
+        "timing_status": "before_qualifying_calendar_day"
+      },
+      {
+        "round": 6,
+        "season": 2010,
+        "session": "FP3",
+        "timing_status": "same_day_without_exact_times"
+      },
+      {
+        "round": 7,
+        "season": 2010,
+        "session": "FP1",
+        "timing_status": "before_qualifying_calendar_day"
+      },
+      {
+        "round": 7,
+        "season": 2010,
+        "session": "FP2",
+        "timing_status": "before_qualifying_calendar_day"
+      },
+      {
+        "round": 7,
+        "season": 2010,
+        "session": "FP3",
+        "timing_status": "same_day_without_exact_times"
+      },
+      {
+        "round": 8,
+        "season": 2010,
+        "session": "FP1",
+        "timing_status": "before_qualifying_calendar_day"
+      },
+      {
+        "round": 8,
+        "season": 2010,
+        "session": "FP2",
+        "timing_status": "before_qualifying_calendar_day"
+      },
+      {
+        "round": 8,
+        "season": 2010,
+        "session": "FP3",
+        "timing_status": "same_day_without_exact_times"
+      },
+      {
+        "round": 9,
+        "season": 2010,
+        "session": "FP1",
+        "timing_status": "before_qualifying_calendar_day"
+      },
+      {
+        "round": 9,
+        "season": 2010,
+        "session": "FP2",
+        "timing_status": "before_qualifying_calendar_day"
+      },
+      {
+        "round": 9,
+        "season": 2010,
+        "session": "FP3",
+        "timing_status": "same_day_without_exact_times"
+      },
+      {
+        "round": 10,
+        "season": 2010,
+        "session": "FP1",
+        "timing_status": "before_qualifying_calendar_day"
+      },
+      {
+        "round": 10,
+        "season": 2010,
+        "session": "FP2",
+        "timing_status": "before_qualifying_calendar_day"
+      },
+      {
+        "round": 10,
+        "season": 2010,
+        "session": "FP3",
+        "timing_status": "same_day_without_exact_times"
+      },
+      {
+        "round": 11,
+        "season": 2010,
+        "session": "FP1",
+        "timing_status": "before_qualifying_calendar_day"
+      },
+      {
+        "round": 11,
+        "season": 2010,
+        "session": "FP2",
+        "timing_status": "before_qualifying_calendar_day"
+      },
+      {
+        "round": 11,
+        "season": 2010,
+        "session": "FP3",
+        "timing_status": "same_day_without_exact_times"
+      },
+      {
+        "round": 12,
+        "season": 2010,
+        "session": "FP1",
+        "timing_status": "before_qualifying_calendar_day"
+      },
+      {
+        "round": 12,
+        "season": 2010,
+        "session": "FP2",
+        "timing_status": "before_qualifying_calendar_day"
+      },
+      {
+        "round": 12,
+        "season": 2010,
+        "session": "FP3",
+        "timing_status": "same_day_without_exact_times"
+      },
+      {
+        "round": 13,
+        "season": 2010,
+        "session": "FP1",
+        "timing_status": "before_qualifying_calendar_day"
+      },
+      {
+        "round": 13,
+        "season": 2010,
+        "session": "FP2",
+        "timing_status": "before_qualifying_calendar_day"
+      },
+      {
+        "round": 13,
+        "season": 2010,
+        "session": "FP3",
+        "timing_status": "same_day_without_exact_times"
+      },
+      {
+        "round": 14,
+        "season": 2010,
+        "session": "FP1",
+        "timing_status": "before_qualifying_calendar_day"
+      },
+      {
+        "round": 14,
+        "season": 2010,
+        "session": "FP2",
+        "timing_status": "before_qualifying_calendar_day"
+      },
+      {
+        "round": 14,
+        "season": 2010,
+        "session": "FP3",
+        "timing_status": "same_day_without_exact_times"
+      },
+      {
+        "round": 15,
+        "season": 2010,
+        "session": "FP1",
+        "timing_status": "before_qualifying_calendar_day"
+      },
+      {
+        "round": 15,
+        "season": 2010,
+        "session": "FP2",
+        "timing_status": "before_qualifying_calendar_day"
+      },
+      {
+        "round": 15,
+        "season": 2010,
+        "session": "FP3",
+        "timing_status": "same_day_without_exact_times"
+      },
+      {
+        "round": 16,
+        "season": 2010,
+        "session": "FP1",
+        "timing_status": "before_qualifying_calendar_day"
+      },
+      {
+        "round": 16,
+        "season": 2010,
+        "session": "FP2",
+        "timing_status": "before_qualifying_calendar_day"
+      },
+      {
+        "round": 16,
+        "season": 2010,
+        "session": "FP3",
+        "timing_status": "same_day_without_exact_times"
+      },
+      {
+        "round": 17,
+        "season": 2010,
+        "session": "FP1",
+        "timing_status": "before_qualifying_calendar_day"
+      },
+      {
+        "round": 17,
+        "season": 2010,
+        "session": "FP2",
+        "timing_status": "before_qualifying_calendar_day"
+      },
+      {
+        "round": 17,
+        "season": 2010,
+        "session": "FP3",
+        "timing_status": "same_day_without_exact_times"
+      },
+      {
+        "round": 18,
+        "season": 2010,
+        "session": "FP1",
+        "timing_status": "before_qualifying_calendar_day"
+      },
+      {
+        "round": 18,
+        "season": 2010,
+        "session": "FP2",
+        "timing_status": "before_qualifying_calendar_day"
+      },
+      {
+        "round": 18,
+        "season": 2010,
+        "session": "FP3",
+        "timing_status": "same_day_without_exact_times"
+      },
+      {
+        "round": 19,
+        "season": 2010,
+        "session": "FP1",
+        "timing_status": "before_qualifying_calendar_day"
+      },
+      {
+        "round": 19,
+        "season": 2010,
+        "session": "FP2",
+        "timing_status": "before_qualifying_calendar_day"
+      },
+      {
+        "round": 19,
+        "season": 2010,
+        "session": "FP3",
+        "timing_status": "same_day_without_exact_times"
+      },
+      {
+        "round": 1,
+        "season": 2011,
+        "session": "FP1",
+        "timing_status": "before_qualifying_calendar_day"
+      },
+      {
+        "round": 1,
+        "season": 2011,
+        "session": "FP2",
+        "timing_status": "before_qualifying_calendar_day"
+      },
+      {
+        "round": 1,
+        "season": 2011,
+        "session": "FP3",
+        "timing_status": "same_day_without_exact_times"
+      },
+      {
+        "round": 2,
+        "season": 2011,
+        "session": "FP1",
+        "timing_status": "before_qualifying_calendar_day"
+      },
+      {
+        "round": 2,
+        "season": 2011,
+        "session": "FP2",
+        "timing_status": "before_qualifying_calendar_day"
+      },
+      {
+        "round": 2,
+        "season": 2011,
+        "session": "FP3",
+        "timing_status": "same_day_without_exact_times"
+      },
+      {
+        "round": 3,
+        "season": 2011,
+        "session": "FP1",
+        "timing_status": "before_qualifying_calendar_day"
+      },
+      {
+        "round": 3,
+        "season": 2011,
+        "session": "FP2",
+        "timing_status": "before_qualifying_calendar_day"
+      },
+      {
+        "round": 3,
+        "season": 2011,
+        "session": "FP3",
+        "timing_status": "same_day_without_exact_times"
+      },
+      {
+        "round": 4,
+        "season": 2011,
+        "session": "FP1",
+        "timing_status": "before_qualifying_calendar_day"
+      },
+      {
+        "round": 4,
+        "season": 2011,
+        "session": "FP2",
+        "timing_status": "before_qualifying_calendar_day"
+      },
+      {
+        "round": 4,
+        "season": 2011,
+        "session": "FP3",
+        "timing_status": "same_day_without_exact_times"
+      },
+      {
+        "round": 5,
+        "season": 2011,
+        "session": "FP1",
+        "timing_status": "before_qualifying_calendar_day"
+      },
+      {
+        "round": 5,
+        "season": 2011,
+        "session": "FP2",
+        "timing_status": "before_qualifying_calendar_day"
+      },
+      {
+        "round": 5,
+        "season": 2011,
+        "session": "FP3",
+        "timing_status": "same_day_without_exact_times"
+      },
+      {
+        "round": 6,
+        "season": 2011,
+        "session": "FP1",
+        "timing_status": "before_qualifying_calendar_day"
+      },
+      {
+        "round": 6,
+        "season": 2011,
+        "session": "FP2",
+        "timing_status": "before_qualifying_calendar_day"
+      },
+      {
+        "round": 6,
+        "season": 2011,
+        "session": "FP3",
+        "timing_status": "same_day_without_exact_times"
+      },
+      {
+        "round": 7,
+        "season": 2011,
+        "session": "FP1",
+        "timing_status": "before_qualifying_calendar_day"
+      },
+      {
+        "round": 7,
+        "season": 2011,
+        "session": "FP2",
+        "timing_status": "before_qualifying_calendar_day"
+      },
+      {
+        "round": 7,
+        "season": 2011,
+        "session": "FP3",
+        "timing_status": "same_day_without_exact_times"
+      },
+      {
+        "round": 8,
+        "season": 2011,
+        "session": "FP1",
+        "timing_status": "before_qualifying_calendar_day"
+      },
+      {
+        "round": 8,
+        "season": 2011,
+        "session": "FP2",
+        "timing_status": "before_qualifying_calendar_day"
+      },
+      {
+        "round": 8,
+        "season": 2011,
+        "session": "FP3",
+        "timing_status": "same_day_without_exact_times"
+      },
+      {
+        "round": 9,
+        "season": 2011,
+        "session": "FP1",
+        "timing_status": "before_qualifying_calendar_day"
+      },
+      {
+        "round": 9,
+        "season": 2011,
+        "session": "FP2",
+        "timing_status": "before_qualifying_calendar_day"
+      },
+      {
+        "round": 9,
+        "season": 2011,
+        "session": "FP3",
+        "timing_status": "same_day_without_exact_times"
+      },
+      {
+        "round": 10,
+        "season": 2011,
+        "session": "FP1",
+        "timing_status": "before_qualifying_calendar_day"
+      },
+      {
+        "round": 10,
+        "season": 2011,
+        "session": "FP2",
+        "timing_status": "before_qualifying_calendar_day"
+      },
+      {
+        "round": 10,
+        "season": 2011,
+        "session": "FP3",
+        "timing_status": "same_day_without_exact_times"
+      },
+      {
+        "round": 11,
+        "season": 2011,
+        "session": "FP1",
+        "timing_status": "before_qualifying_calendar_day"
+      },
+      {
+        "round": 11,
+        "season": 2011,
+        "session": "FP2",
+        "timing_status": "before_qualifying_calendar_day"
+      },
+      {
+        "round": 11,
+        "season": 2011,
+        "session": "FP3",
+        "timing_status": "same_day_without_exact_times"
+      },
+      {
+        "round": 12,
+        "season": 2011,
+        "session": "FP1",
+        "timing_status": "before_qualifying_calendar_day"
+      },
+      {
+        "round": 12,
+        "season": 2011,
+        "session": "FP2",
+        "timing_status": "before_qualifying_calendar_day"
+      },
+      {
+        "round": 12,
+        "season": 2011,
+        "session": "FP3",
+        "timing_status": "same_day_without_exact_times"
+      },
+      {
+        "round": 13,
+        "season": 2011,
+        "session": "FP1",
+        "timing_status": "before_qualifying_calendar_day"
+      },
+      {
+        "round": 13,
+        "season": 2011,
+        "session": "FP2",
+        "timing_status": "before_qualifying_calendar_day"
+      },
+      {
+        "round": 13,
+        "season": 2011,
+        "session": "FP3",
+        "timing_status": "same_day_without_exact_times"
+      },
+      {
+        "round": 14,
+        "season": 2011,
+        "session": "FP1",
+        "timing_status": "before_qualifying_calendar_day"
+      },
+      {
+        "round": 14,
+        "season": 2011,
+        "session": "FP2",
+        "timing_status": "before_qualifying_calendar_day"
+      },
+      {
+        "round": 14,
+        "season": 2011,
+        "session": "FP3",
+        "timing_status": "same_day_without_exact_times"
+      },
+      {
+        "round": 15,
+        "season": 2011,
+        "session": "FP1",
+        "timing_status": "before_qualifying_calendar_day"
+      },
+      {
+        "round": 15,
+        "season": 2011,
+        "session": "FP2",
+        "timing_status": "before_qualifying_calendar_day"
+      },
+      {
+        "round": 15,
+        "season": 2011,
+        "session": "FP3",
+        "timing_status": "same_day_without_exact_times"
+      },
+      {
+        "round": 16,
+        "season": 2011,
+        "session": "FP1",
+        "timing_status": "before_qualifying_calendar_day"
+      },
+      {
+        "round": 16,
+        "season": 2011,
+        "session": "FP2",
+        "timing_status": "before_qualifying_calendar_day"
+      },
+      {
+        "round": 16,
+        "season": 2011,
+        "session": "FP3",
+        "timing_status": "same_day_without_exact_times"
+      },
+      {
+        "round": 17,
+        "season": 2011,
+        "session": "FP1",
+        "timing_status": "before_qualifying_calendar_day"
+      },
+      {
+        "round": 17,
+        "season": 2011,
+        "session": "FP2",
+        "timing_status": "before_qualifying_calendar_day"
+      },
+      {
+        "round": 17,
+        "season": 2011,
+        "session": "FP3",
+        "timing_status": "same_day_without_exact_times"
+      },
+      {
+        "round": 18,
+        "season": 2011,
+        "session": "FP1",
+        "timing_status": "before_qualifying_calendar_day"
+      },
+      {
+        "round": 18,
+        "season": 2011,
+        "session": "FP2",
+        "timing_status": "before_qualifying_calendar_day"
+      },
+      {
+        "round": 18,
+        "season": 2011,
+        "session": "FP3",
+        "timing_status": "same_day_without_exact_times"
+      },
+      {
+        "round": 19,
+        "season": 2011,
+        "session": "FP1",
+        "timing_status": "before_qualifying_calendar_day"
+      },
+      {
+        "round": 19,
+        "season": 2011,
+        "session": "FP2",
+        "timing_status": "before_qualifying_calendar_day"
+      },
+      {
+        "round": 19,
+        "season": 2011,
+        "session": "FP3",
+        "timing_status": "same_day_without_exact_times"
+      },
+      {
+        "round": 1,
+        "season": 2012,
+        "session": "FP1",
+        "timing_status": "before_qualifying_calendar_day"
+      },
+      {
+        "round": 1,
+        "season": 2012,
+        "session": "FP2",
+        "timing_status": "before_qualifying_calendar_day"
+      },
+      {
+        "round": 1,
+        "season": 2012,
+        "session": "FP3",
+        "timing_status": "same_day_without_exact_times"
+      },
+      {
+        "round": 2,
+        "season": 2012,
+        "session": "FP1",
+        "timing_status": "before_qualifying_calendar_day"
+      },
+      {
+        "round": 2,
+        "season": 2012,
+        "session": "FP2",
+        "timing_status": "before_qualifying_calendar_day"
+      },
+      {
+        "round": 2,
+        "season": 2012,
+        "session": "FP3",
+        "timing_status": "same_day_without_exact_times"
+      },
+      {
+        "round": 3,
+        "season": 2012,
+        "session": "FP1",
+        "timing_status": "before_qualifying_calendar_day"
+      },
+      {
+        "round": 3,
+        "season": 2012,
+        "session": "FP2",
+        "timing_status": "before_qualifying_calendar_day"
+      },
+      {
+        "round": 3,
+        "season": 2012,
+        "session": "FP3",
+        "timing_status": "same_day_without_exact_times"
+      },
+      {
+        "round": 4,
+        "season": 2012,
+        "session": "FP1",
+        "timing_status": "before_qualifying_calendar_day"
+      },
+      {
+        "round": 4,
+        "season": 2012,
+        "session": "FP2",
+        "timing_status": "before_qualifying_calendar_day"
+      },
+      {
+        "round": 4,
+        "season": 2012,
+        "session": "FP3",
+        "timing_status": "same_day_without_exact_times"
+      },
+      {
+        "round": 5,
+        "season": 2012,
+        "session": "FP1",
+        "timing_status": "before_qualifying_calendar_day"
+      },
+      {
+        "round": 5,
+        "season": 2012,
+        "session": "FP2",
+        "timing_status": "before_qualifying_calendar_day"
+      },
+      {
+        "round": 5,
+        "season": 2012,
+        "session": "FP3",
+        "timing_status": "same_day_without_exact_times"
+      },
+      {
+        "round": 6,
+        "season": 2012,
+        "session": "FP1",
+        "timing_status": "before_qualifying_calendar_day"
+      },
+      {
+        "round": 6,
+        "season": 2012,
+        "session": "FP2",
+        "timing_status": "before_qualifying_calendar_day"
+      },
+      {
+        "round": 6,
+        "season": 2012,
+        "session": "FP3",
+        "timing_status": "same_day_without_exact_times"
+      },
+      {
+        "round": 7,
+        "season": 2012,
+        "session": "FP1",
+        "timing_status": "before_qualifying_calendar_day"
+      },
+      {
+        "round": 7,
+        "season": 2012,
+        "session": "FP2",
+        "timing_status": "before_qualifying_calendar_day"
+      },
+      {
+        "round": 7,
+        "season": 2012,
+        "session": "FP3",
+        "timing_status": "same_day_without_exact_times"
+      },
+      {
+        "round": 8,
+        "season": 2012,
+        "session": "FP1",
+        "timing_status": "before_qualifying_calendar_day"
+      },
+      {
+        "round": 8,
+        "season": 2012,
+        "session": "FP2",
+        "timing_status": "before_qualifying_calendar_day"
+      },
+      {
+        "round": 8,
+        "season": 2012,
+        "session": "FP3",
+        "timing_status": "same_day_without_exact_times"
+      },
+      {
+        "round": 9,
+        "season": 2012,
+        "session": "FP1",
+        "timing_status": "before_qualifying_calendar_day"
+      },
+      {
+        "round": 9,
+        "season": 2012,
+        "session": "FP2",
+        "timing_status": "before_qualifying_calendar_day"
+      },
+      {
+        "round": 9,
+        "season": 2012,
+        "session": "FP3",
+        "timing_status": "same_day_without_exact_times"
+      },
+      {
+        "round": 10,
+        "season": 2012,
+        "session": "FP1",
+        "timing_status": "before_qualifying_calendar_day"
+      },
+      {
+        "round": 10,
+        "season": 2012,
+        "session": "FP2",
+        "timing_status": "before_qualifying_calendar_day"
+      },
+      {
+        "round": 10,
+        "season": 2012,
+        "session": "FP3",
+        "timing_status": "same_day_without_exact_times"
+      },
+      {
+        "round": 11,
+        "season": 2012,
+        "session": "FP1",
+        "timing_status": "before_qualifying_calendar_day"
+      },
+      {
+        "round": 11,
+        "season": 2012,
+        "session": "FP2",
+        "timing_status": "before_qualifying_calendar_day"
+      },
+      {
+        "round": 11,
+        "season": 2012,
+        "session": "FP3",
+        "timing_status": "same_day_without_exact_times"
+      },
+      {
+        "round": 12,
+        "season": 2012,
+        "session": "FP1",
+        "timing_status": "before_qualifying_calendar_day"
+      },
+      {
+        "round": 12,
+        "season": 2012,
+        "session": "FP2",
+        "timing_status": "before_qualifying_calendar_day"
+      },
+      {
+        "round": 12,
+        "season": 2012,
+        "session": "FP3",
+        "timing_status": "same_day_without_exact_times"
+      },
+      {
+        "round": 13,
+        "season": 2012,
+        "session": "FP1",
+        "timing_status": "before_qualifying_calendar_day"
+      },
+      {
+        "round": 13,
+        "season": 2012,
+        "session": "FP2",
+        "timing_status": "before_qualifying_calendar_day"
+      },
+      {
+        "round": 13,
+        "season": 2012,
+        "session": "FP3",
+        "timing_status": "same_day_without_exact_times"
+      },
+      {
+        "round": 14,
+        "season": 2012,
+        "session": "FP1",
+        "timing_status": "before_qualifying_calendar_day"
+      },
+      {
+        "round": 14,
+        "season": 2012,
+        "session": "FP2",
+        "timing_status": "before_qualifying_calendar_day"
+      },
+      {
+        "round": 14,
+        "season": 2012,
+        "session": "FP3",
+        "timing_status": "same_day_without_exact_times"
+      },
+      {
+        "round": 15,
+        "season": 2012,
+        "session": "FP1",
+        "timing_status": "before_qualifying_calendar_day"
+      },
+      {
+        "round": 15,
+        "season": 2012,
+        "session": "FP2",
+        "timing_status": "before_qualifying_calendar_day"
+      },
+      {
+        "round": 15,
+        "season": 2012,
+        "session": "FP3",
+        "timing_status": "same_day_without_exact_times"
+      },
+      {
+        "round": 16,
+        "season": 2012,
+        "session": "FP1",
+        "timing_status": "before_qualifying_calendar_day"
+      },
+      {
+        "round": 16,
+        "season": 2012,
+        "session": "FP2",
+        "timing_status": "before_qualifying_calendar_day"
+      },
+      {
+        "round": 16,
+        "season": 2012,
+        "session": "FP3",
+        "timing_status": "same_day_without_exact_times"
+      },
+      {
+        "round": 17,
+        "season": 2012,
+        "session": "FP1",
+        "timing_status": "before_qualifying_calendar_day"
+      },
+      {
+        "round": 17,
+        "season": 2012,
+        "session": "FP2",
+        "timing_status": "before_qualifying_calendar_day"
+      },
+      {
+        "round": 17,
+        "season": 2012,
+        "session": "FP3",
+        "timing_status": "same_day_without_exact_times"
+      },
+      {
+        "round": 18,
+        "season": 2012,
+        "session": "FP1",
+        "timing_status": "before_qualifying_calendar_day"
+      },
+      {
+        "round": 18,
+        "season": 2012,
+        "session": "FP2",
+        "timing_status": "before_qualifying_calendar_day"
+      },
+      {
+        "round": 18,
+        "season": 2012,
+        "session": "FP3",
+        "timing_status": "same_day_without_exact_times"
+      },
+      {
+        "round": 19,
+        "season": 2012,
+        "session": "FP1",
+        "timing_status": "before_qualifying_calendar_day"
+      },
+      {
+        "round": 19,
+        "season": 2012,
+        "session": "FP2",
+        "timing_status": "before_qualifying_calendar_day"
+      },
+      {
+        "round": 19,
+        "season": 2012,
+        "session": "FP3",
+        "timing_status": "same_day_without_exact_times"
+      },
+      {
+        "round": 20,
+        "season": 2012,
+        "session": "FP1",
+        "timing_status": "before_qualifying_calendar_day"
+      },
+      {
+        "round": 20,
+        "season": 2012,
+        "session": "FP2",
+        "timing_status": "before_qualifying_calendar_day"
+      },
+      {
+        "round": 20,
+        "season": 2012,
+        "session": "FP3",
+        "timing_status": "same_day_without_exact_times"
+      },
+      {
+        "round": 1,
+        "season": 2013,
+        "session": "FP1",
+        "timing_status": "before_qualifying_calendar_day"
+      },
+      {
+        "round": 1,
+        "season": 2013,
+        "session": "FP2",
+        "timing_status": "before_qualifying_calendar_day"
+      },
+      {
+        "round": 1,
+        "season": 2013,
+        "session": "FP3",
+        "timing_status": "same_day_without_exact_times"
+      },
+      {
+        "round": 2,
+        "season": 2013,
+        "session": "FP1",
+        "timing_status": "before_qualifying_calendar_day"
+      },
+      {
+        "round": 2,
+        "season": 2013,
+        "session": "FP2",
+        "timing_status": "before_qualifying_calendar_day"
+      },
+      {
+        "round": 2,
+        "season": 2013,
+        "session": "FP3",
+        "timing_status": "same_day_without_exact_times"
+      },
+      {
+        "round": 3,
+        "season": 2013,
+        "session": "FP1",
+        "timing_status": "before_qualifying_calendar_day"
+      },
+      {
+        "round": 3,
+        "season": 2013,
+        "session": "FP2",
+        "timing_status": "before_qualifying_calendar_day"
+      },
+      {
+        "round": 3,
+        "season": 2013,
+        "session": "FP3",
+        "timing_status": "same_day_without_exact_times"
+      },
+      {
+        "round": 4,
+        "season": 2013,
+        "session": "FP1",
+        "timing_status": "before_qualifying_calendar_day"
+      },
+      {
+        "round": 4,
+        "season": 2013,
+        "session": "FP2",
+        "timing_status": "before_qualifying_calendar_day"
+      },
+      {
+        "round": 4,
+        "season": 2013,
+        "session": "FP3",
+        "timing_status": "same_day_without_exact_times"
+      },
+      {
+        "round": 5,
+        "season": 2013,
+        "session": "FP1",
+        "timing_status": "before_qualifying_calendar_day"
+      },
+      {
+        "round": 5,
+        "season": 2013,
+        "session": "FP2",
+        "timing_status": "before_qualifying_calendar_day"
+      },
+      {
+        "round": 5,
+        "season": 2013,
+        "session": "FP3",
+        "timing_status": "same_day_without_exact_times"
+      },
+      {
+        "round": 6,
+        "season": 2013,
+        "session": "FP1",
+        "timing_status": "before_qualifying_calendar_day"
+      },
+      {
+        "round": 6,
+        "season": 2013,
+        "session": "FP2",
+        "timing_status": "before_qualifying_calendar_day"
+      },
+      {
+        "round": 6,
+        "season": 2013,
+        "session": "FP3",
+        "timing_status": "same_day_without_exact_times"
+      },
+      {
+        "round": 7,
+        "season": 2013,
+        "session": "FP1",
+        "timing_status": "before_qualifying_calendar_day"
+      },
+      {
+        "round": 7,
+        "season": 2013,
+        "session": "FP2",
+        "timing_status": "before_qualifying_calendar_day"
+      },
+      {
+        "round": 7,
+        "season": 2013,
+        "session": "FP3",
+        "timing_status": "same_day_without_exact_times"
+      },
+      {
+        "round": 8,
+        "season": 2013,
+        "session": "FP1",
+        "timing_status": "before_qualifying_calendar_day"
+      },
+      {
+        "round": 8,
+        "season": 2013,
+        "session": "FP2",
+        "timing_status": "before_qualifying_calendar_day"
+      },
+      {
+        "round": 8,
+        "season": 2013,
+        "session": "FP3",
+        "timing_status": "same_day_without_exact_times"
+      },
+      {
+        "round": 9,
+        "season": 2013,
+        "session": "FP1",
+        "timing_status": "before_qualifying_calendar_day"
+      },
+      {
+        "round": 9,
+        "season": 2013,
+        "session": "FP2",
+        "timing_status": "before_qualifying_calendar_day"
+      },
+      {
+        "round": 9,
+        "season": 2013,
+        "session": "FP3",
+        "timing_status": "same_day_without_exact_times"
+      },
+      {
+        "round": 10,
+        "season": 2013,
+        "session": "FP1",
+        "timing_status": "before_qualifying_calendar_day"
+      },
+      {
+        "round": 10,
+        "season": 2013,
+        "session": "FP2",
+        "timing_status": "before_qualifying_calendar_day"
+      },
+      {
+        "round": 10,
+        "season": 2013,
+        "session": "FP3",
+        "timing_status": "same_day_without_exact_times"
+      },
+      {
+        "round": 11,
+        "season": 2013,
+        "session": "FP1",
+        "timing_status": "before_qualifying_calendar_day"
+      },
+      {
+        "round": 11,
+        "season": 2013,
+        "session": "FP2",
+        "timing_status": "before_qualifying_calendar_day"
+      },
+      {
+        "round": 11,
+        "season": 2013,
+        "session": "FP3",
+        "timing_status": "same_day_without_exact_times"
+      },
+      {
+        "round": 12,
+        "season": 2013,
+        "session": "FP1",
+        "timing_status": "before_qualifying_calendar_day"
+      },
+      {
+        "round": 12,
+        "season": 2013,
+        "session": "FP2",
+        "timing_status": "before_qualifying_calendar_day"
+      },
+      {
+        "round": 12,
+        "season": 2013,
+        "session": "FP3",
+        "timing_status": "same_day_without_exact_times"
+      },
+      {
+        "round": 13,
+        "season": 2013,
+        "session": "FP1",
+        "timing_status": "before_qualifying_calendar_day"
+      },
+      {
+        "round": 13,
+        "season": 2013,
+        "session": "FP2",
+        "timing_status": "before_qualifying_calendar_day"
+      },
+      {
+        "round": 13,
+        "season": 2013,
+        "session": "FP3",
+        "timing_status": "same_day_without_exact_times"
+      },
+      {
+        "round": 14,
+        "season": 2013,
+        "session": "FP1",
+        "timing_status": "before_qualifying_calendar_day"
+      },
+      {
+        "round": 14,
+        "season": 2013,
+        "session": "FP2",
+        "timing_status": "before_qualifying_calendar_day"
+      },
+      {
+        "round": 14,
+        "season": 2013,
+        "session": "FP3",
+        "timing_status": "same_day_without_exact_times"
+      },
+      {
+        "round": 15,
+        "season": 2013,
+        "session": "FP1",
+        "timing_status": "before_qualifying_calendar_day"
+      },
+      {
+        "round": 15,
+        "season": 2013,
+        "session": "FP2",
+        "timing_status": "before_qualifying_calendar_day"
+      },
+      {
+        "round": 15,
+        "season": 2013,
+        "session": "FP3",
+        "timing_status": "same_day_without_exact_times"
+      },
+      {
+        "round": 16,
+        "season": 2013,
+        "session": "FP1",
+        "timing_status": "before_qualifying_calendar_day"
+      },
+      {
+        "round": 16,
+        "season": 2013,
+        "session": "FP2",
+        "timing_status": "before_qualifying_calendar_day"
+      },
+      {
+        "round": 16,
+        "season": 2013,
+        "session": "FP3",
+        "timing_status": "same_day_without_exact_times"
+      },
+      {
+        "round": 17,
+        "season": 2013,
+        "session": "FP1",
+        "timing_status": "before_qualifying_calendar_day"
+      },
+      {
+        "round": 17,
+        "season": 2013,
+        "session": "FP2",
+        "timing_status": "before_qualifying_calendar_day"
+      },
+      {
+        "round": 17,
+        "season": 2013,
+        "session": "FP3",
+        "timing_status": "same_day_without_exact_times"
+      },
+      {
+        "round": 18,
+        "season": 2013,
+        "session": "FP1",
+        "timing_status": "before_qualifying_calendar_day"
+      },
+      {
+        "round": 18,
+        "season": 2013,
+        "session": "FP2",
+        "timing_status": "before_qualifying_calendar_day"
+      },
+      {
+        "round": 18,
+        "season": 2013,
+        "session": "FP3",
+        "timing_status": "same_day_without_exact_times"
+      },
+      {
+        "round": 19,
+        "season": 2013,
+        "session": "FP1",
+        "timing_status": "before_qualifying_calendar_day"
+      },
+      {
+        "round": 19,
+        "season": 2013,
+        "session": "FP2",
+        "timing_status": "before_qualifying_calendar_day"
+      },
+      {
+        "round": 19,
+        "season": 2013,
+        "session": "FP3",
+        "timing_status": "same_day_without_exact_times"
+      },
+      {
+        "round": 1,
+        "season": 2014,
+        "session": "FP1",
+        "timing_status": "before_qualifying_calendar_day"
+      },
+      {
+        "round": 1,
+        "season": 2014,
+        "session": "FP2",
+        "timing_status": "before_qualifying_calendar_day"
+      },
+      {
+        "round": 1,
+        "season": 2014,
+        "session": "FP3",
+        "timing_status": "same_day_without_exact_times"
+      },
+      {
+        "round": 2,
+        "season": 2014,
+        "session": "FP1",
+        "timing_status": "before_qualifying_calendar_day"
+      },
+      {
+        "round": 2,
+        "season": 2014,
+        "session": "FP2",
+        "timing_status": "before_qualifying_calendar_day"
+      },
+      {
+        "round": 2,
+        "season": 2014,
+        "session": "FP3",
+        "timing_status": "same_day_without_exact_times"
+      },
+      {
+        "round": 3,
+        "season": 2014,
+        "session": "FP1",
+        "timing_status": "before_qualifying_calendar_day"
+      },
+      {
+        "round": 3,
+        "season": 2014,
+        "session": "FP2",
+        "timing_status": "before_qualifying_calendar_day"
+      },
+      {
+        "round": 3,
+        "season": 2014,
+        "session": "FP3",
+        "timing_status": "same_day_without_exact_times"
+      },
+      {
+        "round": 4,
+        "season": 2014,
+        "session": "FP1",
+        "timing_status": "before_qualifying_calendar_day"
+      },
+      {
+        "round": 4,
+        "season": 2014,
+        "session": "FP2",
+        "timing_status": "before_qualifying_calendar_day"
+      },
+      {
+        "round": 4,
+        "season": 2014,
+        "session": "FP3",
+        "timing_status": "same_day_without_exact_times"
+      },
+      {
+        "round": 5,
+        "season": 2014,
+        "session": "FP1",
+        "timing_status": "before_qualifying_calendar_day"
+      },
+      {
+        "round": 5,
+        "season": 2014,
+        "session": "FP2",
+        "timing_status": "before_qualifying_calendar_day"
+      },
+      {
+        "round": 5,
+        "season": 2014,
+        "session": "FP3",
+        "timing_status": "same_day_without_exact_times"
+      },
+      {
+        "round": 6,
+        "season": 2014,
+        "session": "FP1",
+        "timing_status": "before_qualifying_calendar_day"
+      },
+      {
+        "round": 6,
+        "season": 2014,
+        "session": "FP2",
+        "timing_status": "before_qualifying_calendar_day"
+      },
+      {
+        "round": 6,
+        "season": 2014,
+        "session": "FP3",
+        "timing_status": "same_day_without_exact_times"
+      },
+      {
+        "round": 7,
+        "season": 2014,
+        "session": "FP1",
+        "timing_status": "before_qualifying_calendar_day"
+      },
+      {
+        "round": 7,
+        "season": 2014,
+        "session": "FP2",
+        "timing_status": "before_qualifying_calendar_day"
+      },
+      {
+        "round": 7,
+        "season": 2014,
+        "session": "FP3",
+        "timing_status": "same_day_without_exact_times"
+      },
+      {
+        "round": 8,
+        "season": 2014,
+        "session": "FP1",
+        "timing_status": "before_qualifying_calendar_day"
+      },
+      {
+        "round": 8,
+        "season": 2014,
+        "session": "FP2",
+        "timing_status": "before_qualifying_calendar_day"
+      },
+      {
+        "round": 8,
+        "season": 2014,
+        "session": "FP3",
+        "timing_status": "same_day_without_exact_times"
+      },
+      {
+        "round": 9,
+        "season": 2014,
+        "session": "FP1",
+        "timing_status": "before_qualifying_calendar_day"
+      },
+      {
+        "round": 9,
+        "season": 2014,
+        "session": "FP2",
+        "timing_status": "before_qualifying_calendar_day"
+      },
+      {
+        "round": 9,
+        "season": 2014,
+        "session": "FP3",
+        "timing_status": "same_day_without_exact_times"
+      },
+      {
+        "round": 10,
+        "season": 2014,
+        "session": "FP1",
+        "timing_status": "before_qualifying_calendar_day"
+      },
+      {
+        "round": 10,
+        "season": 2014,
+        "session": "FP2",
+        "timing_status": "before_qualifying_calendar_day"
+      },
+      {
+        "round": 10,
+        "season": 2014,
+        "session": "FP3",
+        "timing_status": "same_day_without_exact_times"
+      },
+      {
+        "round": 11,
+        "season": 2014,
+        "session": "FP1",
+        "timing_status": "before_qualifying_calendar_day"
+      },
+      {
+        "round": 11,
+        "season": 2014,
+        "session": "FP2",
+        "timing_status": "before_qualifying_calendar_day"
+      },
+      {
+        "round": 11,
+        "season": 2014,
+        "session": "FP3",
+        "timing_status": "same_day_without_exact_times"
+      },
+      {
+        "round": 12,
+        "season": 2014,
+        "session": "FP1",
+        "timing_status": "before_qualifying_calendar_day"
+      },
+      {
+        "round": 12,
+        "season": 2014,
+        "session": "FP2",
+        "timing_status": "before_qualifying_calendar_day"
+      },
+      {
+        "round": 12,
+        "season": 2014,
+        "session": "FP3",
+        "timing_status": "same_day_without_exact_times"
+      },
+      {
+        "round": 13,
+        "season": 2014,
+        "session": "FP1",
+        "timing_status": "before_qualifying_calendar_day"
+      },
+      {
+        "round": 13,
+        "season": 2014,
+        "session": "FP2",
+        "timing_status": "before_qualifying_calendar_day"
+      },
+      {
+        "round": 13,
+        "season": 2014,
+        "session": "FP3",
+        "timing_status": "same_day_without_exact_times"
+      },
+      {
+        "round": 14,
+        "season": 2014,
+        "session": "FP1",
+        "timing_status": "before_qualifying_calendar_day"
+      },
+      {
+        "round": 14,
+        "season": 2014,
+        "session": "FP2",
+        "timing_status": "before_qualifying_calendar_day"
+      },
+      {
+        "round": 14,
+        "season": 2014,
+        "session": "FP3",
+        "timing_status": "same_day_without_exact_times"
+      },
+      {
+        "round": 15,
+        "season": 2014,
+        "session": "FP1",
+        "timing_status": "before_qualifying_calendar_day"
+      },
+      {
+        "round": 15,
+        "season": 2014,
+        "session": "FP2",
+        "timing_status": "before_qualifying_calendar_day"
+      },
+      {
+        "round": 15,
+        "season": 2014,
+        "session": "FP3",
+        "timing_status": "same_day_without_exact_times"
+      },
+      {
+        "round": 16,
+        "season": 2014,
+        "session": "FP1",
+        "timing_status": "before_qualifying_calendar_day"
+      },
+      {
+        "round": 16,
+        "season": 2014,
+        "session": "FP2",
+        "timing_status": "before_qualifying_calendar_day"
+      },
+      {
+        "round": 16,
+        "season": 2014,
+        "session": "FP3",
+        "timing_status": "same_day_without_exact_times"
+      },
+      {
+        "round": 17,
+        "season": 2014,
+        "session": "FP1",
+        "timing_status": "before_qualifying_calendar_day"
+      },
+      {
+        "round": 17,
+        "season": 2014,
+        "session": "FP2",
+        "timing_status": "before_qualifying_calendar_day"
+      },
+      {
+        "round": 17,
+        "season": 2014,
+        "session": "FP3",
+        "timing_status": "same_day_without_exact_times"
+      },
+      {
+        "round": 18,
+        "season": 2014,
+        "session": "FP1",
+        "timing_status": "before_qualifying_calendar_day"
+      },
+      {
+        "round": 18,
+        "season": 2014,
+        "session": "FP2",
+        "timing_status": "before_qualifying_calendar_day"
+      },
+      {
+        "round": 18,
+        "season": 2014,
+        "session": "FP3",
+        "timing_status": "same_day_without_exact_times"
+      },
+      {
+        "round": 19,
+        "season": 2014,
+        "session": "FP1",
+        "timing_status": "before_qualifying_calendar_day"
+      },
+      {
+        "round": 19,
+        "season": 2014,
+        "session": "FP2",
+        "timing_status": "before_qualifying_calendar_day"
+      },
+      {
+        "round": 19,
+        "season": 2014,
+        "session": "FP3",
+        "timing_status": "same_day_without_exact_times"
+      },
+      {
+        "round": 1,
+        "season": 2015,
+        "session": "FP1",
+        "timing_status": "before_qualifying_calendar_day"
+      },
+      {
+        "round": 1,
+        "season": 2015,
+        "session": "FP2",
+        "timing_status": "before_qualifying_calendar_day"
+      },
+      {
+        "round": 1,
+        "season": 2015,
+        "session": "FP3",
+        "timing_status": "same_day_without_exact_times"
+      },
+      {
+        "round": 2,
+        "season": 2015,
+        "session": "FP1",
+        "timing_status": "before_qualifying_calendar_day"
+      },
+      {
+        "round": 2,
+        "season": 2015,
+        "session": "FP2",
+        "timing_status": "before_qualifying_calendar_day"
+      },
+      {
+        "round": 2,
+        "season": 2015,
+        "session": "FP3",
+        "timing_status": "same_day_without_exact_times"
+      },
+      {
+        "round": 3,
+        "season": 2015,
+        "session": "FP1",
+        "timing_status": "before_qualifying_calendar_day"
+      },
+      {
+        "round": 3,
+        "season": 2015,
+        "session": "FP2",
+        "timing_status": "before_qualifying_calendar_day"
+      },
+      {
+        "round": 3,
+        "season": 2015,
+        "session": "FP3",
+        "timing_status": "same_day_without_exact_times"
+      },
+      {
+        "round": 4,
+        "season": 2015,
+        "session": "FP1",
+        "timing_status": "before_qualifying_calendar_day"
+      },
+      {
+        "round": 4,
+        "season": 2015,
+        "session": "FP2",
+        "timing_status": "before_qualifying_calendar_day"
+      },
+      {
+        "round": 4,
+        "season": 2015,
+        "session": "FP3",
+        "timing_status": "same_day_without_exact_times"
+      },
+      {
+        "round": 5,
+        "season": 2015,
+        "session": "FP1",
+        "timing_status": "before_qualifying_calendar_day"
+      },
+      {
+        "round": 5,
+        "season": 2015,
+        "session": "FP2",
+        "timing_status": "before_qualifying_calendar_day"
+      },
+      {
+        "round": 5,
+        "season": 2015,
+        "session": "FP3",
+        "timing_status": "same_day_without_exact_times"
+      },
+      {
+        "round": 6,
+        "season": 2015,
+        "session": "FP1",
+        "timing_status": "before_qualifying_calendar_day"
+      },
+      {
+        "round": 6,
+        "season": 2015,
+        "session": "FP2",
+        "timing_status": "before_qualifying_calendar_day"
+      },
+      {
+        "round": 6,
+        "season": 2015,
+        "session": "FP3",
+        "timing_status": "same_day_without_exact_times"
+      },
+      {
+        "round": 7,
+        "season": 2015,
+        "session": "FP1",
+        "timing_status": "before_qualifying_calendar_day"
+      },
+      {
+        "round": 7,
+        "season": 2015,
+        "session": "FP2",
+        "timing_status": "before_qualifying_calendar_day"
+      },
+      {
+        "round": 7,
+        "season": 2015,
+        "session": "FP3",
+        "timing_status": "same_day_without_exact_times"
+      },
+      {
+        "round": 8,
+        "season": 2015,
+        "session": "FP1",
+        "timing_status": "before_qualifying_calendar_day"
+      },
+      {
+        "round": 8,
+        "season": 2015,
+        "session": "FP2",
+        "timing_status": "before_qualifying_calendar_day"
+      },
+      {
+        "round": 8,
+        "season": 2015,
+        "session": "FP3",
+        "timing_status": "same_day_without_exact_times"
+      },
+      {
+        "round": 9,
+        "season": 2015,
+        "session": "FP1",
+        "timing_status": "before_qualifying_calendar_day"
+      },
+      {
+        "round": 9,
+        "season": 2015,
+        "session": "FP2",
+        "timing_status": "before_qualifying_calendar_day"
+      },
+      {
+        "round": 9,
+        "season": 2015,
+        "session": "FP3",
+        "timing_status": "same_day_without_exact_times"
+      },
+      {
+        "round": 10,
+        "season": 2015,
+        "session": "FP1",
+        "timing_status": "before_qualifying_calendar_day"
+      },
+      {
+        "round": 10,
+        "season": 2015,
+        "session": "FP2",
+        "timing_status": "before_qualifying_calendar_day"
+      },
+      {
+        "round": 10,
+        "season": 2015,
+        "session": "FP3",
+        "timing_status": "same_day_without_exact_times"
+      },
+      {
+        "round": 11,
+        "season": 2015,
+        "session": "FP1",
+        "timing_status": "before_qualifying_calendar_day"
+      },
+      {
+        "round": 11,
+        "season": 2015,
+        "session": "FP2",
+        "timing_status": "before_qualifying_calendar_day"
+      },
+      {
+        "round": 11,
+        "season": 2015,
+        "session": "FP3",
+        "timing_status": "same_day_without_exact_times"
+      },
+      {
+        "round": 12,
+        "season": 2015,
+        "session": "FP1",
+        "timing_status": "before_qualifying_calendar_day"
+      },
+      {
+        "round": 12,
+        "season": 2015,
+        "session": "FP2",
+        "timing_status": "before_qualifying_calendar_day"
+      },
+      {
+        "round": 12,
+        "season": 2015,
+        "session": "FP3",
+        "timing_status": "same_day_without_exact_times"
+      },
+      {
+        "round": 13,
+        "season": 2015,
+        "session": "FP1",
+        "timing_status": "before_qualifying_calendar_day"
+      },
+      {
+        "round": 13,
+        "season": 2015,
+        "session": "FP2",
+        "timing_status": "before_qualifying_calendar_day"
+      },
+      {
+        "round": 13,
+        "season": 2015,
+        "session": "FP3",
+        "timing_status": "same_day_without_exact_times"
+      },
+      {
+        "round": 14,
+        "season": 2015,
+        "session": "FP1",
+        "timing_status": "before_qualifying_calendar_day"
+      },
+      {
+        "round": 14,
+        "season": 2015,
+        "session": "FP2",
+        "timing_status": "before_qualifying_calendar_day"
+      },
+      {
+        "round": 14,
+        "season": 2015,
+        "session": "FP3",
+        "timing_status": "same_day_without_exact_times"
+      },
+      {
+        "round": 15,
+        "season": 2015,
+        "session": "FP1",
+        "timing_status": "before_qualifying_calendar_day"
+      },
+      {
+        "round": 15,
+        "season": 2015,
+        "session": "FP2",
+        "timing_status": "before_qualifying_calendar_day"
+      },
+      {
+        "round": 15,
+        "season": 2015,
+        "session": "FP3",
+        "timing_status": "same_day_without_exact_times"
+      },
+      {
+        "round": 16,
+        "season": 2015,
+        "session": "FP1",
+        "timing_status": "before_qualifying_calendar_day"
+      },
+      {
+        "round": 16,
+        "season": 2015,
+        "session": "FP3",
+        "timing_status": "same_day_without_exact_times"
+      },
+      {
+        "round": 17,
+        "season": 2015,
+        "session": "FP1",
+        "timing_status": "before_qualifying_calendar_day"
+      },
+      {
+        "round": 17,
+        "season": 2015,
+        "session": "FP2",
+        "timing_status": "before_qualifying_calendar_day"
+      },
+      {
+        "round": 17,
+        "season": 2015,
+        "session": "FP3",
+        "timing_status": "same_day_without_exact_times"
+      },
+      {
+        "round": 18,
+        "season": 2015,
+        "session": "FP1",
+        "timing_status": "before_qualifying_calendar_day"
+      },
+      {
+        "round": 18,
+        "season": 2015,
+        "session": "FP2",
+        "timing_status": "before_qualifying_calendar_day"
+      },
+      {
+        "round": 18,
+        "season": 2015,
+        "session": "FP3",
+        "timing_status": "same_day_without_exact_times"
+      },
+      {
+        "round": 19,
+        "season": 2015,
+        "session": "FP1",
+        "timing_status": "before_qualifying_calendar_day"
+      },
+      {
+        "round": 19,
+        "season": 2015,
+        "session": "FP2",
+        "timing_status": "before_qualifying_calendar_day"
+      },
+      {
+        "round": 19,
+        "season": 2015,
+        "session": "FP3",
+        "timing_status": "same_day_without_exact_times"
+      },
+      {
+        "round": 1,
+        "season": 2016,
+        "session": "FP1",
+        "timing_status": "before_qualifying_calendar_day"
+      },
+      {
+        "round": 1,
+        "season": 2016,
+        "session": "FP2",
+        "timing_status": "before_qualifying_calendar_day"
+      },
+      {
+        "round": 1,
+        "season": 2016,
+        "session": "FP3",
+        "timing_status": "same_day_without_exact_times"
+      },
+      {
+        "round": 2,
+        "season": 2016,
+        "session": "FP1",
+        "timing_status": "before_qualifying_calendar_day"
+      },
+      {
+        "round": 2,
+        "season": 2016,
+        "session": "FP2",
+        "timing_status": "before_qualifying_calendar_day"
+      },
+      {
+        "round": 2,
+        "season": 2016,
+        "session": "FP3",
+        "timing_status": "same_day_without_exact_times"
+      },
+      {
+        "round": 3,
+        "season": 2016,
+        "session": "FP1",
+        "timing_status": "before_qualifying_calendar_day"
+      },
+      {
+        "round": 3,
+        "season": 2016,
+        "session": "FP2",
+        "timing_status": "before_qualifying_calendar_day"
+      },
+      {
+        "round": 3,
+        "season": 2016,
+        "session": "FP3",
+        "timing_status": "same_day_without_exact_times"
+      },
+      {
+        "round": 4,
+        "season": 2016,
+        "session": "FP1",
+        "timing_status": "before_qualifying_calendar_day"
+      },
+      {
+        "round": 4,
+        "season": 2016,
+        "session": "FP2",
+        "timing_status": "before_qualifying_calendar_day"
+      },
+      {
+        "round": 4,
+        "season": 2016,
+        "session": "FP3",
+        "timing_status": "same_day_without_exact_times"
+      },
+      {
+        "round": 5,
+        "season": 2016,
+        "session": "FP1",
+        "timing_status": "before_qualifying_calendar_day"
+      },
+      {
+        "round": 5,
+        "season": 2016,
+        "session": "FP2",
+        "timing_status": "before_qualifying_calendar_day"
+      },
+      {
+        "round": 5,
+        "season": 2016,
+        "session": "FP3",
+        "timing_status": "same_day_without_exact_times"
+      },
+      {
+        "round": 6,
+        "season": 2016,
+        "session": "FP1",
+        "timing_status": "before_qualifying_calendar_day"
+      },
+      {
+        "round": 6,
+        "season": 2016,
+        "session": "FP2",
+        "timing_status": "before_qualifying_calendar_day"
+      },
+      {
+        "round": 6,
+        "season": 2016,
+        "session": "FP3",
+        "timing_status": "same_day_without_exact_times"
+      },
+      {
+        "round": 7,
+        "season": 2016,
+        "session": "FP1",
+        "timing_status": "before_qualifying_calendar_day"
+      },
+      {
+        "round": 7,
+        "season": 2016,
+        "session": "FP2",
+        "timing_status": "before_qualifying_calendar_day"
+      },
+      {
+        "round": 7,
+        "season": 2016,
+        "session": "FP3",
+        "timing_status": "same_day_without_exact_times"
+      },
+      {
+        "round": 8,
+        "season": 2016,
+        "session": "FP1",
+        "timing_status": "before_qualifying_calendar_day"
+      },
+      {
+        "round": 8,
+        "season": 2016,
+        "session": "FP2",
+        "timing_status": "before_qualifying_calendar_day"
+      },
+      {
+        "round": 8,
+        "season": 2016,
+        "session": "FP3",
+        "timing_status": "same_day_without_exact_times"
+      },
+      {
+        "round": 9,
+        "season": 2016,
+        "session": "FP1",
+        "timing_status": "before_qualifying_calendar_day"
+      },
+      {
+        "round": 9,
+        "season": 2016,
+        "session": "FP2",
+        "timing_status": "before_qualifying_calendar_day"
+      },
+      {
+        "round": 9,
+        "season": 2016,
+        "session": "FP3",
+        "timing_status": "same_day_without_exact_times"
+      },
+      {
+        "round": 10,
+        "season": 2016,
+        "session": "FP1",
+        "timing_status": "before_qualifying_calendar_day"
+      },
+      {
+        "round": 10,
+        "season": 2016,
+        "session": "FP2",
+        "timing_status": "before_qualifying_calendar_day"
+      },
+      {
+        "round": 10,
+        "season": 2016,
+        "session": "FP3",
+        "timing_status": "same_day_without_exact_times"
+      },
+      {
+        "round": 11,
+        "season": 2016,
+        "session": "FP1",
+        "timing_status": "before_qualifying_calendar_day"
+      },
+      {
+        "round": 11,
+        "season": 2016,
+        "session": "FP2",
+        "timing_status": "before_qualifying_calendar_day"
+      },
+      {
+        "round": 11,
+        "season": 2016,
+        "session": "FP3",
+        "timing_status": "same_day_without_exact_times"
+      },
+      {
+        "round": 12,
+        "season": 2016,
+        "session": "FP1",
+        "timing_status": "before_qualifying_calendar_day"
+      },
+      {
+        "round": 12,
+        "season": 2016,
+        "session": "FP2",
+        "timing_status": "before_qualifying_calendar_day"
+      },
+      {
+        "round": 12,
+        "season": 2016,
+        "session": "FP3",
+        "timing_status": "same_day_without_exact_times"
+      },
+      {
+        "round": 13,
+        "season": 2016,
+        "session": "FP1",
+        "timing_status": "before_qualifying_calendar_day"
+      },
+      {
+        "round": 13,
+        "season": 2016,
+        "session": "FP2",
+        "timing_status": "before_qualifying_calendar_day"
+      },
+      {
+        "round": 13,
+        "season": 2016,
+        "session": "FP3",
+        "timing_status": "same_day_without_exact_times"
+      },
+      {
+        "round": 14,
+        "season": 2016,
+        "session": "FP1",
+        "timing_status": "before_qualifying_calendar_day"
+      },
+      {
+        "round": 14,
+        "season": 2016,
+        "session": "FP2",
+        "timing_status": "before_qualifying_calendar_day"
+      },
+      {
+        "round": 14,
+        "season": 2016,
+        "session": "FP3",
+        "timing_status": "same_day_without_exact_times"
+      },
+      {
+        "round": 15,
+        "season": 2016,
+        "session": "FP1",
+        "timing_status": "before_qualifying_calendar_day"
+      },
+      {
+        "round": 15,
+        "season": 2016,
+        "session": "FP2",
+        "timing_status": "before_qualifying_calendar_day"
+      },
+      {
+        "round": 15,
+        "season": 2016,
+        "session": "FP3",
+        "timing_status": "same_day_without_exact_times"
+      },
+      {
+        "round": 16,
+        "season": 2016,
+        "session": "FP1",
+        "timing_status": "before_qualifying_calendar_day"
+      },
+      {
+        "round": 16,
+        "season": 2016,
+        "session": "FP2",
+        "timing_status": "before_qualifying_calendar_day"
+      },
+      {
+        "round": 16,
+        "season": 2016,
+        "session": "FP3",
+        "timing_status": "same_day_without_exact_times"
+      },
+      {
+        "round": 17,
+        "season": 2016,
+        "session": "FP1",
+        "timing_status": "before_qualifying_calendar_day"
+      },
+      {
+        "round": 17,
+        "season": 2016,
+        "session": "FP2",
+        "timing_status": "before_qualifying_calendar_day"
+      },
+      {
+        "round": 17,
+        "season": 2016,
+        "session": "FP3",
+        "timing_status": "same_day_without_exact_times"
+      },
+      {
+        "round": 18,
+        "season": 2016,
+        "session": "FP1",
+        "timing_status": "before_qualifying_calendar_day"
+      },
+      {
+        "round": 18,
+        "season": 2016,
+        "session": "FP2",
+        "timing_status": "before_qualifying_calendar_day"
+      },
+      {
+        "round": 18,
+        "season": 2016,
+        "session": "FP3",
+        "timing_status": "same_day_without_exact_times"
+      },
+      {
+        "round": 19,
+        "season": 2016,
+        "session": "FP1",
+        "timing_status": "before_qualifying_calendar_day"
+      },
+      {
+        "round": 19,
+        "season": 2016,
+        "session": "FP2",
+        "timing_status": "before_qualifying_calendar_day"
+      },
+      {
+        "round": 19,
+        "season": 2016,
+        "session": "FP3",
+        "timing_status": "same_day_without_exact_times"
+      },
+      {
+        "round": 20,
+        "season": 2016,
+        "session": "FP1",
+        "timing_status": "before_qualifying_calendar_day"
+      },
+      {
+        "round": 20,
+        "season": 2016,
+        "session": "FP2",
+        "timing_status": "before_qualifying_calendar_day"
+      },
+      {
+        "round": 20,
+        "season": 2016,
+        "session": "FP3",
+        "timing_status": "same_day_without_exact_times"
+      },
+      {
+        "round": 21,
+        "season": 2016,
+        "session": "FP1",
+        "timing_status": "before_qualifying_calendar_day"
+      },
+      {
+        "round": 21,
+        "season": 2016,
+        "session": "FP2",
+        "timing_status": "before_qualifying_calendar_day"
+      },
+      {
+        "round": 21,
+        "season": 2016,
+        "session": "FP3",
+        "timing_status": "same_day_without_exact_times"
+      },
+      {
+        "round": 1,
+        "season": 2017,
+        "session": "FP1",
+        "timing_status": "before_qualifying_calendar_day"
+      },
+      {
+        "round": 1,
+        "season": 2017,
+        "session": "FP2",
+        "timing_status": "before_qualifying_calendar_day"
+      },
+      {
+        "round": 1,
+        "season": 2017,
+        "session": "FP3",
+        "timing_status": "same_day_without_exact_times"
+      },
+      {
+        "round": 2,
+        "season": 2017,
+        "session": "FP1",
+        "timing_status": "before_qualifying_calendar_day"
+      },
+      {
+        "round": 2,
+        "season": 2017,
+        "session": "FP3",
+        "timing_status": "same_day_without_exact_times"
+      },
+      {
+        "round": 3,
+        "season": 2017,
+        "session": "FP1",
+        "timing_status": "before_qualifying_calendar_day"
+      },
+      {
+        "round": 3,
+        "season": 2017,
+        "session": "FP2",
+        "timing_status": "before_qualifying_calendar_day"
+      },
+      {
+        "round": 3,
+        "season": 2017,
+        "session": "FP3",
+        "timing_status": "same_day_without_exact_times"
+      },
+      {
+        "round": 4,
+        "season": 2017,
+        "session": "FP1",
+        "timing_status": "before_qualifying_calendar_day"
+      },
+      {
+        "round": 4,
+        "season": 2017,
+        "session": "FP2",
+        "timing_status": "before_qualifying_calendar_day"
+      },
+      {
+        "round": 4,
+        "season": 2017,
+        "session": "FP3",
+        "timing_status": "same_day_without_exact_times"
+      },
+      {
+        "round": 5,
+        "season": 2017,
+        "session": "FP1",
+        "timing_status": "before_qualifying_calendar_day"
+      },
+      {
+        "round": 5,
+        "season": 2017,
+        "session": "FP2",
+        "timing_status": "before_qualifying_calendar_day"
+      },
+      {
+        "round": 5,
+        "season": 2017,
+        "session": "FP3",
+        "timing_status": "same_day_without_exact_times"
+      },
+      {
+        "round": 6,
+        "season": 2017,
+        "session": "FP1",
+        "timing_status": "before_qualifying_calendar_day"
+      },
+      {
+        "round": 6,
+        "season": 2017,
+        "session": "FP2",
+        "timing_status": "before_qualifying_calendar_day"
+      },
+      {
+        "round": 6,
+        "season": 2017,
+        "session": "FP3",
+        "timing_status": "same_day_without_exact_times"
+      },
+      {
+        "round": 7,
+        "season": 2017,
+        "session": "FP1",
+        "timing_status": "before_qualifying_calendar_day"
+      },
+      {
+        "round": 7,
+        "season": 2017,
+        "session": "FP2",
+        "timing_status": "before_qualifying_calendar_day"
+      },
+      {
+        "round": 7,
+        "season": 2017,
+        "session": "FP3",
+        "timing_status": "same_day_without_exact_times"
+      },
+      {
+        "round": 8,
+        "season": 2017,
+        "session": "FP1",
+        "timing_status": "before_qualifying_calendar_day"
+      },
+      {
+        "round": 8,
+        "season": 2017,
+        "session": "FP2",
+        "timing_status": "before_qualifying_calendar_day"
+      },
+      {
+        "round": 8,
+        "season": 2017,
+        "session": "FP3",
+        "timing_status": "same_day_without_exact_times"
+      },
+      {
+        "round": 9,
+        "season": 2017,
+        "session": "FP1",
+        "timing_status": "before_qualifying_calendar_day"
+      },
+      {
+        "round": 9,
+        "season": 2017,
+        "session": "FP2",
+        "timing_status": "before_qualifying_calendar_day"
+      },
+      {
+        "round": 9,
+        "season": 2017,
+        "session": "FP3",
+        "timing_status": "same_day_without_exact_times"
+      },
+      {
+        "round": 10,
+        "season": 2017,
+        "session": "FP1",
+        "timing_status": "before_qualifying_calendar_day"
+      },
+      {
+        "round": 10,
+        "season": 2017,
+        "session": "FP2",
+        "timing_status": "before_qualifying_calendar_day"
+      },
+      {
+        "round": 10,
+        "season": 2017,
+        "session": "FP3",
+        "timing_status": "same_day_without_exact_times"
+      },
+      {
+        "round": 11,
+        "season": 2017,
+        "session": "FP1",
+        "timing_status": "before_qualifying_calendar_day"
+      },
+      {
+        "round": 11,
+        "season": 2017,
+        "session": "FP2",
+        "timing_status": "before_qualifying_calendar_day"
+      },
+      {
+        "round": 11,
+        "season": 2017,
+        "session": "FP3",
+        "timing_status": "same_day_without_exact_times"
+      },
+      {
+        "round": 12,
+        "season": 2017,
+        "session": "FP1",
+        "timing_status": "before_qualifying_calendar_day"
+      },
+      {
+        "round": 12,
+        "season": 2017,
+        "session": "FP2",
+        "timing_status": "before_qualifying_calendar_day"
+      },
+      {
+        "round": 12,
+        "season": 2017,
+        "session": "FP3",
+        "timing_status": "same_day_without_exact_times"
+      },
+      {
+        "round": 13,
+        "season": 2017,
+        "session": "FP1",
+        "timing_status": "before_qualifying_calendar_day"
+      },
+      {
+        "round": 13,
+        "season": 2017,
+        "session": "FP2",
+        "timing_status": "before_qualifying_calendar_day"
+      },
+      {
+        "round": 13,
+        "season": 2017,
+        "session": "FP3",
+        "timing_status": "same_day_without_exact_times"
+      },
+      {
+        "round": 14,
+        "season": 2017,
+        "session": "FP1",
+        "timing_status": "before_qualifying_calendar_day"
+      },
+      {
+        "round": 14,
+        "season": 2017,
+        "session": "FP2",
+        "timing_status": "before_qualifying_calendar_day"
+      },
+      {
+        "round": 14,
+        "season": 2017,
+        "session": "FP3",
+        "timing_status": "same_day_without_exact_times"
+      },
+      {
+        "round": 15,
+        "season": 2017,
+        "session": "FP1",
+        "timing_status": "before_qualifying_calendar_day"
+      },
+      {
+        "round": 15,
+        "season": 2017,
+        "session": "FP2",
+        "timing_status": "before_qualifying_calendar_day"
+      },
+      {
+        "round": 15,
+        "season": 2017,
+        "session": "FP3",
+        "timing_status": "same_day_without_exact_times"
+      },
+      {
+        "round": 16,
+        "season": 2017,
+        "session": "FP1",
+        "timing_status": "before_qualifying_calendar_day"
+      },
+      {
+        "round": 16,
+        "season": 2017,
+        "session": "FP2",
+        "timing_status": "before_qualifying_calendar_day"
+      },
+      {
+        "round": 16,
+        "season": 2017,
+        "session": "FP3",
+        "timing_status": "same_day_without_exact_times"
+      },
+      {
+        "round": 17,
+        "season": 2017,
+        "session": "FP1",
+        "timing_status": "before_qualifying_calendar_day"
+      },
+      {
+        "round": 17,
+        "season": 2017,
+        "session": "FP2",
+        "timing_status": "before_qualifying_calendar_day"
+      },
+      {
+        "round": 17,
+        "season": 2017,
+        "session": "FP3",
+        "timing_status": "same_day_without_exact_times"
+      },
+      {
+        "round": 18,
+        "season": 2017,
+        "session": "FP1",
+        "timing_status": "before_qualifying_calendar_day"
+      },
+      {
+        "round": 18,
+        "season": 2017,
+        "session": "FP2",
+        "timing_status": "before_qualifying_calendar_day"
+      },
+      {
+        "round": 18,
+        "season": 2017,
+        "session": "FP3",
+        "timing_status": "same_day_without_exact_times"
+      },
+      {
+        "round": 19,
+        "season": 2017,
+        "session": "FP1",
+        "timing_status": "before_qualifying_calendar_day"
+      },
+      {
+        "round": 19,
+        "season": 2017,
+        "session": "FP2",
+        "timing_status": "before_qualifying_calendar_day"
+      },
+      {
+        "round": 19,
+        "season": 2017,
+        "session": "FP3",
+        "timing_status": "same_day_without_exact_times"
+      },
+      {
+        "round": 20,
+        "season": 2017,
+        "session": "FP1",
+        "timing_status": "before_qualifying_calendar_day"
+      },
+      {
+        "round": 20,
+        "season": 2017,
+        "session": "FP2",
+        "timing_status": "before_qualifying_calendar_day"
+      },
+      {
+        "round": 20,
+        "season": 2017,
+        "session": "FP3",
+        "timing_status": "same_day_without_exact_times"
+      }
+    ],
+    "source_session_date_rate": 0.0,
+    "source_session_time_rate": 0.0,
+    "substitution_examples": [
+      {
+        "driver_name": "Paul di Resta",
+        "driver_number": 14,
+        "race_driver_name": "Adrian Sutil",
+        "round": 2,
+        "season": 2010,
+        "session": "FP1"
+      },
+      {
+        "driver_name": "Paul di Resta",
+        "driver_number": 15,
+        "race_driver_name": "Vitantonio Liuzzi",
+        "round": 3,
+        "season": 2010,
+        "session": "FP1"
+      },
+      {
+        "driver_name": "Mohamed Fairuz Fauzy",
+        "driver_number": 19,
+        "race_driver_name": "Heikki Kovalainen",
+        "round": 3,
+        "season": 2010,
+        "session": "FP1"
+      },
+      {
+        "driver_name": "Paul di Resta",
+        "driver_number": 15,
+        "race_driver_name": "Vitantonio Liuzzi",
+        "round": 4,
+        "season": 2010,
+        "session": "FP1"
+      },
+      {
+        "driver_name": "Paul di Resta",
+        "driver_number": 14,
+        "race_driver_name": "Adrian Sutil",
+        "round": 5,
+        "season": 2010,
+        "session": "FP1"
+      },
+      {
+        "driver_name": "Christian Klien",
+        "driver_number": 20,
+        "race_driver_name": "Karun Chandhok",
+        "round": 5,
+        "season": 2010,
+        "session": "FP1"
+      },
+      {
+        "driver_name": "Sakon Yamamoto",
+        "driver_number": 21,
+        "race_driver_name": "Bruno Senna",
+        "round": 7,
+        "season": 2010,
+        "session": "FP1"
+      },
+      {
+        "driver_name": "Paul di Resta",
+        "driver_number": 14,
+        "race_driver_name": "Adrian Sutil",
+        "round": 9,
+        "season": 2010,
+        "session": "FP1"
+      },
+      {
+        "driver_name": "Christian Klien",
+        "driver_number": 20,
+        "race_driver_name": "Karun Chandhok",
+        "round": 9,
+        "season": 2010,
+        "session": "FP1"
+      },
+      {
+        "driver_name": "Paul di Resta",
+        "driver_number": 15,
+        "race_driver_name": "Vitantonio Liuzzi",
+        "round": 10,
+        "season": 2010,
+        "session": "FP1"
+      },
+      {
+        "driver_name": "Mohamed Fairuz Fauzy",
+        "driver_number": 18,
+        "race_driver_name": "Jarno Trulli",
+        "round": 10,
+        "season": 2010,
+        "session": "FP1"
+      },
+      {
+        "driver_name": "Mohamed Fairuz Fauzy",
+        "driver_number": 19,
+        "race_driver_name": "Heikki Kovalainen",
+        "round": 11,
+        "season": 2010,
+        "session": "FP1"
+      },
+      {
+        "driver_name": "Paul di Resta",
+        "driver_number": 15,
+        "race_driver_name": "Vitantonio Liuzzi",
+        "round": 12,
+        "season": 2010,
+        "session": "FP1"
+      },
+      {
+        "driver_name": "Paul di Resta",
+        "driver_number": 14,
+        "race_driver_name": "Adrian Sutil",
+        "round": 14,
+        "season": 2010,
+        "session": "FP1"
+      },
+      {
+        "driver_name": "J\u00e9r\u00f4me d'Ambrosio",
+        "driver_number": 25,
+        "race_driver_name": "Lucas di Grassi",
+        "round": 15,
+        "season": 2010,
+        "session": "FP1"
+      }
+    ],
+    "timed_lap_rate": 0.979458722741433,
+    "timing_status_counts": {
+      "before_qualifying_calendar_day": 310,
+      "same_day_without_exact_times": 156
+    }
+  },
+  "production_unchanged": true,
+  "requested_years": [
+    2010,
+    2017
+  ],
+  "source_sha256": "b93aef12ac5b3a6c05d0ee3c78b1822033ff7da531fb19b6ddad79c6361a2bff",
+  "source_urls": {
+    "f1db": "https://github.com/f1db/f1db",
+    "jolpica": "https://api.jolpi.ca/ergast/f1/"
+  },
+  "stage": "/Users/chacho/Documents/Codex/2026-10-26/m/work/history_expansion/data",
+  "status": "passed_with_coverage_caveats",
+  "training_performed": false,
+  "unexpected_race_keys": []
+}

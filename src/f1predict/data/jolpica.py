@@ -54,6 +54,7 @@ class JolpicaClient:
         refresh: bool = False,
         timeout_seconds: float = 30.0,
         minimum_interval_seconds: float = 0.25,
+        transport: httpx.BaseTransport | None = None,
     ) -> None:
         self.base_url = "https://api.jolpi.ca/ergast/f1"
         self.cache_dir = cache_dir
@@ -65,6 +66,7 @@ class JolpicaClient:
             timeout=timeout_seconds,
             follow_redirects=True,
             headers={"User-Agent": f"F1Predict/{__version__} httpx/{httpx.__version__}"},
+            transport=transport,
         )
 
     def __enter__(self) -> JolpicaClient:
@@ -93,7 +95,14 @@ class JolpicaClient:
             wait = self.minimum_interval_seconds - (time.monotonic() - self._last_request_at)
             if wait > 0:
                 time.sleep(wait)
-            response = self._client.get(url, params=query)
+            try:
+                response = self._client.get(url, params=query)
+            except httpx.TransportError:
+                self._last_request_at = time.monotonic()
+                if attempt == 4:
+                    raise
+                time.sleep(min(2**attempt, 8))
+                continue
             self._last_request_at = time.monotonic()
             if response.status_code == 404:
                 payload: Json = {"MRData": {"limit": "0", "offset": "0", "total": "0"}}
@@ -272,6 +281,7 @@ def download_season(client: JolpicaClient, season: int) -> dict[str, pd.DataFram
     pit_stop_frames = [
         parse_pit_stops(client.pages(f"{season}/{round_number}/pitstops.json"))
         for round_number in races.get("round", pd.Series(dtype="int64")).dropna().astype(int)
+        if season >= 2011  # The Jolpica pit-stop endpoint starts in 2011.
     ]
     pit_stops = (
         pd.concat(pit_stop_frames, ignore_index=True)

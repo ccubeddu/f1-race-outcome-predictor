@@ -1,8 +1,9 @@
 from __future__ import annotations
 
+import httpx
 import pytest
 
-from f1predict.data.jolpica import duration_seconds, parse_qualifying, parse_results
+from f1predict.data.jolpica import JolpicaClient, duration_seconds, parse_qualifying, parse_results
 
 
 def payload(race: dict) -> list[dict]:
@@ -74,3 +75,23 @@ def test_parse_qualifying_converts_session_times() -> None:
     frame = parse_qualifying(payload(race))
     assert frame.loc[0, "quali_position"] == 1
     assert frame.loc[0, "q3_seconds"] == 88.0
+
+
+def test_transient_disconnect_retries_and_then_reuses_cached_response(
+    tmp_path, monkeypatch
+) -> None:
+    calls = []
+
+    def handler(request):
+        calls.append(request.url)
+        if len(calls) == 1:
+            raise httpx.RemoteProtocolError("Server disconnected", request=request)
+        return httpx.Response(200, json={"MRData": {"total": "19"}})
+
+    monkeypatch.setattr("f1predict.data.jolpica.time.sleep", lambda seconds: None)
+    with JolpicaClient(
+        tmp_path, minimum_interval_seconds=0, transport=httpx.MockTransport(handler)
+    ) as client:
+        first = client.get("2010.json")
+        assert client.get("2010.json") == first
+    assert len(calls) == 2

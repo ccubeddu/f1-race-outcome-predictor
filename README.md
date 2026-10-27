@@ -79,6 +79,34 @@ session partitions are skipped automatically. Use `--rounds 1,2` when only selec
 needed. F1DB classification coverage is downloaded in one compact release and is not affected by
 the OpenF1 rate limit.
 
+## Historical expansion in a staging dataset
+
+The approved next data stage extends results, qualifying and practice classifications back to
+2010. Run the backfill and coverage audit with one command:
+
+```bash
+f1predict data backfill --start 2010 --end 2017
+```
+
+This snapshots the existing processed baseline into `work/history_expansion/data`, imports older
+Jolpica and cached F1DB data there, and saves [the audit](outputs/data_expansion/report.md) under
+`outputs/data_expansion`. It does not train models or replace production features, models or
+evaluation artifacts. SHA-256 checks verify that production data stayed intact. Interrupted runs
+resume cached requests; choose `--staging-dir` for a separate study or changed production baseline.
+
+The completed data stage contains **347 races and 7,307 driver-race rows**, versus 191 races and
+3,854 rows in production. It adds 10,272 practice classification rows with 97.9% timed-lap
+coverage. All 156 expected historical races are present. The audit flags 149 practice-driver
+substitutions and 156 same-day practice sessions without exact times; these require feature-stage
+handling before model promotion. The [approved roadmap](outputs/data_expansion/roadmap.md) tracks
+the next practice, qualifying-model, rating and evaluation stages.
+
+The audit compares race coverage with the independent F1DB inventory and flags missing qualifying,
+practice timing gaps, and reserve-driver/car-number mismatches. Pit-stop data from Jolpica starts
+in 2011, so 2010 has no observations from that source. Raw practice availability is not equivalent
+to verified pre-quali feature eligibility. Resolve these gaps in the next feature stage before
+comparing 2018+, 2014+ and 2010+ training windows.
+
 ## Data layout
 
 ```text

@@ -1,6 +1,7 @@
 from __future__ import annotations
 
 import json
+from collections.abc import Callable
 from datetime import UTC, datetime
 from typing import Any
 
@@ -25,6 +26,7 @@ def sync_jolpica(
     end: int,
     *,
     refresh: bool = False,
+    progress: Callable[[int, dict[str, int]], None] | None = None,
 ) -> dict[int, dict[str, int]]:
     paths.create()
     summary: dict[int, dict[str, int]] = {}
@@ -40,14 +42,20 @@ def sync_jolpica(
                 atomic_parquet_write(frame, target)
                 season_summary[name] = len(frame)
             summary[season] = season_summary
+            if progress:
+                progress(season, season_summary)
 
     catalog = _catalog(paths)
+    previous = catalog["sources"].get("jolpica", {}).get("rows", {})
+    all_rows = {str(year): counts for year, counts in previous.items()}
+    all_rows.update({str(year): counts for year, counts in summary.items()})
     catalog["sources"]["jolpica"] = {
         "base_url": "https://api.jolpi.ca/ergast/f1",
         "refreshed_at": datetime.now(UTC).isoformat(),
-        "season_start": start,
-        "season_end": end,
-        "rows": summary,
+        "season_start": min(int(year) for year in all_rows),
+        "season_end": max(int(year) for year in all_rows),
+        "rows": all_rows,
+        "last_sync": {"season_start": start, "season_end": end},
     }
     atomic_json_write(paths.catalog, catalog)
     return summary
@@ -99,13 +107,17 @@ def sync_f1db(
         atomic_parquet_write(partition, target)
         summary[int(season)] = len(partition)
     catalog = _catalog(paths)
+    previous = catalog["sources"].get("f1db", {}).get("practice_rows", {})
+    all_rows = {str(year): count for year, count in previous.items()}
+    all_rows.update({str(year): count for year, count in summary.items()})
     catalog["sources"]["f1db"] = {
         "source_url": "https://github.com/f1db/f1db/releases/latest",
         "license": "CC-BY-4.0",
         "refreshed_at": datetime.now(UTC).isoformat(),
-        "season_start": start,
-        "season_end": end,
-        "practice_rows": summary,
+        "season_start": min((int(year) for year in all_rows), default=start),
+        "season_end": max((int(year) for year in all_rows), default=end),
+        "practice_rows": all_rows,
+        "last_sync": {"season_start": start, "season_end": end},
     }
     atomic_json_write(paths.catalog, catalog)
     return summary

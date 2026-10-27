@@ -119,7 +119,7 @@ def parse_practice_archive(archive_path: Path) -> pd.DataFrame:
             "gap_seconds": pd.to_numeric(combined["gapMillis"], errors="coerce") / 1000,
             "laps_completed": pd.to_numeric(combined["laps"], errors="coerce").astype("Int64"),
             "source": "f1db",
-            "availability_rule": "available_by_qualifying_start",
+            "availability_rule": "requires_schedule_and_identity_validation",
         }
     )
     return normalized.sort_values(["season", "round", "session", "position"], ignore_index=True)

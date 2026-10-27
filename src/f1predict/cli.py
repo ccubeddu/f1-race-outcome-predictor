@@ -18,7 +18,7 @@ from rich.progress import Progress, SpinnerColumn, TextColumn
 from rich.table import Table
 
 from f1predict import __version__
-from f1predict.config import DataPaths
+from f1predict.config import DataPaths, find_project_root
 from f1predict.data.audit import build_audit
 from f1predict.data.pipeline import sync_f1db, sync_fastf1, sync_jolpica, sync_openf1
 from f1predict.features.audit import build_feature_audit
@@ -122,6 +122,56 @@ def data_sync(
         table.add_row(str(season), *(str(counts[name]) for name in counts))
     console.print(table)
     console.print(f"[dim]Data catalog: {paths.catalog}[/dim]")
+
+
+@data_app.command("backfill")
+def data_backfill(
+    start: Annotated[int, typer.Option(help="First additional historical season.")] = 2010,
+    end: Annotated[int, typer.Option(help="Last additional historical season.")] = 2017,
+    staging_dir: Annotated[
+        Path | None, typer.Option(help="Separate staging data root; production data stays intact.")
+    ] = None,
+    output_dir: Annotated[
+        Path | None, typer.Option(help="Destination for the data coverage report.")
+    ] = None,
+    data_dir: Annotated[
+        Path | None, typer.Option(help="Production baseline data directory.")
+    ] = None,
+) -> None:
+    """Backfill older results and practice in a staging dataset, then audit coverage."""
+    import httpx
+
+    from f1predict.data.history import backfill_history
+
+    _validate_range(start, end)
+    root = find_project_root()
+    stage = DataPaths((staging_dir or root / "work" / "history_expansion" / "data").resolve())
+    output = (output_dir or root / "outputs" / "data_expansion").resolve()
+    console.print(f"Staging older seasons in {stage.root}")
+
+    def update(year: int, counts: dict[str, int]) -> None:
+        console.print(
+            f"{year}: {counts['races']} races, {counts['results']} driver results, "
+            f"{counts['qualifying']} qualifying rows, {counts['pit_stops']} pit stops"
+        )
+
+    try:
+        report = backfill_history(
+            _paths(data_dir), stage, output, start=start, end=end, progress=update
+        )
+    except (ValueError, RuntimeError) as exc:
+        raise typer.BadParameter(str(exc)) from exc
+    except (OSError, httpx.HTTPError) as exc:
+        console.print(f"Backfill download stopped: {exc}")
+        console.print("Completed requests are cached. Rerun the same command to resume.")
+        raise typer.Exit(code=1) from exc
+    console.print(
+        f"Completed races: {report['baseline_races']} → {report['candidate_races']}; "
+        f"driver rows: {report['baseline_driver_rows']} → {report['candidate_driver_rows']}."
+    )
+    console.print(
+        f"Production unchanged: {report['production_unchanged']}. Report: {output / 'report.md'}"
+    )
 
 
 @data_app.command("sync-fastf1")
