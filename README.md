@@ -215,6 +215,30 @@ data remains the clearest future improvement.
 The evaluation directory contains driver-level predictions, JSON metrics, calibration tables,
 calibration plots, a model-comparison chart, and feature-importance graphics.
 
+## Compare with bookmaker odds
+
+Use a complete race-winner market CSV with `driver_id` plus exactly one odds column:
+`decimal_odds`, `american_odds`, or `fractional_odds`. The command removes the bookmaker margin,
+joins every driver to the model forecast, and reports probability differences and fair prices.
+
+```bash
+f1predict odds compare \
+  outputs/predictions/2026_r19_mexico-city-grand-prix_pre_quali.csv \
+  outputs/bookmaker_comparison/mexico_2026_lucky_rebel.csv
+```
+
+After the race, add the actual winner to score both full winner distributions with log loss and
+multiclass Brier score:
+
+```bash
+f1predict odds compare model_prediction.csv bookmaker_odds.csv --winner antonelli
+```
+
+The repository includes a [Mexico prospective comparison](outputs/bookmaker_comparison/report.md)
+and an Austin completed-race checkpoint. Historical odds are not freely available as one clean
+dataset, so broad bookmaker claims are deliberately deferred until more same-cutoff snapshots have
+been collected. Forecast comparison only—not betting advice.
+
 ## Predict a race
 
 The default `auto` mode uses the post-qualifying model when a qualifying classification is
@@ -261,6 +285,7 @@ f1predict model train --mode all
 f1predict model importance --mode pre_quali --top 15
 f1predict evaluate run --mode all --start-season 2024
 f1predict evaluate audit
+f1predict odds compare model_prediction.csv bookmaker_odds.csv
 f1predict predict monza --season 2026 --driver verstappen
 f1predict stats driver-quali verstappen 2
 f1predict doctor

@@ -1,6 +1,7 @@
 from __future__ import annotations
 
 import json
+import math
 import os
 import platform
 from datetime import date
@@ -34,11 +35,15 @@ features_app = typer.Typer(
 model_app = typer.Typer(help="Train and inspect probabilistic race models.", no_args_is_help=True)
 evaluate_app = typer.Typer(help="Run and inspect walk-forward evaluation.", no_args_is_help=True)
 stats_app = typer.Typer(help="Query historical driver and race tendencies.", no_args_is_help=True)
+odds_app = typer.Typer(
+    help="Compare model probabilities with bookmaker markets.", no_args_is_help=True
+)
 app.add_typer(data_app, name="data")
 app.add_typer(features_app, name="features")
 app.add_typer(model_app, name="model")
 app.add_typer(evaluate_app, name="evaluate")
 app.add_typer(stats_app, name="stats")
+app.add_typer(odds_app, name="odds")
 console = Console()
 
 
@@ -659,6 +664,74 @@ def evaluate_audit(
             "[green]passed[/green]" if report["passed"] else "[red]failed[/red]",
         )
     console.print(table)
+
+
+@odds_app.command("compare")
+def odds_compare(
+    prediction_csv: Annotated[Path, typer.Argument(help="Saved f1predict prediction CSV.")],
+    odds_csv: Annotated[
+        Path,
+        typer.Argument(
+            help="Complete winner market with driver_id and decimal, American, or fractional odds."
+        ),
+    ],
+    winner: Annotated[
+        str | None,
+        typer.Option(help="Optional actual winner name or ID for log-loss and Brier scoring."),
+    ] = None,
+    output: Annotated[
+        Path | None,
+        typer.Option(help="Optional path for the joined comparison CSV."),
+    ] = None,
+) -> None:
+    """De-vig a complete race-winner market and compare it with model P(win)."""
+    from f1predict.bookmakers import compare_winner_market, load_odds, score_winner_market
+
+    try:
+        predictions = pd.read_csv(prediction_csv)
+        odds = load_odds(odds_csv)
+        comparison = compare_winner_market(predictions, odds)
+        score = score_winner_market(comparison, winner) if winner else None
+    except (FileNotFoundError, ValueError) as exc:
+        raise typer.BadParameter(str(exc)) from exc
+
+    table = Table(title="Model vs de-vigged winner market")
+    table.add_column("Driver")
+    table.add_column("Model", justify="right")
+    table.add_column("Market", justify="right")
+    table.add_column("Delta", justify="right")
+    table.add_column("Book odds", justify="right")
+    table.add_column("Model fair", justify="right")
+    for row in comparison.itertuples():
+        color = "green" if row.probability_delta > 0 else "red"
+        table.add_row(
+            str(row.driver_name),
+            f"{row.p_win:.1%}",
+            f"{row.market_probability:.1%}",
+            f"[{color}]{row.probability_delta:+.1%}[/{color}]",
+            f"{row.decimal_odds:.2f}",
+            f"{row.model_fair_odds:.2f}" if math.isfinite(row.model_fair_odds) else "∞",
+        )
+    console.print(table)
+    console.print(
+        f"Bookmaker overround: {odds.attrs['overround']:.1%} "
+        f"(margin above 100%: {odds.attrs['margin']:.1%})."
+    )
+    if score:
+        scoring = Table(title=f"Winner scoring · {score['winner']}")
+        scoring.add_column("Forecast")
+        scoring.add_column("Log loss", justify="right")
+        scoring.add_column("Brier", justify="right")
+        scoring.add_row("Model", f"{score['model_log_loss']:.3f}", f"{score['model_brier']:.3f}")
+        scoring.add_row(
+            "De-vigged market", f"{score['market_log_loss']:.3f}", f"{score['market_brier']:.3f}"
+        )
+        console.print(scoring)
+    if output:
+        output.parent.mkdir(parents=True, exist_ok=True)
+        comparison.to_csv(output, index=False)
+        console.print(f"[dim]Comparison CSV: {output.resolve()}[/dim]")
+    console.print("[dim]Forecast comparison only—not betting advice. Gamble responsibly.[/dim]")
 
 
 def _prediction_table(predictions: pd.DataFrame) -> Table:

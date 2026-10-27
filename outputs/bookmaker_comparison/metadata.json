@@ -1,0 +1,25 @@
+{
+  "method": "Multiplicative de-vig: each inverse decimal price is divided by the complete market's summed inverse prices.",
+  "snapshots": [
+    {
+      "season": 2026,
+      "round": 18,
+      "race": "United States Grand Prix",
+      "market": "race winner",
+      "bookmaker_feed": "Kambi via NorthStar Bets / BetRivers",
+      "observed_at": "2026-10-19",
+      "source": "https://sportsbettinginontario.ca/sports/f1/",
+      "prediction_cutoff": "pre_quali walk-forward; model trained through 2026-10-11"
+    },
+    {
+      "season": 2026,
+      "round": 19,
+      "race": "Mexico City Grand Prix",
+      "market": "race winner",
+      "bookmaker": "Lucky Rebel",
+      "observed_at": "2026-10-26",
+      "source": "https://www.bettingnews.com/sports-betting-guides/formula-1-betting-guide/",
+      "prediction_cutoff": "pre_quali live forecast; model trained through 2026-10-25"
+    }
+  ]
+}
