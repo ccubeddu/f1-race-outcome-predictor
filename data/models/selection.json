@@ -1,0 +1,11 @@
+{
+  "candidate": "pole_aware_ensemble",
+  "default_mode": "auto",
+  "evaluation_window": "66 races, 2024-2026",
+  "mode_policy": {
+    "post_quali": "use when a qualifying classification is available",
+    "pre_quali": "fallback before qualifying"
+  },
+  "model": "Pole-aware anchored three-model ensemble",
+  "reason": "The three-model mixture improves top-three accuracy and position log loss; post-quali predictions add a holdout-validated pole adjustment while preserving coherent podium and points probabilities."
+}

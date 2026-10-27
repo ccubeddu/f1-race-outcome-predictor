@@ -1,0 +1,215 @@
+{
+  "candidates": {
+    "anchored_ensemble": {
+      "driver_predictions": 1354,
+      "position_brier": 0.8913465805874359,
+      "position_log_loss": 2.58859253068148,
+      "position_mae": 3.210316079454835,
+      "probabilities": {
+        "dnf": {
+          "base_rate": 0.12850812407680945,
+          "brier": 0.11093300872926995,
+          "brier_skill": 0.009471752233049524,
+          "log_loss": 0.37958044328348783,
+          "null_brier": 0.1119937861230688
+        },
+        "podium": {
+          "base_rate": 0.14623338257016247,
+          "brier": 0.06554495680945348,
+          "brier_skill": 0.4750069115109572,
+          "log_loss": 0.2055061566123104,
+          "null_brier": 0.12484918039225097
+        },
+        "points": {
+          "base_rate": 0.4874446085672083,
+          "brier": 0.14665494747415067,
+          "brier_skill": 0.4130100827798445,
+          "log_loss": 0.46164961958327544,
+          "null_brier": 0.2498423621459694
+        },
+        "win": {
+          "base_rate": 0.04874446085672083,
+          "brier": 0.02796515740029542,
+          "brier_skill": 0.39689240419160554,
+          "log_loss": 0.09263343197365632,
+          "null_brier": 0.04636843839250844
+        }
+      },
+      "races": 66,
+      "spearman": 0.6940095027363594,
+      "top10_accuracy": 0.7893939393939394,
+      "top3_accuracy": 0.6818181818181817,
+      "winner_accuracy": 0.5303030303030303
+    },
+    "lightgbm_ranker": {
+      "driver_predictions": 1354,
+      "position_brier": 0.8949733757772946,
+      "position_log_loss": 2.669399645869196,
+      "position_mae": 3.2624039437436565,
+      "probabilities": {
+        "dnf": {
+          "base_rate": 0.12850812407680945,
+          "brier": 0.11093300872926995,
+          "brier_skill": 0.009471752233049524,
+          "log_loss": 0.37958044328348783,
+          "null_brier": 0.1119937861230688
+        },
+        "podium": {
+          "base_rate": 0.14623338257016247,
+          "brier": 0.06554495680945348,
+          "brier_skill": 0.4750069115109572,
+          "log_loss": 0.20550615661231045,
+          "null_brier": 0.12484918039225097
+        },
+        "points": {
+          "base_rate": 0.4874446085672083,
+          "brier": 0.14665494747415067,
+          "brier_skill": 0.4130100827798445,
+          "log_loss": 0.4616496195832754,
+          "null_brier": 0.2498423621459694
+        },
+        "win": {
+          "base_rate": 0.04874446085672083,
+          "brier": 0.02796515740029542,
+          "brier_skill": 0.39689240419160554,
+          "log_loss": 0.09263343197365631,
+          "null_brier": 0.04636843839250844
+        }
+      },
+      "races": 66,
+      "spearman": 0.685828987368409,
+      "top10_accuracy": 0.7863636363636364,
+      "top3_accuracy": 0.6616161616161615,
+      "winner_accuracy": 0.5606060606060606
+    },
+    "lightgbm_regression": {
+      "driver_predictions": 1354,
+      "position_brier": 0.9224079311808033,
+      "position_log_loss": 3.106809328882577,
+      "position_mae": 3.305806872553284,
+      "probabilities": {
+        "dnf": {
+          "base_rate": 0.12850812407680945,
+          "brier": 0.11093300872926995,
+          "brier_skill": 0.009471752233049524,
+          "log_loss": 0.37958044328348783,
+          "null_brier": 0.1119937861230688
+        },
+        "podium": {
+          "base_rate": 0.14623338257016247,
+          "brier": 0.07506792631905464,
+          "brier_skill": 0.3987311243597568,
+          "log_loss": 0.26239609725409296,
+          "null_brier": 0.12484918039225097
+        },
+        "points": {
+          "base_rate": 0.4874446085672083,
+          "brier": 0.15883010404726736,
+          "brier_skill": 0.36427872886315604,
+          "log_loss": 0.5236320982584901,
+          "null_brier": 0.2498423621459694
+        },
+        "win": {
+          "base_rate": 0.04874446085672083,
+          "brier": 0.037988590485967505,
+          "brier_skill": 0.1807230995274327,
+          "log_loss": 0.1365997986029761,
+          "null_brier": 0.04636843839250844
+        }
+      },
+      "races": 66,
+      "spearman": 0.6880505551818221,
+      "top10_accuracy": 0.7909090909090909,
+      "top3_accuracy": 0.611111111111111,
+      "winner_accuracy": 0.24242424242424243
+    },
+    "pole_aware_ensemble": {
+      "driver_predictions": 1354,
+      "position_brier": 0.8907413296919366,
+      "position_log_loss": 2.5871025579259426,
+      "position_mae": 3.2071480353777004,
+      "probabilities": {
+        "dnf": {
+          "base_rate": 0.12850812407680945,
+          "brier": 0.11093300872926995,
+          "brier_skill": 0.009471752233049524,
+          "log_loss": 0.37958044328348783,
+          "null_brier": 0.1119937861230688
+        },
+        "podium": {
+          "base_rate": 0.14623338257016247,
+          "brier": 0.06554495680945348,
+          "brier_skill": 0.4750069115109572,
+          "log_loss": 0.20550615661231045,
+          "null_brier": 0.12484918039225097
+        },
+        "points": {
+          "base_rate": 0.4874446085672083,
+          "brier": 0.14665494747415064,
+          "brier_skill": 0.41301008277984463,
+          "log_loss": 0.4616496195832754,
+          "null_brier": 0.2498423621459694
+        },
+        "win": {
+          "base_rate": 0.04874446085672083,
+          "brier": 0.027569114146518275,
+          "brier_skill": 0.4054336289450605,
+          "log_loss": 0.09184898195739112,
+          "null_brier": 0.04636843839250844
+        }
+      },
+      "races": 66,
+      "spearman": 0.6944765344910966,
+      "top10_accuracy": 0.7893939393939394,
+      "top3_accuracy": 0.6818181818181817,
+      "winner_accuracy": 0.5606060606060606
+    },
+    "random_forest": {
+      "driver_predictions": 1354,
+      "position_brier": 0.9003917600504567,
+      "position_log_loss": 2.6390701263813443,
+      "position_mae": 3.265071770334928,
+      "probabilities": {
+        "dnf": {
+          "base_rate": 0.12850812407680945,
+          "brier": 0.11093300872926995,
+          "brier_skill": 0.009471752233049524,
+          "log_loss": 0.3795804432834879,
+          "null_brier": 0.1119937861230688
+        },
+        "podium": {
+          "base_rate": 0.14623338257016247,
+          "brier": 0.07541486558345642,
+          "brier_skill": 0.3959522573835238,
+          "log_loss": 0.23414333740726498,
+          "null_brier": 0.12484918039225097
+        },
+        "points": {
+          "base_rate": 0.4874446085672083,
+          "brier": 0.14905722280649925,
+          "brier_skill": 0.4033949185950573,
+          "log_loss": 0.4641394285660258,
+          "null_brier": 0.2498423621459694
+        },
+        "win": {
+          "base_rate": 0.04874446085672083,
+          "brier": 0.032446895007385526,
+          "brier_skill": 0.30023748626764535,
+          "log_loss": 0.10943449639033903,
+          "null_brier": 0.04636843839250844
+        }
+      },
+      "races": 66,
+      "spearman": 0.6908255787390382,
+      "top10_accuracy": 0.7863636363636364,
+      "top3_accuracy": 0.606060606060606,
+      "winner_accuracy": 0.5
+    }
+  },
+  "end_season": 2026,
+  "mode": "post_quali",
+  "protocol": "expanding-window race-by-race retraining; calibration uses only earlier out-of-fold predictions",
+  "races": 66,
+  "simulations_per_race": 5000,
+  "start_season": 2024
+}

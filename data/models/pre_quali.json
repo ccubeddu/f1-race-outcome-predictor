@@ -1,0 +1,48 @@
+{
+  "calibration_races": 30,
+  "calibration_start": "2025-07-27",
+  "created_at": "2026-10-26T23:06:48.437021+00:00",
+  "dnf_calibration": {
+    "calibrated_mean": 0.14937089393408687,
+    "observed_rate": 0.14937106918238993,
+    "raw_mean": 0.1036257979426843
+  },
+  "ensemble_weights": {
+    "lightgbm_ranker": 0.5,
+    "lightgbm_regression": 0.2,
+    "random_forest": 0.3
+  },
+  "features": 138,
+  "mode": "pre_quali",
+  "race_temperature": 0.39999999999999997,
+  "race_temperatures": {
+    "lightgbm_ranker": 0.39999999999999997,
+    "lightgbm_regression": 0.3,
+    "random_forest": 0.44999999999999996
+  },
+  "random_seed": 44,
+  "ranker": "anchored LightGBM/Random Forest ensemble",
+  "reliability_model": "LightGBM binary classifier + chronological Platt calibration",
+  "schema_version": 1,
+  "temperature_calibration": {
+    "lightgbm_ranker": {
+      "winner_log_loss": 1.5359211460558586
+    },
+    "lightgbm_regression": {
+      "winner_log_loss": 1.6574209004468685
+    },
+    "random_forest": {
+      "winner_log_loss": 1.8326664198726352
+    }
+  },
+  "training_end": "2026-10-25",
+  "training_races": 191,
+  "training_rows": 3854,
+  "training_start": "2018-03-25",
+  "versions": {
+    "lightgbm": "4.7.0",
+    "numpy": "2.5.4",
+    "pandas": "2.3.3",
+    "scikit_learn": "1.9.1"
+  }
+}

@@ -1,0 +1,127 @@
+{
+  "driver_query_example": {
+    "classified_mean_finish": 2.3870967741935485,
+    "classified_mean_positions_gained": -0.3870967741935484,
+    "dnf_rate": 0.11428571428571428,
+    "dnfs": 4,
+    "driver_id": "max_verstappen",
+    "driver_name": "Max Verstappen",
+    "mean_finish": 4.371428571428571,
+    "mean_positions_gained": -2.3714285714285714,
+    "median_finish": 2.0,
+    "podium_rate": 0.7428571428571429,
+    "podiums": 26,
+    "points_finishes": 31,
+    "points_rate": 0.8857142857142857,
+    "qualifying_position": 2,
+    "season_end": 2026,
+    "season_start": 2018,
+    "starts": 35,
+    "win_rate": 0.34285714285714286,
+    "wins": 12
+  },
+  "periods": {
+    "all_2024_2026": {
+      "anchored_ensemble": {
+        "categorical_winner_log_loss": 1.1648245399702826,
+        "highest_p_win_accuracy": 0.5909090909090909,
+        "position_log_loss": 2.613856551202929,
+        "position_mae": 3.201696389734667,
+        "predicted_p1_accuracy": 0.5757575757575758,
+        "races": 66,
+        "spearman": 0.6942566921555894,
+        "top10_accuracy": 0.7893939393939393,
+        "top3_accuracy": 0.6767676767676767,
+        "win_binary_log_loss": 0.09285759920117773,
+        "win_brier": 0.027981905957656327,
+        "win_brier_skill": 0.396531198208796
+      },
+      "pole_aware_ensemble": {
+        "categorical_winner_log_loss": 1.1510743415721758,
+        "highest_p_win_accuracy": 0.6060606060606061,
+        "position_log_loss": 2.612417965072005,
+        "position_mae": 3.201558648687835,
+        "predicted_p1_accuracy": 0.5909090909090909,
+        "races": 66,
+        "spearman": 0.6945813449662004,
+        "top10_accuracy": 0.7893939393939393,
+        "top3_accuracy": 0.6717171717171716,
+        "win_binary_log_loss": 0.0921014675899181,
+        "win_brier": 0.027589130667641182,
+        "win_brier_skill": 0.4050019447689952
+      }
+    },
+    "development_2024_2025": {
+      "anchored_ensemble": {
+        "categorical_winner_log_loss": 1.2931313914640812,
+        "highest_p_win_accuracy": 0.5416666666666666,
+        "position_log_loss": 2.5946307596844433,
+        "position_mae": 3.150438596491228,
+        "predicted_p1_accuracy": 0.5208333333333334,
+        "races": 48,
+        "spearman": 0.696439014202172,
+        "top10_accuracy": 0.7937500000000001,
+        "top3_accuracy": 0.6666666666666666,
+        "win_binary_log_loss": 0.10485896615367378,
+        "win_brier": 0.03191696033402923,
+        "win_brier_skill": 0.32939017435897433
+      },
+      "pole_aware_ensemble": {
+        "categorical_winner_log_loss": 1.28792149032593,
+        "highest_p_win_accuracy": 0.5625,
+        "position_log_loss": 2.5938505966777345,
+        "position_mae": 3.1483552631578946,
+        "predicted_p1_accuracy": 0.5416666666666666,
+        "races": 48,
+        "spearman": 0.696908939014202,
+        "top10_accuracy": 0.7937500000000001,
+        "top3_accuracy": 0.6666666666666666,
+        "win_binary_log_loss": 0.10483956784167543,
+        "win_brier": 0.031650813469600914,
+        "win_brier_skill": 0.33498220757521024
+      }
+    },
+    "holdout_2026": {
+      "anchored_ensemble": {
+        "categorical_winner_log_loss": 0.8226729359868197,
+        "highest_p_win_accuracy": 0.7222222222222222,
+        "position_log_loss": 2.665125328585558,
+        "position_mae": 3.3383838383838382,
+        "predicted_p1_accuracy": 0.7222222222222222,
+        "races": 18,
+        "spearman": 0.6884371666980363,
+        "top10_accuracy": 0.7777777777777779,
+        "top3_accuracy": 0.7037037037037037,
+        "win_binary_log_loss": 0.06382398925044237,
+        "win_brier": 0.01846225420875421,
+        "win_brier_skill": 0.5744889982363316
+      },
+      "pole_aware_ensemble": {
+        "categorical_winner_log_loss": 0.7861486115621653,
+        "highest_p_win_accuracy": 0.7222222222222222,
+        "position_log_loss": 2.661930947456726,
+        "position_mae": 3.343434343434343,
+        "predicted_p1_accuracy": 0.7222222222222222,
+        "races": 18,
+        "spearman": 0.6883744275048623,
+        "top10_accuracy": 0.7777777777777779,
+        "top3_accuracy": 0.6851851851851851,
+        "win_binary_log_loss": 0.06128555839501023,
+        "win_brier": 0.01776314045481941,
+        "win_brier_skill": 0.5906019057079717
+      }
+    }
+  },
+  "pole_win_factor": 1.25,
+  "rejected_driver_slot_feature_experiment": {
+    "anchored_ensemble_with_features": {
+      "position_log_loss": 2.62,
+      "position_mae": 3.22,
+      "spearman": 0.696,
+      "top10_accuracy": 0.783,
+      "top3_accuracy": 0.652
+    },
+    "decision": "rejected from model",
+    "reason": "Spearman improved slightly, but top-3 accuracy, position MAE, and position log loss worsened in the 66-race walk-forward test."
+  }
+}

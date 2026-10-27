@@ -1,0 +1,796 @@
+from __future__ import annotations
+
+import json
+import os
+import platform
+from datetime import date
+from pathlib import Path
+from typing import Annotated
+
+import fastf1
+import pandas as pd
+import typer
+from rich.console import Console
+from rich.panel import Panel
+from rich.progress import Progress, SpinnerColumn, TextColumn
+from rich.table import Table
+
+from f1predict import __version__
+from f1predict.config import DataPaths
+from f1predict.data.audit import build_audit
+from f1predict.data.pipeline import sync_f1db, sync_fastf1, sync_jolpica, sync_openf1
+from f1predict.features.audit import build_feature_audit
+from f1predict.features.builder import build_feature_matrices
+
+app = typer.Typer(
+    name="f1predict",
+    help="High-fidelity, leakage-safe Formula 1 outcome prediction.",
+    no_args_is_help=True,
+)
+data_app = typer.Typer(help="Download, normalize, and audit source data.", no_args_is_help=True)
+features_app = typer.Typer(
+    help="Build and audit leakage-safe model features.", no_args_is_help=True
+)
+model_app = typer.Typer(help="Train and inspect probabilistic race models.", no_args_is_help=True)
+evaluate_app = typer.Typer(help="Run and inspect walk-forward evaluation.", no_args_is_help=True)
+stats_app = typer.Typer(help="Query historical driver and race tendencies.", no_args_is_help=True)
+app.add_typer(data_app, name="data")
+app.add_typer(features_app, name="features")
+app.add_typer(model_app, name="model")
+app.add_typer(evaluate_app, name="evaluate")
+app.add_typer(stats_app, name="stats")
+console = Console()
+
+
+def _paths(data_dir: Path | None) -> DataPaths:
+    return DataPaths(data_dir.resolve()) if data_dir else DataPaths.default()
+
+
+def _validate_range(start: int, end: int) -> None:
+    if start < 1950:
+        raise typer.BadParameter("start must be 1950 or later")
+    if end < start:
+        raise typer.BadParameter("end must be greater than or equal to start")
+    if end > date.today().year + 1:
+        raise typer.BadParameter("end is too far in the future")
+
+
+@app.command()
+def version() -> None:
+    """Show the installed application version."""
+    console.print(f"F1 Predict {__version__}")
+
+
+@app.command()
+def doctor(
+    data_dir: Annotated[
+        Path | None, typer.Option(help="Override the default project data directory.")
+    ] = None,
+) -> None:
+    """Check the runtime, dependencies, paths, and local data catalog."""
+    paths = _paths(data_dir)
+    rows = [
+        ("F1 Predict", __version__),
+        ("Python", platform.python_version()),
+        ("pandas", pd.__version__),
+        ("FastF1", fastf1.__version__),
+        (
+            "FastF1 timing access",
+            "credentials detected"
+            if os.environ.get("F1_USERNAME") and os.environ.get("F1_PASSWORD")
+            else "not configured (Jolpica remains available)",
+        ),
+        ("Data directory", str(paths.root)),
+        ("Catalog", "ready" if paths.catalog.exists() else "not created yet"),
+    ]
+    table = Table(title="System check", show_header=False)
+    table.add_column("Item", style="cyan")
+    table.add_column("Value")
+    for row in rows:
+        table.add_row(*row)
+    console.print(table)
+
+
+@data_app.command("sync")
+def data_sync(
+    start: Annotated[int, typer.Option(help="First season to download.")] = 2018,
+    end: Annotated[int, typer.Option(help="Last season to download.")] = date.today().year,
+    refresh: Annotated[
+        bool, typer.Option("--refresh", help="Ignore cached API responses and fetch again.")
+    ] = False,
+    data_dir: Annotated[Path | None, typer.Option(help="Override the data directory.")] = None,
+) -> None:
+    """Sync compact schedules, results, qualifying, sprints, and pit stops from Jolpica."""
+    _validate_range(start, end)
+    paths = _paths(data_dir)
+    with Progress(
+        SpinnerColumn(), TextColumn("[progress.description]{task.description}"), console=console
+    ) as progress:
+        progress.add_task(f"Syncing Jolpica seasons {start}–{end}…", total=None)
+        summary = sync_jolpica(paths, start, end, refresh=refresh)
+    table = Table(title="Jolpica sync complete")
+    table.add_column("Season", justify="right")
+    for name in ("races", "results", "qualifying", "sprints", "pit_stops"):
+        table.add_column(name.replace("_", " ").title(), justify="right")
+    for season, counts in summary.items():
+        table.add_row(str(season), *(str(counts[name]) for name in counts))
+    console.print(table)
+    console.print(f"[dim]Data catalog: {paths.catalog}[/dim]")
+
+
+@data_app.command("sync-fastf1")
+def data_sync_fastf1(
+    start: Annotated[int, typer.Option(help="First season to download.")] = 2018,
+    end: Annotated[int, typer.Option(help="Last season to download.")] = date.today().year,
+    sessions: Annotated[
+        str,
+        typer.Option(help="Comma-separated session codes, e.g. FP1,FP2,FP3,Q,R."),
+    ] = "FP1,FP2,FP3,Q,R",
+    rounds: Annotated[
+        str | None,
+        typer.Option(help="Optional comma-separated round numbers; defaults to every round."),
+    ] = None,
+    refresh: Annotated[
+        bool, typer.Option("--refresh", help="Rebuild existing session partitions.")
+    ] = False,
+    data_dir: Annotated[Path | None, typer.Option(help="Override the data directory.")] = None,
+) -> None:
+    """Sync detailed FastF1 laps, tyres, session results, and weather."""
+    _validate_range(start, end)
+    paths = _paths(data_dir)
+    requested = [value.strip().upper() for value in sessions.split(",") if value.strip()]
+    allowed = {"FP1", "FP2", "FP3", "Q", "SQ", "S", "R"}
+    invalid = sorted(set(requested) - allowed)
+    if invalid:
+        raise typer.BadParameter(f"unsupported session code(s): {', '.join(invalid)}")
+    selected_rounds: set[int] | None = None
+    if rounds:
+        try:
+            selected_rounds = {int(value.strip()) for value in rounds.split(",") if value.strip()}
+        except ValueError as exc:
+            raise typer.BadParameter("rounds must be comma-separated integers") from exc
+        if not selected_rounds or min(selected_rounds) < 1:
+            raise typer.BadParameter("rounds must contain positive integers")
+    console.print(
+        Panel.fit(
+            "FastF1 detailed timing can take a while on the first run. "
+            "Completed partitions are cached and skipped automatically.",
+            title="Detailed data",
+        )
+    )
+    outcomes = sync_fastf1(
+        paths,
+        start,
+        end,
+        requested,
+        rounds=selected_rounds,
+        refresh=refresh,
+    )
+    counts = pd.Series([row["status"] for row in outcomes]).value_counts().to_dict()
+    console.print(
+        f"[green]Downloaded {counts.get('downloaded', 0)}[/green], "
+        f"cached {counts.get('cached', 0)}, "
+        f"unavailable {counts.get('unavailable', 0)} session partitions."
+    )
+    unavailable = [row for row in outcomes if row["status"] == "unavailable"]
+    if unavailable:
+        console.print("[yellow]Unavailable sessions were skipped. First failures:[/yellow]")
+        for row in unavailable[:5]:
+            label = f"{row['season']} R{row['round']} {row['session']}"
+            console.print(f"  {label}: {row.get('detail', 'unknown')}")
+
+
+@data_app.command("sync-practice")
+def data_sync_practice(
+    start: Annotated[int, typer.Option(help="First season for F1DB classifications.")] = 2018,
+    end: Annotated[int, typer.Option(help="Last season to download.")] = date.today().year,
+    detailed_from: Annotated[
+        int,
+        typer.Option(help="First season for detailed OpenF1 laps, tyres, and weather."),
+    ] = 2023,
+    rounds: Annotated[
+        str | None,
+        typer.Option(help="Optional OpenF1 round filter, e.g. 1,2. F1DB remains season-wide."),
+    ] = None,
+    refresh: Annotated[
+        bool, typer.Option("--refresh", help="Redownload cached source data.")
+    ] = False,
+    data_dir: Annotated[Path | None, typer.Option(help="Override the data directory.")] = None,
+) -> None:
+    """Sync practice classifications plus detailed laps, tyres, and weather."""
+    _validate_range(start, end)
+    paths = _paths(data_dir)
+    selected_rounds: set[int] | None = None
+    if rounds:
+        try:
+            selected_rounds = {int(value.strip()) for value in rounds.split(",") if value.strip()}
+        except ValueError as exc:
+            raise typer.BadParameter("rounds must be comma-separated integers") from exc
+    with Progress(
+        SpinnerColumn(), TextColumn("[progress.description]{task.description}"), console=console
+    ) as progress:
+        task = progress.add_task("Syncing F1DB practice classifications…", total=None)
+        f1db_summary = sync_f1db(paths, start, end, refresh=refresh)
+        progress.update(task, description="Syncing detailed OpenF1 practice sessions…")
+        openf1_outcomes = sync_openf1(
+            paths,
+            max(2023, detailed_from),
+            end,
+            rounds=selected_rounds,
+            refresh=refresh,
+        )
+    counts = pd.Series([row["status"] for row in openf1_outcomes]).value_counts().to_dict()
+    table = Table(title="Practice data sync complete")
+    table.add_column("Source", style="cyan")
+    table.add_column("Coverage")
+    table.add_column("Rows / sessions", justify="right")
+    table.add_row(
+        "F1DB",
+        f"{start}–{end} classifications",
+        f"{sum(f1db_summary.values()):,} rows",
+    )
+    table.add_row(
+        "OpenF1",
+        f"{max(2023, detailed_from)}–{end} detailed",
+        f"{counts.get('downloaded', 0)} new / {counts.get('cached', 0)} cached",
+    )
+    console.print(table)
+    unavailable = [row for row in openf1_outcomes if row["status"] == "unavailable"]
+    for row in unavailable[:5]:
+        console.print(
+            f"[yellow]{row['season']} R{row['round']} {row['session']}: "
+            f"{row.get('detail', 'unavailable')}[/yellow]"
+        )
+
+
+@data_app.command("audit")
+def data_audit(
+    json_output: Annotated[
+        bool, typer.Option("--json", help="Emit machine-readable JSON instead of tables.")
+    ] = False,
+    data_dir: Annotated[Path | None, typer.Option(help="Override the data directory.")] = None,
+) -> None:
+    """Audit normalized data coverage, uniqueness, and joinability."""
+    report = build_audit(_paths(data_dir))
+    if json_output:
+        console.print_json(json.dumps(report, default=str))
+        return
+    table = Table(title="Normalized data audit")
+    table.add_column("Table", style="cyan")
+    table.add_column("Rows", justify="right")
+    table.add_column("Seasons")
+    table.add_column("Duplicates", justify="right")
+    table.add_column("Status")
+    for name, stats in report["tables"].items():
+        season_range = (
+            f"{stats.get('season_min')}–{stats.get('season_max')}"
+            if stats.get("season_min") is not None
+            else "—"
+        )
+        status = stats.get("status", "missing")
+        color = "green" if status == "ok" else "yellow"
+        table.add_row(
+            name,
+            str(stats.get("rows", 0)),
+            season_range,
+            str(stats.get("duplicate_keys", "—")),
+            f"[{color}]{status}[/{color}]",
+        )
+    console.print(table)
+    if report["coverage"]:
+        console.print(
+            Panel(json.dumps(report["coverage"], indent=2, default=str), title="Coverage")
+        )
+    f1db_rows = report["f1db"].get("practice_rows", 0)
+    openf1_laps = report["openf1"].get("practice_laps", {}).get("rows", 0)
+    openf1_sessions = report["openf1"].get("practice_laps", {}).get("sessions", 0)
+    console.print(
+        f"Practice detail: {f1db_rows:,} F1DB classifications; "
+        f"{openf1_laps:,} OpenF1 lap rows across {openf1_sessions} sessions."
+    )
+    fastf1_rows = sum(item["rows"] for item in report["fastf1"].values())
+    console.print(
+        f"FastF1 detail: {fastf1_rows:,} rows across "
+        f"{report['fastf1']['laps']['partitions']} session partition(s)."
+    )
+    for warning in report["warnings"]:
+        console.print(f"[yellow]Warning:[/yellow] {warning}")
+
+
+@features_app.command("build")
+def features_build(
+    data_dir: Annotated[Path | None, typer.Option(help="Override the data directory.")] = None,
+) -> None:
+    """Build pre- and post-qualifying race-driver feature matrices."""
+    paths = _paths(data_dir)
+    with Progress(
+        SpinnerColumn(), TextColumn("[progress.description]{task.description}"), console=console
+    ) as progress:
+        progress.add_task("Building leakage-safe feature matrices…", total=None)
+        manifest = build_feature_matrices(paths)
+    table = Table(title="Feature matrices ready")
+    table.add_column("Mode", style="cyan")
+    table.add_column("Rows", justify="right")
+    table.add_column("Races", justify="right")
+    table.add_column("Features", justify="right")
+    for mode in ("pre_quali", "post_quali"):
+        table.add_row(
+            mode,
+            f"{manifest['rows']:,}",
+            f"{manifest['races']:,}",
+            str(len(manifest["modes"][mode]["features"])),
+        )
+    console.print(table)
+    console.print(f"[dim]Manifest: {paths.features / 'manifest.json'}[/dim]")
+
+
+@features_app.command("audit")
+def features_audit(
+    json_output: Annotated[
+        bool, typer.Option("--json", help="Emit machine-readable JSON instead of tables.")
+    ] = False,
+    data_dir: Annotated[Path | None, typer.Option(help="Override the data directory.")] = None,
+) -> None:
+    """Verify feature coverage, uniqueness, and temporal leakage guards."""
+    report = build_feature_audit(_paths(data_dir))
+    if json_output:
+        console.print_json(json.dumps(report, default=str))
+        return
+    table = Table(title="Feature audit")
+    table.add_column("Mode", style="cyan")
+    table.add_column("Rows", justify="right")
+    table.add_column("Races", justify="right")
+    table.add_column("Features", justify="right")
+    table.add_column("Median coverage", justify="right")
+    table.add_column("Status")
+    for mode, stats in report["modes"].items():
+        clean = not stats["duplicate_keys"] and not stats["all_null_features"]
+        table.add_row(
+            mode,
+            f"{stats['rows']:,}",
+            str(stats["races"]),
+            str(stats["features"]),
+            f"{stats['median_feature_coverage']:.1%}",
+            "[green]ok[/green]" if clean else "[yellow]review[/yellow]",
+        )
+    console.print(table)
+    coverage = report["coverage"]
+    console.print(
+        f"Post-quali coverage: qualifying position {coverage['post_quali_position']:.1%}; "
+        f"grid position {coverage['post_grid_position']:.1%}."
+    )
+    console.print("[green]Leakage guards passed.[/green]")
+
+
+@stats_app.command("driver-quali")
+def stats_driver_quali(
+    driver: Annotated[str, typer.Argument(help="Driver name, code, or ID.")],
+    position: Annotated[int, typer.Argument(help="Qualifying position, e.g. 1 or 2.")],
+    start_season: Annotated[
+        int | None, typer.Option(help="Optional first season to include.")
+    ] = None,
+    end_season: Annotated[int | None, typer.Option(help="Optional last season to include.")] = None,
+    json_output: Annotated[
+        bool, typer.Option("--json", help="Print the summary and race history as JSON.")
+    ] = False,
+    data_dir: Annotated[Path | None, typer.Option(help="Override the data directory.")] = None,
+) -> None:
+    """Show how a driver performs from one exact qualifying position."""
+    from f1predict.analytics import driver_qualifying_position_history
+
+    try:
+        summary, history = driver_qualifying_position_history(
+            _paths(data_dir),
+            driver=driver,
+            position=position,
+            start_season=start_season,
+            end_season=end_season,
+        )
+    except ValueError as exc:
+        raise typer.BadParameter(str(exc)) from exc
+    if json_output:
+        payload = {
+            "summary": summary,
+            "races": json.loads(history.to_json(orient="records", date_format="iso")),
+        }
+        console.print_json(json.dumps(payload, default=str))
+        return
+
+    overview = Table(title=f"{summary['driver_name']} when qualifying P{position}")
+    overview.add_column("Starts", justify="right")
+    overview.add_column("Wins", justify="right")
+    overview.add_column("Podiums", justify="right")
+    overview.add_column("Points", justify="right")
+    overview.add_column("DNFs", justify="right")
+    overview.add_column("Mean finish", justify="right")
+    overview.add_column("Classified finish", justify="right")
+    overview.add_column("Classified gained", justify="right")
+    overview.add_row(
+        str(summary["starts"]),
+        f"{summary['wins']} ({summary['win_rate']:.1%})",
+        f"{summary['podiums']} ({summary['podium_rate']:.1%})",
+        f"{summary['points_finishes']} ({summary['points_rate']:.1%})",
+        f"{summary['dnfs']} ({summary['dnf_rate']:.1%})",
+        f"{summary['mean_finish']:.2f}",
+        f"{summary['classified_mean_finish']:.2f}",
+        f"{summary['classified_mean_positions_gained']:+.2f}",
+    )
+    console.print(overview)
+
+    races = Table(title="Race history")
+    races.add_column("Date")
+    races.add_column("Race")
+    races.add_column("Team")
+    races.add_column("Finish", justify="right")
+    races.add_column("Gained", justify="right")
+    races.add_column("DNF", justify="center")
+    for row in history.itertuples():
+        races.add_row(
+            str(pd.to_datetime(row.race_date).date()),
+            str(row.race_name),
+            str(row.constructor_name),
+            str(int(row.target_finish_position)),
+            f"{row.positions_gained:+.0f}",
+            "yes" if row.target_dnf else "",
+        )
+    console.print(races)
+
+
+@model_app.command("train")
+def model_train(
+    mode: Annotated[
+        str,
+        typer.Option(help="Model cutoff: pre_quali, post_quali, or all."),
+    ] = "all",
+    calibration_races: Annotated[
+        int,
+        typer.Option(help="Most recent races reserved for chronological calibration."),
+    ] = 30,
+    data_dir: Annotated[Path | None, typer.Option(help="Override the data directory.")] = None,
+) -> None:
+    """Train LambdaRank ordering and calibrated reliability models."""
+    from f1predict.models.training import train_model
+
+    if mode not in {"pre_quali", "post_quali", "all"}:
+        raise typer.BadParameter("mode must be pre_quali, post_quali, or all")
+    if calibration_races < 10:
+        raise typer.BadParameter("calibration-races must be at least 10")
+    modes = ["pre_quali", "post_quali"] if mode == "all" else [mode]
+    paths = _paths(data_dir)
+    bundles = []
+    with Progress(
+        SpinnerColumn(), TextColumn("[progress.description]{task.description}"), console=console
+    ) as progress:
+        task = progress.add_task("Training models…", total=None)
+        for selected in modes:
+            progress.update(task, description=f"Training {selected} model…")
+            bundles.append(train_model(paths, selected, calibration_races=calibration_races))
+    table = Table(title="Model training complete")
+    table.add_column("Mode", style="cyan")
+    table.add_column("Rows", justify="right")
+    table.add_column("Races", justify="right")
+    table.add_column("Features", justify="right")
+    table.add_column("Temperature", justify="right")
+    table.add_column("DNF observed/calibrated", justify="right")
+    for bundle in bundles:
+        metadata = bundle.metadata
+        dnf = metadata["dnf_calibration"]
+        table.add_row(
+            bundle.mode,
+            f"{metadata['training_rows']:,}",
+            str(metadata["training_races"]),
+            str(metadata["features"]),
+            f"{bundle.race_temperature:.2f}",
+            f"{dnf['observed_rate']:.1%} / {dnf['calibrated_mean']:.1%}",
+        )
+    console.print(table)
+    console.print(f"[dim]Artifacts: {paths.models}[/dim]")
+
+
+@model_app.command("inspect")
+def model_inspect(
+    mode: Annotated[str, typer.Option(help="Model cutoff: pre_quali or post_quali.")] = (
+        "post_quali"
+    ),
+    data_dir: Annotated[Path | None, typer.Option(help="Override the data directory.")] = None,
+) -> None:
+    """Show a trained model's provenance and calibration metadata."""
+    from f1predict.models.training import load_model
+
+    bundle = load_model(_paths(data_dir), mode)
+    console.print(Panel(json.dumps(bundle.metadata, indent=2), title=f"{mode} model"))
+
+
+@model_app.command("importance")
+def model_importance(
+    mode: Annotated[str, typer.Option(help="Model cutoff: pre_quali or post_quali.")] = (
+        "post_quali"
+    ),
+    top: Annotated[int, typer.Option(help="Number of features to display.")] = 20,
+    data_dir: Annotated[Path | None, typer.Option(help="Override the data directory.")] = None,
+) -> None:
+    """Show gain-based feature importance from the ranking model."""
+    from f1predict.models.training import load_model
+
+    if top < 1:
+        raise typer.BadParameter("top must be positive")
+    importance = load_model(_paths(data_dir), mode).feature_importance().head(top)
+    table = Table(title=f"Top {len(importance)} {mode} features")
+    table.add_column("Rank", justify="right")
+    table.add_column("Feature", style="cyan")
+    table.add_column("Importance", justify="right")
+    for index, row in importance.iterrows():
+        table.add_row(str(index + 1), str(row["feature"]), f"{row['importance']:.2%}")
+    console.print(table)
+
+
+def _evaluation_table(summary: dict) -> Table:
+    labels = {
+        "pole_aware_ensemble": "Pole-aware ensemble",
+        "anchored_ensemble": "Anchored ensemble",
+        "random_forest": "Random Forest",
+        "lightgbm_regression": "LightGBM regression",
+        "lightgbm_ranker": "LightGBM LambdaRank",
+    }
+    table = Table(title="Walk-forward evaluation")
+    table.add_column("Mode", style="cyan")
+    table.add_column("Model")
+    table.add_column("Spearman", justify="right")
+    table.add_column("Top 3", justify="right")
+    table.add_column("Top 10", justify="right")
+    table.add_column("Pos. MAE", justify="right")
+    table.add_column("Pos. log loss", justify="right")
+    for mode, report in summary["modes"].items():
+        for candidate, metrics in report["candidates"].items():
+            table.add_row(
+                mode,
+                labels[candidate],
+                f"{metrics['spearman']:.3f}",
+                f"{metrics['top3_accuracy']:.1%}",
+                f"{metrics['top10_accuracy']:.1%}",
+                f"{metrics['position_mae']:.2f}",
+                f"{metrics['position_log_loss']:.3f}",
+            )
+    return table
+
+
+@evaluate_app.command("run")
+def evaluate_run(
+    mode: Annotated[
+        str,
+        typer.Option(help="Prediction cutoff: pre_quali, post_quali, or all."),
+    ] = "all",
+    start_season: Annotated[
+        int,
+        typer.Option(help="First season whose races are evaluated."),
+    ] = 2023,
+    simulations: Annotated[
+        int,
+        typer.Option(help="Monte Carlo samples per race and candidate."),
+    ] = 5_000,
+    data_dir: Annotated[Path | None, typer.Option(help="Override the data directory.")] = None,
+) -> None:
+    """Run strict expanding-window backtests and build evaluation plots."""
+    from f1predict.evaluation.backtest import run_walk_forward
+    from f1predict.evaluation.report import build_report
+
+    if mode not in {"pre_quali", "post_quali", "all"}:
+        raise typer.BadParameter("mode must be pre_quali, post_quali, or all")
+    if simulations < 500:
+        raise typer.BadParameter("simulations must be at least 500")
+    modes = ("pre_quali", "post_quali") if mode == "all" else (mode,)
+    paths = _paths(data_dir)
+    for selected in modes:
+        with Progress(console=console) as progress:
+            task = progress.add_task(f"Backtesting {selected}…", total=1)
+
+            def update(
+                done: int,
+                total: int,
+                race_name: str,
+                task_id: int = task,
+                selected_mode: str = selected,
+            ) -> None:
+                progress.update(
+                    task_id,
+                    total=total,
+                    completed=done,
+                    description=f"{selected_mode}: {race_name}",
+                )
+
+            run_walk_forward(
+                paths,
+                selected,
+                start_season=start_season,
+                simulations=simulations,
+                progress=update,
+            )
+    summary = build_report(paths, modes)
+    console.print(_evaluation_table(summary))
+    console.print(f"[dim]Report: {paths.evaluation / 'report.md'}[/dim]")
+
+
+@evaluate_app.command("report")
+def evaluate_report(
+    data_dir: Annotated[Path | None, typer.Option(help="Override the data directory.")] = None,
+) -> None:
+    """Display the latest saved walk-forward results."""
+    paths = _paths(data_dir)
+    path = paths.evaluation / "summary.json"
+    if not path.exists():
+        raise RuntimeError("No evaluation report found; run `f1predict evaluate run` first.")
+    console.print(_evaluation_table(json.loads(path.read_text(encoding="utf-8"))))
+
+
+@evaluate_app.command("audit")
+def evaluate_audit(
+    mode: Annotated[
+        str,
+        typer.Option(help="Prediction cutoff: pre_quali, post_quali, or all."),
+    ] = "all",
+    data_dir: Annotated[Path | None, typer.Option(help="Override the data directory.")] = None,
+) -> None:
+    """Audit chronology and joint probability consistency."""
+    from f1predict.evaluation.audit import audit_backtest
+
+    if mode not in {"pre_quali", "post_quali", "all"}:
+        raise typer.BadParameter("mode must be pre_quali, post_quali, or all")
+    modes = ("pre_quali", "post_quali") if mode == "all" else (mode,)
+    table = Table(title="Backtest integrity audit")
+    table.add_column("Mode", style="cyan")
+    table.add_column("Races", justify="right")
+    table.add_column("Rows", justify="right")
+    table.add_column("Chronology violations", justify="right")
+    table.add_column("Max probability error", justify="right")
+    table.add_column("Status")
+    for selected in modes:
+        report = audit_backtest(_paths(data_dir), selected)
+        maximum_error = max(
+            report["driver_probability_max_error"],
+            report["grid_win_probability_max_error"],
+            report["position_occupancy_max_error"],
+        )
+        table.add_row(
+            selected,
+            str(report["races"]),
+            f"{report['rows']:,}",
+            str(report["chronology_violations"]),
+            f"{maximum_error:.2e}",
+            "[green]passed[/green]" if report["passed"] else "[red]failed[/red]",
+        )
+    console.print(table)
+
+
+def _prediction_table(predictions: pd.DataFrame) -> Table:
+    table = Table(title="Predicted finishing order")
+    table.add_column("Pos", justify="right", style="bold cyan")
+    table.add_column("Driver")
+    table.add_column("Team", style="dim")
+    table.add_column("Expected", justify="right")
+    table.add_column("Win", justify="right")
+    table.add_column("Podium", justify="right")
+    table.add_column("Points", justify="right")
+    table.add_column("DNF", justify="right")
+    for _, row in predictions.iterrows():
+        table.add_row(
+            str(int(row["predicted_position"])),
+            str(row["driver_name"]),
+            str(row["constructor_name"]),
+            f"{row['expected_position']:.2f}",
+            f"{row['p_win']:.1%}",
+            f"{row['p_podium']:.1%}",
+            f"{row['p_points']:.1%}",
+            f"{row['p_dnf']:.1%}",
+        )
+    return table
+
+
+def _driver_tables(row: pd.Series, grid_size: int) -> tuple[Table, Table]:
+    summary = Table(title=str(row["driver_name"]), show_header=False)
+    summary.add_column("Metric", style="cyan")
+    summary.add_column("Value", justify="right")
+    for label, value in (
+        ("Predicted finish", f"P{int(row['predicted_position'])}"),
+        ("Expected position", f"{row['expected_position']:.2f}"),
+        ("Win", f"{row['p_win']:.2%}"),
+        ("Podium", f"{row['p_podium']:.2%}"),
+        ("Points", f"{row['p_points']:.2%}"),
+        ("DNF", f"{row['p_dnf']:.2%}"),
+    ):
+        summary.add_row(label, value)
+    distribution = Table(title="Full finishing-position distribution")
+    distribution.add_column("Position", justify="right", style="cyan")
+    distribution.add_column("Probability", justify="right")
+    for position in range(1, grid_size + 1):
+        distribution.add_row(str(position), f"{row[f'p_position_{position}']:.2%}")
+    return summary, distribution
+
+
+@app.command("predict")
+def predict(
+    race: Annotated[
+        str,
+        typer.Argument(help="Round number or race/circuit/location name, e.g. 19 or monza."),
+    ],
+    season: Annotated[int, typer.Option(help="Championship season.")] = date.today().year,
+    mode: Annotated[
+        str,
+        typer.Option(help="auto, pre_quali, or post_quali."),
+    ] = "auto",
+    driver: Annotated[
+        str | None,
+        typer.Option(help="Optional driver name, code, or ID for a single-driver view."),
+    ] = None,
+    simulations: Annotated[
+        int,
+        typer.Option(help="Number of joint Monte Carlo race simulations."),
+    ] = 20_000,
+    seed: Annotated[int, typer.Option(help="Reproducible simulation seed.")] = 44,
+    json_output: Annotated[
+        bool,
+        typer.Option("--json", help="Print the complete prediction as JSON."),
+    ] = False,
+    save: Annotated[
+        bool,
+        typer.Option("--save/--no-save", help="Save CSV and JSON prediction files."),
+    ] = True,
+    data_dir: Annotated[Path | None, typer.Option(help="Override the data directory.")] = None,
+) -> None:
+    """Predict a full race or answer a single-driver probability query."""
+    from f1predict.models.selection import write_production_selection
+    from f1predict.prediction import match_driver, predict_race, prediction_payload
+
+    if simulations < 500:
+        raise typer.BadParameter("simulations must be at least 500")
+    paths = _paths(data_dir)
+    write_production_selection(paths)
+    with Progress(
+        SpinnerColumn(), TextColumn("[progress.description]{task.description}"), console=console
+    ) as progress:
+        progress.add_task("Building race forecast…", total=None)
+        try:
+            result = predict_race(
+                paths,
+                season=season,
+                race=race,
+                mode=mode,
+                simulations=simulations,
+                seed=seed,
+                save=save,
+            )
+        except (ValueError, RuntimeError) as exc:
+            raise typer.BadParameter(str(exc)) from exc
+    if json_output:
+        console.print_json(json.dumps(prediction_payload(result), indent=2, default=str))
+        return
+    console.print(
+        Panel.fit(
+            f"[bold]{result.event.season} {result.event.race_name}[/bold]\n"
+            f"Mode: {result.mode} · {result.kind.replace('_', ' ')}\n"
+            f"Roster: {result.roster_source}\n"
+            f"Model: {result.metadata['model']} · {simulations:,} simulations",
+            title="F1 Predict",
+        )
+    )
+    if result.kind == "historical_replay":
+        console.print(
+            "[yellow]Historical replay uses today's fully trained model; use the evaluation "
+            "artifacts for unbiased historical scores.[/yellow]"
+        )
+    if driver:
+        try:
+            row = match_driver(result.predictions, driver)
+        except ValueError as exc:
+            raise typer.BadParameter(str(exc)) from exc
+        summary, distribution = _driver_tables(row, len(result.predictions))
+        console.print(summary)
+        console.print(distribution)
+    else:
+        console.print(_prediction_table(result.predictions))
+    if result.csv_path and result.json_path:
+        console.print(f"[dim]CSV: {result.csv_path}[/dim]")
+        console.print(f"[dim]JSON: {result.json_path}[/dim]")
+
+
+if __name__ == "__main__":
+    app()

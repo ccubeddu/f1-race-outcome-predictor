@@ -1,0 +1,121 @@
+{
+  "schema_version": 1,
+  "sources": {
+    "f1db": {
+      "license": "CC-BY-4.0",
+      "practice_rows": {
+        "2018": 1254,
+        "2019": 1236,
+        "2020": 918,
+        "2021": 1238,
+        "2022": 1254,
+        "2023": 1073,
+        "2024": 1190,
+        "2025": 1197,
+        "2026": 920
+      },
+      "refreshed_at": "2026-10-26T19:59:11.716352+00:00",
+      "season_end": 2026,
+      "season_start": 2018,
+      "source_url": "https://github.com/f1db/f1db/releases/latest"
+    },
+    "fastf1": {
+      "cached": 0,
+      "downloaded": 0,
+      "refreshed_at": "2026-10-26T19:43:44.791190+00:00",
+      "rounds": [
+        1
+      ],
+      "season_end": 2024,
+      "season_start": 2024,
+      "sessions": [
+        "Q"
+      ],
+      "unavailable": 1
+    },
+    "jolpica": {
+      "base_url": "https://api.jolpi.ca/ergast/f1",
+      "refreshed_at": "2026-10-26T19:41:59.173845+00:00",
+      "rows": {
+        "2018": {
+          "pit_stops": 536,
+          "qualifying": 420,
+          "races": 21,
+          "results": 420,
+          "sprints": 0
+        },
+        "2019": {
+          "pit_stops": 650,
+          "qualifying": 418,
+          "races": 21,
+          "results": 420,
+          "sprints": 0
+        },
+        "2020": {
+          "pit_stops": 594,
+          "qualifying": 340,
+          "races": 17,
+          "results": 340,
+          "sprints": 0
+        },
+        "2021": {
+          "pit_stops": 798,
+          "qualifying": 439,
+          "races": 22,
+          "results": 440,
+          "sprints": 60
+        },
+        "2022": {
+          "pit_stops": 805,
+          "qualifying": 440,
+          "races": 22,
+          "results": 440,
+          "sprints": 60
+        },
+        "2023": {
+          "pit_stops": 912,
+          "qualifying": 440,
+          "races": 22,
+          "results": 440,
+          "sprints": 120
+        },
+        "2024": {
+          "pit_stops": 825,
+          "qualifying": 479,
+          "races": 24,
+          "results": 479,
+          "sprints": 120
+        },
+        "2025": {
+          "pit_stops": 821,
+          "qualifying": 479,
+          "races": 24,
+          "results": 479,
+          "sprints": 120
+        },
+        "2026": {
+          "pit_stops": 721,
+          "qualifying": 391,
+          "races": 23,
+          "results": 396,
+          "sprints": 132
+        }
+      },
+      "season_end": 2026,
+      "season_start": 2018
+    },
+    "openf1": {
+      "base_url": "https://api.openf1.org/v1",
+      "cached": 0,
+      "downloaded": 12,
+      "lap_rows": 5249,
+      "refreshed_at": "2026-10-26T19:54:24.113081+00:00",
+      "rounds": [
+        1
+      ],
+      "season_end": 2026,
+      "season_start": 2023,
+      "unavailable": 0
+    }
+  }
+}
