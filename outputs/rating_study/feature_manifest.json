@@ -1,0 +1,180 @@
+{
+  "config": {
+    "constructor_season_retention": 0.7,
+    "constructor_step": 0.25,
+    "context_prior": 5.0,
+    "context_step": 0.2,
+    "driver_season_retention": 0.98,
+    "driver_step": 0.035,
+    "rebrand_retention": 0.5,
+    "regulation_retention": 0.4,
+    "reliability_retention_per_race": 0.985,
+    "teammate_step": 0.1
+  },
+  "families": {
+    "context": [
+      "rating_context_quali_driver_track",
+      "rating_context_quali_driver_track_evidence",
+      "rating_context_quali_constructor_track",
+      "rating_context_quali_constructor_track_evidence",
+      "rating_context_quali_driver_bucket",
+      "rating_context_quali_driver_bucket_evidence",
+      "rating_context_quali_constructor_bucket",
+      "rating_context_quali_constructor_bucket_evidence",
+      "rating_context_race_driver_track",
+      "rating_context_race_driver_track_evidence",
+      "rating_context_race_constructor_track",
+      "rating_context_race_constructor_track_evidence",
+      "rating_context_race_driver_bucket",
+      "rating_context_race_driver_bucket_evidence",
+      "rating_context_race_constructor_bucket",
+      "rating_context_race_constructor_bucket_evidence",
+      "rating_layout_length_km",
+      "rating_layout_turns",
+      "rating_layout_turns_per_km",
+      "rating_layout_type",
+      "rating_layout_direction",
+      "rating_layout_available"
+    ],
+    "global": [
+      "rating_lineage",
+      "rating_era",
+      "rating_driver_new_team",
+      "rating_driver_team_changes_pre",
+      "rating_constructor_rebrands_pre",
+      "rating_quali_driver",
+      "rating_quali_constructor",
+      "rating_quali_combined",
+      "rating_quali_teammate_gap",
+      "rating_quali_driver_evidence",
+      "rating_quali_constructor_evidence",
+      "rating_race_driver",
+      "rating_race_constructor",
+      "rating_race_combined",
+      "rating_race_teammate_gap",
+      "rating_race_driver_evidence",
+      "rating_race_constructor_evidence"
+    ],
+    "reliability": [
+      "rel_driver_dnf_rate",
+      "rel_driver_mechanical_rate",
+      "rel_driver_incident_rate",
+      "rel_driver_other_rate",
+      "rel_driver_evidence",
+      "rel_constructor_dnf_rate",
+      "rel_constructor_mechanical_rate",
+      "rel_constructor_incident_rate",
+      "rel_constructor_other_rate",
+      "rel_constructor_evidence",
+      "rel_track_dnf_rate",
+      "rel_track_mechanical_rate",
+      "rel_track_incident_rate",
+      "rel_track_other_rate",
+      "rel_track_evidence",
+      "rel_bucket_dnf_rate",
+      "rel_bucket_mechanical_rate",
+      "rel_bucket_incident_rate",
+      "rel_bucket_other_rate",
+      "rel_bucket_evidence"
+    ]
+  },
+  "features": 59,
+  "layout_coverage": 0.9942363112391931,
+  "layout_exclusions": [
+    {
+      "layout_date": "2021-10-03",
+      "race_date": "2021-10-10 00:00:00",
+      "round": 16,
+      "season": 2021
+    },
+    {
+      "layout_date": "2024-11-24",
+      "race_date": "2024-11-23 00:00:00",
+      "round": 22,
+      "season": 2024
+    }
+  ],
+  "layout_races": 347,
+  "policy": "All entrant snapshots precede any event update. Qualifying and classified-only race pace channels update after the race. DNF cause histories are separate. Layout geometry is event-specific, not the current circuit description. Publication revisions unknown.",
+  "rebrands": [
+    {
+      "from": "renault",
+      "lineage": "enstone",
+      "round": 1,
+      "season": 2012,
+      "to": "lotus_f1"
+    },
+    {
+      "from": "lotus_f1",
+      "lineage": "enstone",
+      "round": 1,
+      "season": 2016,
+      "to": "renault"
+    },
+    {
+      "from": "sauber",
+      "lineage": "hinwil",
+      "round": 1,
+      "season": 2019,
+      "to": "alfa"
+    },
+    {
+      "from": "force_india",
+      "lineage": "silverstone",
+      "round": 1,
+      "season": 2019,
+      "to": "racing_point"
+    },
+    {
+      "from": "toro_rosso",
+      "lineage": "faenza",
+      "round": 1,
+      "season": 2020,
+      "to": "alphatauri"
+    },
+    {
+      "from": "renault",
+      "lineage": "enstone",
+      "round": 1,
+      "season": 2021,
+      "to": "alpine"
+    },
+    {
+      "from": "racing_point",
+      "lineage": "silverstone",
+      "round": 1,
+      "season": 2021,
+      "to": "aston_martin"
+    },
+    {
+      "from": "alfa",
+      "lineage": "hinwil",
+      "round": 1,
+      "season": 2024,
+      "to": "sauber"
+    },
+    {
+      "from": "alphatauri",
+      "lineage": "faenza",
+      "round": 1,
+      "season": 2024,
+      "to": "rb"
+    },
+    {
+      "from": "sauber",
+      "lineage": "hinwil",
+      "round": 1,
+      "season": 2026,
+      "to": "audi"
+    }
+  ],
+  "recipe": "hierarchical_pairwise_ratings_v1",
+  "rows": 7307,
+  "update_counts": {
+    "classified_pace_observations": 6014,
+    "quali_observations": 7277,
+    "reliability_incident": 399,
+    "reliability_mechanical": 491,
+    "reliability_other": 354
+  }
+}

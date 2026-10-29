@@ -1,0 +1,21 @@
+{
+  "cause_rate_sum_error": 5.551115123125783e-17,
+  "chronology_violations": 0,
+  "duplicate_keys": 0,
+  "identical_test_support": true,
+  "monte_carlo_convergence_across_seeds_checked": false,
+  "passed": true,
+  "position_column_error": 5.551115123125783e-16,
+  "probability_row_error": 6.661338147750939e-16,
+  "production_unchanged": true,
+  "rating_asof_violations": 0,
+  "stage3_baseline_probability_max_error": 0.0,
+  "summary_probability_error": 3.3306690738754696e-16,
+  "versions": {
+    "lightgbm": "4.7.0",
+    "numpy": "2.5.4",
+    "pandas": "2.3.3",
+    "scikit-learn": "1.9.1",
+    "scipy": "1.18.1"
+  }
+}

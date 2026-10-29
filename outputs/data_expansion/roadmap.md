@@ -44,13 +44,26 @@ under-confidence, inconclusive detailed-practice gains and pending full-profile/
 The conditional race models train on observed qualifying in earlier races, not generated
 qualifying covariates; OOF qualifying forecasts are used only for calibration and evaluation.
 
-## 4. Separate driver, constructor and circuit effects
+## 4. Separate driver, constructor and circuit effects — completed research checkpoint
 
 Test an updating driver/constructor rating model with teammate comparisons and track-layout
 context. Update ratings only after each race. Treat constructor lineage and driver moves
 explicitly, and estimate changes in reliability separately from underlying pace where labels allow.
 
 Checkpoint: feature/rating ablations, rank and probability scores, and performance by regulation era.
+
+The [completed study](../rating_study/report.md) tests 59 additional forward-only features
+on the same 88 pre-quali races and development profile as stage 3. Ratings + circuit improves
+position log loss by 1.22% (2.7881 → 2.7542); the approximate paired loss-delta interval is
+[-0.0531, -0.0168]. Spearman is essentially flat (0.6226 → 0.6236), winner-loss improvement
+is inconclusive, and top-three/top-ten overlap decline. The reliability addition changes
+DNF Brier only 0.11256 → 0.11248, with an interval spanning zero benefit.
+
+No promotion: the [assessment](../rating_study/assessment.md) also flags lower 2026 Spearman
+(0.6545 → 0.6462). Retain ratings + circuit as a stage 5 research candidate, without assuming
+it combines successfully with the stage 3 grid mixture. Baseline probabilities replay exactly,
+production fingerprints are unchanged and 135 tests pass. A [readable Austin comparison](
+../rating_study/austin_2026.md) includes every entrant and prior-event rating cutoff.
 
 ## 5. Evaluate the deployment configuration consistently
 

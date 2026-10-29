@@ -233,6 +233,49 @@ probabilities are under-confident in the 10–30% band. Production remains uncha
 [the assessment and limitations](outputs/qualifying_study/assessment.md) and
 [the pre-quali Austin example](outputs/qualifying_study/austin_2026.md).
 
+### Driver, constructor and circuit ratings (staging only)
+
+Stage 4 tests a separate rating sidecar without replacing the stage 2 feature matrices or
+production artifacts. Driver and constructor strength have separate qualifying and
+classified-finisher ranking channels, with teammate comparisons, driver moves, discounted
+constructor lineages, and event-specific circuit-layout context. A separate reliability
+variant adds mechanical-, incident- and other-labeled retirement histories. Incident labels
+do not establish driver fault; these ratings are predictive proxies, not causal skill or
+fuel-corrected race-pace measurements.
+
+```bash
+f1predict evaluate rating-study --start-season 2023 --end-season 2026
+python scripts/export_rating_checkpoint.py
+```
+
+All entrants receive their feature snapshot **before any current-event update**, including
+qualifying-rating updates. The 59 additional features comprise 17 global ratings, 22 circuit
+context features and 20 reliability features. The study compares direct/global/context
+ranker ablations, matched direct/context ensembles, and the effect of replacing only the DNF
+model and downstream calibration. It uses the same earlier-only calibration, training rows,
+tree profile and simulation seeds as the direct stage 3 baseline.
+
+Default settings evaluate 88 races from 2023–2026 after 12 earlier calibration races, using
+the development `backtest` profile and 4,096 simulations per forecast. Completed folds resume
+from `work/history_expansion/rating_study`; `--profile full` is a separate experiment. The
+export command checks production fingerprints and exact baseline replay, exports an Austin
+comparison, and adds a paired reliability uncertainty estimate. See the
+[rating report](outputs/rating_study/report.md) and
+[assessment](outputs/rating_study/assessment.md) for results, calibration, feature importance,
+era breakdowns and limitations, plus the [Austin comparison](outputs/rating_study/austin_2026.md).
+Full-profile pre/post-quali and training-history comparisons
+remain a separate stage 5 gate; nothing is promoted automatically.
+
+Completed development-profile results on **88 races**: ratings + circuit reduces position
+log loss **2.7881 → 2.7542** (1.22%; approximate paired 95% loss-delta interval
+[-0.0531, -0.0168]). Spearman barely changes (**0.6226 → 0.6236**), winner-loss improvement
+is inconclusive, and top-three/top-ten overlap decline. Adding reliability gives DNF Brier
+**0.11256 → 0.11248**, with an uncertainty interval spanning no benefit. The ratings variant's
+2026 Spearman falls **0.6545 → 0.6462**. Keep it as a research candidate, not a production upgrade.
+All 135 tests pass; baseline forecasts replay exactly and production fingerprints are unchanged.
+
+### Frozen production models
+
 Train both prediction cutoffs with:
 
 ```bash

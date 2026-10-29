@@ -664,6 +664,53 @@ def evaluate_qualifying_study(
     console.print(f"Report: {output.resolve() / 'report.md'}")
 
 
+@evaluate_app.command("rating-study")
+def evaluate_rating_study(
+    staging_dir: Annotated[Path, typer.Option(help="Isolated v2 data directory.")] = Path(
+        "work/history_expansion/data"
+    ),
+    output: Annotated[Path, typer.Option(help="Rating study reports.")] = Path(
+        "outputs/rating_study"
+    ),
+    start_season: Annotated[int, typer.Option(help="First held-out season.")] = 2023,
+    end_season: Annotated[int, typer.Option(help="Last held-out season.")] = 2026,
+    profile: Annotated[
+        str, typer.Option(help="Matched tree profile: backtest or full.")
+    ] = "backtest",
+    simulations: Annotated[int, typer.Option(help="Joint race draws per forecast.")] = 4096,
+    warmup_races: Annotated[int, typer.Option(help="Earlier OOF calibration races.")] = 12,
+    data_dir: Annotated[Path | None, typer.Option(help="Frozen production baseline.")] = None,
+) -> None:
+    """Test driver/car ratings, layout effects and separate reliability; never promote."""
+    from f1predict.evaluation.rating_study import run_rating_study
+
+    _validate_range(start_season, end_season)
+    report = run_rating_study(
+        DataPaths(staging_dir.resolve()),
+        _paths(data_dir),
+        output.resolve(),
+        start_season=start_season,
+        end_season=end_season,
+        profile=profile,
+        simulations=simulations,
+        warmup_races=warmup_races,
+        progress=lambda text: console.print(text, markup=False),
+    )
+    table = Table(title="Rating study (not promoted)")
+    for column in ("Candidate", "Spearman", "Position LL", "Winner LL", "DNF Brier"):
+        table.add_column(column)
+    for candidate, metrics in report["candidates"].items():
+        table.add_row(
+            candidate,
+            f"{metrics['spearman']:.4f}",
+            f"{metrics['position_log_loss']:.4f}",
+            f"{metrics['winner_log_loss']:.4f}",
+            f"{metrics['probabilities']['dnf']['brier']:.4f}",
+        )
+    console.print(table)
+    console.print(f"Report: {output.resolve() / 'report.md'}")
+
+
 def _evaluation_table(summary: dict) -> Table:
     labels = {
         "pole_aware_ensemble": "Pole-aware ensemble",
