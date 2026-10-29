@@ -192,6 +192,47 @@ Frozen legacy production build (2018–2026; the new staged recipe is not yet pr
 
 ## Model and simulation
 
+### Qualifying-grid research (staging only)
+
+The new stage 3 experiment learns a pre-quali qualifying ranking, samples coherent possible
+qualifying orders, and averages conditional race forecasts across them. It never supplies the
+actual current qualifying result or fabricated Q1/Q2/Q3 times to a pre-quali prediction.
+The conditional race models train on observed qualifying orders in **earlier** races only;
+qualifying forecasts used for calibration are strictly chronological out of fold. No generated
+qualifying covariates are used during race-model training.
+
+```bash
+f1predict evaluate qualifying-study --start-season 2023 --end-season 2026
+python scripts/export_qualifying_checkpoint.py
+```
+
+This compares the direct ensemble and the qualifying-grid mixture on identical held-out races,
+with shared pre-quali DNF probabilities. A basic-practice-only LambdaRank ablation can be compared
+with the direct LambdaRank anchor to isolate detailed practice features. The default `backtest`
+profile uses 140 ranker / 70 forest / 120 regression trees on both ensemble sides, with 120 DNF
+trees. `--profile full` uses 500 / 350 / 450 and 400 DNF trees; it is a separate, slower experiment.
+Development-profile results do not establish improvement in the deployment configuration.
+
+Each fold retrains using earlier races, calibrates from earlier OOF forecasts, integrates 256
+qualifying scenarios and 4,096 race draws, and checkpoints under `work/history_expansion`.
+Rerunning unchanged code, input matrices and options resumes completed folds. The output includes
+race/qualifying rank metrics, probability losses and Brier scores, paired block-bootstrap
+intervals, calibration plots, feature-gain importance, training cutoffs and full distributions.
+Nothing trains or replaces the production model artifacts automatically.
+
+This experiment is conditional on the archived race-entrant set, not a pre-quali entry-list
+forecast. Qualifying order is not a penalty-adjusted starting grid. Publication/revision timestamps
+are not reconstructed, and reused 2026 races remain retrospective validation rather than an
+untouched holdout. See [the experiment report](outputs/qualifying_study/report.md).
+
+Completed development-profile results over **88 races**: the grid-mixture ensemble reduces
+position log loss from **2.7881 to 2.6610** (4.6%), but winner log loss worsens from **1.4278 to
+1.4581** and Spearman is essentially flat (**0.6226 vs 0.6207**). The qualifying model scores
+**0.7351 Spearman** and **43.5% pole accuracy** over 85 complete classifications. Its pole
+probabilities are under-confident in the 10–30% band. Production remains unchanged; see
+[the assessment and limitations](outputs/qualifying_study/assessment.md) and
+[the pre-quali Austin example](outputs/qualifying_study/austin_2026.md).
+
 Train both prediction cutoffs with:
 
 ```bash

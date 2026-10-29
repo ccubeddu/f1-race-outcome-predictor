@@ -25,7 +25,7 @@ unchanged. Detailed practice coverage is now about 99–100% of modern driver-ra
 tyre/session/age proxy is not fuel/traffic/flag corrected. Feature ablations and prediction-metric
 comparisons remain pending model-stage approval; no accuracy gain or promotion is claimed.
 
-## 3. Model qualifying uncertainty before race outcomes
+## 3. Model qualifying uncertainty before race outcomes — completed research checkpoint
 
 Fit a qualifying-order model using only features available before qualifying. Generate coherent
 possible grids, feed them to a race model that supports those simulated inputs, and marginalize
@@ -34,6 +34,15 @@ chronologically out of fold. Do not synthesize measured Q1/Q2/Q3 timing as if it
 
 Checkpoint: qualifying rank/log-loss metrics and pre-quali race-probability improvements against
 the existing direct model on identical chronological races.
+
+The [completed study](../qualifying_study/report.md) compares 88 held-out races using matched
+development-size models on the expanded dataset. Grid marginalization improves exact-position
+log loss by 4.6% (2.7881 → 2.6610), but winner log loss worsens (1.4278 → 1.4581) and rank correlation
+is essentially flat. Qualifying Spearman is 0.7351 with 43.5% pole accuracy on 85 complete grids.
+No production promotion: the [assessment](../qualifying_study/assessment.md) records pole
+under-confidence, inconclusive detailed-practice gains and pending full-profile/prospective checks.
+The conditional race models train on observed qualifying in earlier races, not generated
+qualifying covariates; OOF qualifying forecasts are used only for calibration and evaluation.
 
 ## 4. Separate driver, constructor and circuit effects
 

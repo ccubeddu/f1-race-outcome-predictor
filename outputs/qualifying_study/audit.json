@@ -1,0 +1,25 @@
+{
+  "chronology_violations": 0,
+  "duplicate_keys": 0,
+  "monte_carlo_convergence_across_seeds_checked": false,
+  "passed": true,
+  "probability_errors": {
+    "driver_total": 6.661338147750939e-16,
+    "expected_position": 3.552713678800501e-15,
+    "podium_total": 1.3322676295501878e-15,
+    "points_total": 5.329070518200751e-15,
+    "position_total": 5.551115123125783e-16,
+    "summary": 3.3306690738754696e-16,
+    "win_total": 3.3306690738754696e-16
+  },
+  "production_unchanged": true,
+  "qualifying_probability_error": 0.0,
+  "races": 88,
+  "versions": {
+    "lightgbm": "4.7.0",
+    "numpy": "2.5.4",
+    "pandas": "2.3.3",
+    "scikit-learn": "1.9.1",
+    "scipy": "1.18.1"
+  }
+}

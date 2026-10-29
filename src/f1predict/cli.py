@@ -614,6 +614,56 @@ def model_importance(
     console.print(table)
 
 
+@evaluate_app.command("qualifying-study")
+def evaluate_qualifying_study(
+    staging_dir: Annotated[Path, typer.Option(help="Isolated v2 feature dataset.")] = Path(
+        "work/history_expansion/data"
+    ),
+    output: Annotated[Path, typer.Option(help="Study report and prediction directory.")] = Path(
+        "outputs/qualifying_study"
+    ),
+    start_season: Annotated[int, typer.Option(help="First held-out season.")] = 2023,
+    end_season: Annotated[int, typer.Option(help="Last held-out season.")] = 2026,
+    profile: Annotated[
+        str, typer.Option(help="Matched tree counts: backtest or full.")
+    ] = "backtest",
+    grid_scenarios: Annotated[int, typer.Option(help="Qualifying permutations per race.")] = 256,
+    simulations: Annotated[
+        int, typer.Option(help="Race draws; multiple of grid scenarios.")
+    ] = 4096,
+    warmup_races: Annotated[int, typer.Option(help="Earlier OOF calibration races.")] = 12,
+    data_dir: Annotated[Path | None, typer.Option(help="Frozen production baseline.")] = None,
+) -> None:
+    """Backtest pre-Q forecasts that integrate uncertain qualifying grids; never promote."""
+    from f1predict.evaluation.qualifying_study import run_qualifying_study
+
+    _validate_range(start_season, end_season)
+    report = run_qualifying_study(
+        DataPaths(staging_dir.resolve()),
+        _paths(data_dir),
+        output.resolve(),
+        start_season=start_season,
+        end_season=end_season,
+        profile=profile,
+        grid_scenarios=grid_scenarios,
+        simulations=simulations,
+        warmup_races=warmup_races,
+        progress=lambda message: console.print(message, markup=False),
+    )
+    table = Table(title="Qualifying-grid study (not promoted)")
+    for name in ("Candidate", "Spearman", "Pos. log loss", "Winner log loss"):
+        table.add_column(name)
+    for name, metrics in report["candidates"].items():
+        table.add_row(
+            name,
+            f"{metrics['spearman']:.4f}",
+            f"{metrics['position_log_loss']:.4f}",
+            f"{metrics['winner_log_loss']:.4f}",
+        )
+    console.print(table)
+    console.print(f"Report: {output.resolve() / 'report.md'}")
+
+
 def _evaluation_table(summary: dict) -> Table:
     labels = {
         "pole_aware_ensemble": "Pole-aware ensemble",
