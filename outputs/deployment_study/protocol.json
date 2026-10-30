@@ -1,0 +1,106 @@
+{
+  "baseline": "base_2018_uniform",
+  "calibration": "last 30 earlier OOF races; Platt DNF; simulation winner-loss temperatures",
+  "calibration_races": 30,
+  "configurations": [
+    {
+      "calibration_races": 30,
+      "half_life_days": null,
+      "n_jobs": 1,
+      "ratings": false,
+      "start_year": 2018
+    },
+    {
+      "calibration_races": 30,
+      "half_life_days": 730.5,
+      "n_jobs": 1,
+      "ratings": false,
+      "start_year": 2018
+    },
+    {
+      "calibration_races": 30,
+      "half_life_days": null,
+      "n_jobs": 1,
+      "ratings": false,
+      "start_year": 2014
+    },
+    {
+      "calibration_races": 30,
+      "half_life_days": 730.5,
+      "n_jobs": 1,
+      "ratings": false,
+      "start_year": 2014
+    },
+    {
+      "calibration_races": 30,
+      "half_life_days": null,
+      "n_jobs": 1,
+      "ratings": false,
+      "start_year": 2010
+    },
+    {
+      "calibration_races": 30,
+      "half_life_days": 730.5,
+      "n_jobs": 1,
+      "ratings": false,
+      "start_year": 2010
+    },
+    {
+      "calibration_races": 30,
+      "half_life_days": null,
+      "n_jobs": 1,
+      "ratings": true,
+      "start_year": 2010
+    },
+    {
+      "calibration_races": 30,
+      "half_life_days": 730.5,
+      "n_jobs": 1,
+      "ratings": true,
+      "start_year": 2010
+    }
+  ],
+  "development": "2023\u20132025",
+  "evaluation_races": 88,
+  "evaluation_rows": 1794,
+  "legacy_comparison": "deployment-sized v2 refits, not frozen deployed v1 artifacts",
+  "modes": [
+    "pre_quali",
+    "post_quali"
+  ],
+  "production_auto_promotion": false,
+  "profile": "full",
+  "qualifying_grid_mixture": "separate research candidate; not stacked or promoted here",
+  "ratings": "finish features only; shared base DNF feature contract",
+  "recency": "730.5-day half-life; mean-one loss weights; preprocessing unweighted",
+  "recipe": "full_oof_deployment_v1",
+  "retrospective_check": "2026 (reused; not an untouched holdout)",
+  "run_id": "6a030fd903e8e581",
+  "selection": "minimum development position log loss subject to fixed regression tolerances",
+  "sensitivity_seeds": [
+    44,
+    145,
+    246
+  ],
+  "sensitivity_simulations": [
+    4096,
+    16384
+  ],
+  "simulations": 4096,
+  "tolerances": {
+    "dnf_brier": 0.001,
+    "spearman": 0.005,
+    "top10_accuracy": 0.02,
+    "top3_accuracy": 0.02,
+    "winner_log_loss": 0.03
+  },
+  "training_support": "all archived entrants; no stage 3 qualifying-label training filter",
+  "versions": {
+    "lightgbm": "4.7.0",
+    "numpy": "2.5.4",
+    "pandas": "2.3.3",
+    "scikit-learn": "1.9.1",
+    "scipy": "1.18.1"
+  },
+  "warmup_races": 30
+}

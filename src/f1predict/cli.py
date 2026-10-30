@@ -577,6 +577,45 @@ def model_train(
     console.print(f"[dim]Artifacts: {paths.models}[/dim]")
 
 
+@model_app.command("replay-deployment")
+def replay_deployment(
+    mode: Annotated[str, typer.Option(help="pre_quali or post_quali.")] = "post_quali",
+    candidate: Annotated[str, typer.Option(help="Candidate name or selected.")] = "selected",
+    driver: Annotated[str | None, typer.Option(help="Optional driver name or ID.")] = None,
+    study_dir: Annotated[Path, typer.Option(help="Completed stage 5 report directory.")] = Path(
+        "outputs/deployment_study"
+    ),
+    staging_dir: Annotated[Path, typer.Option(help="Isolated staging data.")] = Path(
+        "work/history_expansion/data"
+    ),
+    simulations: Annotated[int | None, typer.Option(help="Override saved draw count.")] = None,
+) -> None:
+    """Replay the last studied race from its serialized pre-race model; never deploy."""
+    from f1predict.evaluation.deployment_study import replay_deployment_candidate
+    from f1predict.prediction import match_driver
+
+    try:
+        result = replay_deployment_candidate(
+            DataPaths(staging_dir.resolve()),
+            study_dir.resolve(),
+            mode,
+            candidate,
+            simulations=simulations,
+        )
+    except (ValueError, FileNotFoundError) as exc:
+        raise typer.BadParameter(str(exc)) from exc
+    console.print("Research as-of replay; production model unchanged.")
+    if driver:
+        try:
+            row = match_driver(result, driver)
+        except ValueError as exc:
+            raise typer.BadParameter(str(exc)) from exc
+        for table in _driver_tables(row, len(result)):
+            console.print(table)
+    else:
+        console.print(_prediction_table(result))
+
+
 @model_app.command("inspect")
 def model_inspect(
     mode: Annotated[str, typer.Option(help="Model cutoff: pre_quali or post_quali.")] = (
@@ -707,6 +746,41 @@ def evaluate_rating_study(
             f"{metrics['winner_log_loss']:.4f}",
             f"{metrics['probabilities']['dnf']['brier']:.4f}",
         )
+    console.print(table)
+    console.print(f"Report: {output.resolve() / 'report.md'}")
+
+
+@evaluate_app.command("deployment-study")
+def evaluate_deployment_study(
+    staging_dir: Annotated[Path, typer.Option(help="Isolated v2 data.")] = Path(
+        "work/history_expansion/data"
+    ),
+    output: Annotated[Path, typer.Option(help="Stage 5 reports.")] = Path(
+        "outputs/deployment_study"
+    ),
+    simulations: Annotated[int, typer.Option(help="Joint draws per forecast.")] = 4096,
+    workers: Annotated[int, typer.Option(help="One-thread processes, 1–4.")] = 4,
+    data_dir: Annotated[Path | None, typer.Option(help="Frozen production baseline.")] = None,
+) -> None:
+    """Run the fixed full-size pre/post-quali history/recency comparison; never promote."""
+    from f1predict.evaluation.deployment_study import run_deployment_study
+
+    try:
+        report = run_deployment_study(
+            DataPaths(staging_dir.resolve()),
+            _paths(data_dir),
+            output.resolve(),
+            simulations=simulations,
+            workers=workers,
+            progress=lambda value: console.print(value, markup=False),
+        )
+    except ValueError as exc:
+        raise typer.BadParameter(str(exc)) from exc
+    table = Table(title="Full-size deployment study — not promoted")
+    for column in ("Mode", "Development-selected", "2026 recommendation"):
+        table.add_column(column)
+    for mode, decision in report["decisions"].items():
+        table.add_row(mode, decision["candidate"], decision["recommendation"])
     console.print(table)
     console.print(f"Report: {output.resolve() / 'report.md'}")
 

@@ -274,6 +274,56 @@ is inconclusive, and top-three/top-ten overlap decline. Adding reliability gives
 2026 Spearman falls **0.6545 → 0.6462**. Keep it as a research candidate, not a production upgrade.
 All 135 tests pass; baseline forecasts replay exactly and production fingerprints are unchanged.
 
+### Full-size history and recency comparison (staging only)
+
+Status: the fixed full-size backtest is running. No stage 5 improvement or promotion is
+claimed until the complete scores, uncertainty and simulation checks are available.
+
+Stage 5 uses a single fitting, calibration and prediction recipe for both walk-forward
+forecasts and saved candidate bundles. The full-size configuration is 500 LambdaRank,
+350 Random Forest, 450 regression and 400 DNF trees. Eight fixed configurations compare
+2018+, 2014+ and 2010+ histories, uniform versus a 730.5-day recency half-life, and two
+2010+ rating/context variants. Recency weights affect model losses, not preprocessing.
+Rating variants retain the base DNF inputs to isolate finish-model feature changes.
+
+```bash
+f1predict evaluate deployment-study --workers 4
+python scripts/deployment_progress.py  # inspect saved progress from another terminal
+python scripts/export_deployment_checkpoint.py
+f1predict model replay-deployment --mode post_quali
+f1predict model replay-deployment --mode pre_quali --driver Verstappen
+```
+
+The fixed study evaluates the same 88 races at both cutoffs, after 30 earlier calibration
+races: **1,888 race-level refits, each fitting four estimators**. This is a substantial
+local CPU workload. `--workers 1`
+runs sequentially; up to four one-thread workers are supported. Every completed fold is
+cached by code/input/protocol fingerprint; rerunning unchanged inputs resumes. Candidate
+models, score caches and checkpoints stay under `work/history_expansion/deployment_study`;
+reports and examples are under `outputs/deployment_study`.
+For this run's frozen-source checkpoint after interface/cache-validation repairs, see the
+[resume notes](outputs/deployment_study/resume.md).
+
+DNF Platt calibration and simulation-based winner-temperature fitting use the last 30
+strictly earlier out-of-fold races. Model selection uses 2023–2025 only, minimizing
+position loss subject to fixed guards on rank, winner loss, top-three/top-ten overlap and
+DNF Brier. 2026 is a reused retrospective check, not a new holdout. Selected and baseline
+forecasts are checked across three seeds and two simulation counts, with fitted models
+and calibration held fixed. Post-quali keeps the inherited pole adjustment unchanged.
+Its information cutoff includes the known starting grid, not just the instant Q ends;
+archived publication times for late grid/pit-lane decisions are not reconstructed.
+
+The [full report](outputs/deployment_study/report.md) includes all configurations,
+probability losses, calibration plots and feature importance. The
+[assessment](outputs/deployment_study/assessment.md) records the decision and audit.
+`replay-deployment` loads the final stored **pre-race** bundle and reproduces that as-of
+forecast; it is not a live-production switch. The direct study uses all earlier entrants,
+unlike the qualifying-label training filter in stage 3. Its baseline is a full-size refit
+on staged features, not the frozen legacy artifact. The qualifying-grid mixture remains
+a separate research candidate; its combination with ratings is not tested here.
+
+No command in this workflow replaces production files or automatically promotes a model.
+
 ### Frozen production models
 
 Train both prediction cutoffs with:

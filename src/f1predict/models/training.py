@@ -45,7 +45,7 @@ def _temporal_split(
     return frame.loc[~calibration].copy(), frame.loc[calibration].copy()
 
 
-def build_dnf_classifier(*, profile: str = "full") -> LGBMClassifier:
+def build_dnf_classifier(*, profile: str = "full", n_jobs: int = -1) -> LGBMClassifier:
     if profile not in {"full", "backtest"}:
         raise ValueError("profile must be full or backtest")
     return LGBMClassifier(
@@ -58,7 +58,7 @@ def build_dnf_classifier(*, profile: str = "full") -> LGBMClassifier:
         colsample_bytree=0.8,
         reg_lambda=1.0,
         verbosity=-1,
-        n_jobs=-1,
+        n_jobs=n_jobs,
         random_state=RANDOM_SEED,
     )
 

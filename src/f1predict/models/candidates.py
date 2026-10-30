@@ -36,18 +36,34 @@ def _group_sizes(frame: pd.DataFrame) -> list[int]:
     return frame.groupby(["season", "round"], sort=False, observed=True).size().astype(int).tolist()
 
 
+def _weighted_order(
+    frame: pd.DataFrame, sample_weight: np.ndarray | None
+) -> tuple[pd.DataFrame, np.ndarray | None]:
+    if sample_weight is None:
+        return _ordered(frame), None
+    weights = np.asarray(sample_weight, dtype=float)
+    if weights.shape != (len(frame),) or not np.isfinite(weights).all() or (weights <= 0).any():
+        raise ValueError("sample_weight must contain one finite positive weight per input row")
+    if "__fit_weight" in frame:
+        raise ValueError("Reserved fit-weight column already present")
+    data = _ordered(frame.assign(__fit_weight=weights))
+    return data, data.pop("__fit_weight").to_numpy()
+
+
 def fit_finish_candidate(
     frame: pd.DataFrame,
     features: list[str],
     kind: str,
     *,
     profile: str = "full",
+    sample_weight: np.ndarray | None = None,
+    n_jobs: int = -1,
 ) -> FinishCandidate:
     """Fit one of the three Stage 3 finish-order candidates."""
-    data = _ordered(frame)
+    data, weights = _weighted_order(frame, sample_weight)
     preprocessor = build_preprocessor(data, features)
     matrix = preprocessor.fit_transform(clean_features(data, features))
-    return _fit_preprocessed(data, features, kind, preprocessor, matrix, profile)
+    return _fit_preprocessed(data, features, kind, preprocessor, matrix, profile, weights, n_jobs)
 
 
 def _fit_preprocessed(
@@ -57,6 +73,8 @@ def _fit_preprocessed(
     preprocessor: ColumnTransformer,
     matrix: Any,
     profile: str,
+    sample_weight: np.ndarray | None = None,
+    n_jobs: int = -1,
 ) -> FinishCandidate:
     if profile not in {"full", "backtest"}:
         raise ValueError("profile must be full or backtest")
@@ -75,10 +93,10 @@ def _fit_preprocessed(
             n_estimators=tree_counts[kind],
             min_samples_leaf=3,
             max_features=0.7,
-            n_jobs=-1,
+            n_jobs=n_jobs,
             random_state=RANDOM_SEED,
         )
-        model.fit(matrix, finish)
+        model.fit(matrix, finish, sample_weight=sample_weight)
         higher_is_better = False
     elif kind == "lightgbm_regression":
         model = LGBMRegressor(
@@ -91,10 +109,10 @@ def _fit_preprocessed(
             colsample_bytree=0.8,
             reg_lambda=1.0,
             verbosity=-1,
-            n_jobs=-1,
+            n_jobs=n_jobs,
             random_state=RANDOM_SEED,
         )
-        model.fit(matrix, finish)
+        model.fit(matrix, finish, sample_weight=sample_weight)
         higher_is_better = False
     elif kind == "lightgbm_ranker":
         model = LGBMRanker(
@@ -108,11 +126,11 @@ def _fit_preprocessed(
             colsample_bytree=0.8,
             reg_lambda=1.0,
             verbosity=-1,
-            n_jobs=-1,
+            n_jobs=n_jobs,
             random_state=RANDOM_SEED,
         )
         relevance = data["field_size"].to_numpy(dtype=int) - finish.astype(int)
-        model.fit(matrix, relevance, group=_group_sizes(data))
+        model.fit(matrix, relevance, group=_group_sizes(data), sample_weight=sample_weight)
         higher_is_better = True
     else:
         raise ValueError(f"Unknown model candidate: {kind}")
@@ -125,12 +143,16 @@ def fit_finish_candidates(
     kinds: tuple[str, ...],
     *,
     profile: str = "full",
+    sample_weight: np.ndarray | None = None,
+    n_jobs: int = -1,
 ) -> dict[str, FinishCandidate]:
     """Fit several candidates against one identical encoded training matrix."""
-    data = _ordered(frame)
+    data, weights = _weighted_order(frame, sample_weight)
     preprocessor = build_preprocessor(data, features)
     matrix = preprocessor.fit_transform(clean_features(data, features))
     return {
-        kind: _fit_preprocessed(data, features, kind, preprocessor, matrix, profile)
+        kind: _fit_preprocessed(
+            data, features, kind, preprocessor, matrix, profile, weights, n_jobs
+        )
         for kind in kinds
     }

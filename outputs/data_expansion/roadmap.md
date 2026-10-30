@@ -65,7 +65,7 @@ it combines successfully with the stage 3 grid mixture. Baseline probabilities r
 production fingerprints are unchanged and 135 tests pass. A [readable Austin comparison](
 ../rating_study/austin_2026.md) includes every entrant and prior-event rating cutoff.
 
-## 5. Evaluate the deployment configuration consistently
+## 5. Evaluate the deployment configuration consistently — running
 
 Use the same model configuration for backtesting and production. Compare 2018+, 2014+ and 2010+
 training histories on identical test races, including variants with recency weighting. Tune on
@@ -78,3 +78,11 @@ Keep sportsbook, exchange and prediction-market results separate and require doc
 information cutoffs before reporting a timing-eligible market advantage.
 
 Checkpoint: a baseline-versus-candidate report with a clear promotion or rejection decision.
+
+The fixed [full-size protocol](../deployment_study/protocol.json) runs eight configurations
+at both cutoffs on 88 races, with 30 earlier OOF calibration races. One shared recipe trains,
+calibrates and predicts for the backtest and serialized research bundles. Training histories,
+recency weighting, the ratings/context ablation, source snapshots and replay checks are
+implemented; metrics and the promotion/rejection assessment are pending the full run.
+Production remains unchanged. See the [resume notes](../deployment_study/resume.md) for the
+exact frozen local checkpoint after interface/cache-validation hardening.

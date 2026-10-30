@@ -171,6 +171,8 @@ def match_driver(predictions: pd.DataFrame, query: str) -> pd.Series:
     needle = query.strip().casefold()
     match = pd.Series(False, index=predictions.index)
     for column in ("driver_id", "driver_code", "driver_name"):
+        if column not in predictions:
+            continue
         match |= (
             predictions[column]
             .fillna("")
